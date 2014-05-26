@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>br.edu.granbery.tcc</groupId>
+    <artifactId>tcc-project</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>tcc</artifactId>
+  <packaging>war</packaging>
+  <name>tcc - WAR</name> 
+ 	
+	 <dependencyManagement>  
+	  	<dependencies>
+	  		<dependency>
+	  			<groupId>org.richfaces</groupId>
+	  			<artifactId>richfaces-bom</artifactId>
+	  			<version>4.3.7.Final</version>
+	  			<type>pom</type>
+	  		</dependency>
+	  	</dependencies>
+	 </dependencyManagement>	
+	 <dependencies>
+	 	<dependency>
+	 		<groupId>org.richfaces.ui</groupId>
+	 		<artifactId>richfaces-components-ui</artifactId>
+	 		<version>4.3.7.Final</version>
+	 	</dependency>
+	 	<dependency>
+	 		<groupId>org.richfaces.core</groupId>
+	 		<artifactId>richfaces-core-impl</artifactId>
+	 		<version>4.3.7.Final</version>
+	 	</dependency>
+	 </dependencies>
+	 <build>
+	 	<plugins>
+	 		<plugin>
+	 			<groupId>org.apache.maven.plugins</groupId>
+	 			<artifactId>maven-war-plugin</artifactId>
+	 			<version>2.4</version>
+	 			<configuration>
+                    <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
+                </configuration>
+	 		</plugin>
+	 	</plugins>
+	 </build>
+</project>
