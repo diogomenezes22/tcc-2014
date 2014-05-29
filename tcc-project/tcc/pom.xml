@@ -5,20 +5,18 @@
     <artifactId>tcc-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
+  
   <artifactId>tcc</artifactId>
   <packaging>war</packaging>
-  <name>tcc - WAR</name> 
- 	
-	 <dependencyManagement>  
+  <name>tcc - WAR</name>  	
+
 	  	<dependencies>
+	  	
 	  		<dependency>
 	  			<groupId>org.richfaces</groupId>
 	  			<artifactId>richfaces-bom</artifactId>
 	  			<type>pom</type>
 	  		</dependency>
-	  	</dependencies>
-	 </dependencyManagement>	
-	 <dependencies>
 	 	<dependency>
 	 		<groupId>org.richfaces.ui</groupId>
 	 		<artifactId>richfaces-components-ui</artifactId>
@@ -27,6 +25,6 @@
 	 		<groupId>org.richfaces.core</groupId>
 	 		<artifactId>richfaces-core-impl</artifactId>
 	 	</dependency>
-	 </dependencies>
-	
+	 	
+	 </dependencies>	
 </project>
