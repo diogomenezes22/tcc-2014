@@ -1,30 +1,41 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>br.edu.granbery.tcc</groupId>
-    <artifactId>tcc-project</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  
-  <artifactId>tcc</artifactId>
-  <packaging>war</packaging>
-  <name>tcc - WAR</name>  	
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>br.edu.granbery.tcc</groupId>
+		<artifactId>tcc-project</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 
-	  	<dependencies>
-	  	
-	  		<dependency>
-	  			<groupId>org.richfaces</groupId>
-	  			<artifactId>richfaces-bom</artifactId>
-	  			<type>pom</type>
-	  		</dependency>
-	 	<dependency>
-	 		<groupId>org.richfaces.ui</groupId>
-	 		<artifactId>richfaces-components-ui</artifactId>
-	 	</dependency>
-	 	<dependency>
-	 		<groupId>org.richfaces.core</groupId>
-	 		<artifactId>richfaces-core-impl</artifactId>
-	 	</dependency>
-	 	
-	 </dependencies>	
+	<artifactId>tcc</artifactId>
+	<packaging>war</packaging>
+	<name>tcc - WAR</name>
+	
+	 <properties>  
+        <org.richfaces.bom.version>4.1.0.Final</org.richfaces.bom.version>  
+    </properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.richfaces</groupId>
+			<artifactId>richfaces-bom</artifactId>
+			<version>${org.richfaces.bom.version}</version>  
+            <scope>import</scope>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>org.richfaces.ui</groupId>
+			<artifactId>richfaces-components-ui</artifactId>
+			<version>${org.richfaces.bom.version}</version>  
+            <scope>import</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.richfaces.core</groupId>
+			<artifactId>richfaces-core-impl</artifactId>
+			<version>${org.richfaces.bom.version}</version>  
+            <scope>import</scope>
+		</dependency>
+
+	</dependencies>
 </project>
