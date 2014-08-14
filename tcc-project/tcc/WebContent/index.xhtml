@@ -5,18 +5,19 @@
       xmlns:rich="http://richfaces.org/rich"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
-
 <h:head>
 	<script src="/resources/js/jquery-1.10.2.js"></script>
 	<title>Projeto TCC</title>
 </h:head> 
 <body>
-<h:form>
-    <rich:panel>
-		<h:outputText value="Panel Body" />
-		<h:inputText id="teste"/>
-		<h:commandButton value="teste" onclick="alert('chupa');" />
-		<a4j:commandButton onclick="alert('teste')" value="testeajax"></a4j:commandButton>
+<h1>TCC</h1>
+<p>teste</p>
+<h:form id="testeForm">
+	<rich:panel>
+	<h:outputText value="Panel Body" />
+	<h:inputText id="teste"/>
+	<h:commandButton value="teste" onclick="alert('chupa');" />
+	<a4j:commandButton onclick="alert('teste')" value="testeajax"></a4j:commandButton>
 	</rich:panel>
 </h:form>
 </body> 
