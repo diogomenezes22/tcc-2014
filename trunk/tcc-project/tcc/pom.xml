@@ -10,32 +10,63 @@
 	<artifactId>tcc</artifactId>
 	<packaging>war</packaging>
 	<name>tcc - WAR</name>
-	
-	 <properties>  
-        <org.richfaces.bom.version>4.1.0.Final</org.richfaces.bom.version>  
-    </properties>
 
-	<dependencies>
+	<properties>
+		<org.richfaces.bom.version>4.1.0.Final</org.richfaces.bom.version>
+	</properties>
 
-		<dependency>
-			<groupId>org.richfaces</groupId>
-			<artifactId>richfaces-bom</artifactId>
-			<version>${org.richfaces.bom.version}</version>  
-            <scope>import</scope>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>org.richfaces.ui</groupId>
-			<artifactId>richfaces-components-ui</artifactId>
-			<version>${org.richfaces.bom.version}</version>  
-            <scope>import</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.richfaces.core</groupId>
-			<artifactId>richfaces-core-impl</artifactId>
-			<version>${org.richfaces.bom.version}</version>  
-            <scope>import</scope>
-		</dependency>
+	<dependencyManagement>
+		<dependencies>
 
-	</dependencies>
+			<dependency>
+				<groupId>org.richfaces</groupId>
+				<artifactId>richfaces-bom</artifactId>
+				<version>${org.richfaces.bom.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+
+			<dependency>
+				<groupId>org.richfaces.ui</groupId>
+				<artifactId>richfaces-components-ui</artifactId>
+				<version>${org.richfaces.bom.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+
+			<dependency>
+				<groupId>org.richfaces.core</groupId>
+				<artifactId>richfaces-core-impl</artifactId>
+				<version>${org.richfaces.bom.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+
+			<dependency>
+				<groupId>org.richfaces.cdk</groupId>
+				<artifactId>annotations</artifactId>
+				<version>${org.richfaces.bom.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>net.sourceforge.cssparser</groupId>
+				<artifactId>cssparser</artifactId>
+				<version>0.9.5</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>10.0.1</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.w3c.css</groupId>
+				<artifactId>sac</artifactId>
+				<version>1.3</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
 </project>
