@@ -4,7 +4,7 @@
 	version="3.0">
 	<display-name>tcc</display-name>
 
-	<!-- INICIO CONFIGS JSF 2.2 -->
+	<!-- INICIO CONFIGS JSF 2.1 -->
 
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
