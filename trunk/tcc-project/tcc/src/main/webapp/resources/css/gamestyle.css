@@ -82,10 +82,17 @@ p {
 	margin-top: auto;
 }
 
-.casa {
+.casaInativa {
 	width: 6%;
 	height: 100px;
 	background-color: silver;
+	font: bold;
+	font-size: 20px;
+}
+.casaAtiva{
+	width: 6%;
+	height: 100px;
+	background-color: white;
 	font: bold;
 	font-size: 20px;
 }
