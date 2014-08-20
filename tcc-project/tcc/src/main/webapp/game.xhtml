@@ -10,6 +10,7 @@
     <script src="resources/js/jquery-2.1.1.min.js"></script>
     <script src="resources/js/jquery-ui.js"></script>
     <script src="resources/js/jquery-ui.min.js"></script>
+    <script src="resources/js/objeto.js"></script>
     <script src="resources/js/game.js"></script>
     <link rel="stylesheet" type="text/css" href="resources/css/gamestyle.css"/>
     <link rel="stylesheet" type="text/css" href="resources/css/jquerycss/jquery-ui.css"/>
@@ -22,78 +23,79 @@
 
 
 <body>
+<div id="divTabuleiro">
 	<div>
-		<img id="botao1" src="resources/images/ui-bg_diagonals-thick_18_b81900_40x40.png" alt="botão1" />
-				
-	<img id="botao2" src="resources/images/ui-bg_diagonals-thick_20_666666_40x40.png" alt="botão1" />
-</div> 
-<table id="tabuleiro" border="1px;" class="tabela">
-	<tr>
-		<td id="casa1" class="casa" >Start</td>
-		<td id="casa2" class="casaEspecial"> 2 </td>
-		<td id="casa3" class="casa"> 3 </td>
-		<td id="casa4" class="casa"> 4 </td>
-		<td id="casa5" class="casa"> 5 </td>
-		<td id="casa6" class="casa"> 6 </td>
-		<td id="casa7" class="casa"> 7 </td>
-		<td id="casa8" class="casa"> 8 </td>
-		<td id="casa9" class="casa"> 9 </td>
-		<td id="casa10" class="casa"> 10 </td>
-		<td id="casa11" class="casa"> 11 </td>
-		<td id="casa12" class="casaEspecial"> 12 </td>
-		<td id="casa13" class="casa"> 13 </td>
-		<td id="casa14" class="casa"> 14 </td>
-		<td id="casa15" class="casa"> 15 </td>
-		<td id="casa16"  class="casa"> 16 </td>			
-	</tr>
-	<tr>
-		<td id="casa46" class="casa">46</td>
-		<td id="centro" class="centro" rowspan="7" colspan="14">CENTRO</td>
-		<td id="casa17" class="casa">17</td>
-	</tr>
-	<tr>
-		<td id="casa45" class="casa">45</td>
-		<td  id="casa18" class="casa">18</td>
-	</tr>
-	<tr>
-		<td id="casa44" class="casa">44</td>
-		<td id="casa19" class="casa">19</td>
-	</tr>
-	<tr>
-		<td id="casa43" class="casa">43</td>
-		<td id="casa20" class="casa">20</td>
-	</tr>
-	<tr>
-		<td id="casa42" class="casa">42</td>
-		<td id="casa21" class="casa">21</td>
-	</tr>
-	<tr>
-		<td id="casa41" class="casaEspecial">41</td>
-		<td id="casa22" class="casa">22</td>
-	</tr>
-	<tr>
-		<td id="casa40" class="casa">40</td>
-		<td id="casa23" class="casa">23</td>
-	</tr>
-	<tr>
-		<td id="casa39" class="casa"> 39 </td>
-		<td id="casa38" class="casa"> 38 </td>
-		<td id="casa37" class="casa"> 37 </td>
-		<td id="casa36" class="casa"> 36 </td>
-		<td id="casa35" class="casa"> 35 </td>
-		<td id="casa34" class="casa"> 34 </td>
-		<td id="casa33" class="casa"> 33 </td>
-		<td id="casa32" class="casa"> 32 </td>
-		<td id="casa31" class="casaEspecial"> 31 </td>
-		<td id="casa30" class="casa"> 30 </td>
-		<td id="casa29" class="casa"> 29 </td>
-		<td id="casa28" class="casa"> 28 </td>
-		<td id="casa27" class="casa"> 27 </td>
-		<td id="casa26" class="casa"> 26 </td>
-		<td id="casa25" class="casa"> 25 </td>
-		<td id="casa24" class="casaEspecial"> 24 </td>
-	</tr>
-</table>
-
+		<img id="jogador1" src="resources/images/ui-bg_diagonals-thick_18_b81900_40x40.png" alt="botão1" />
+		<img id="jogador2" src="resources/images/ui-bg_diagonals-thick_20_666666_40x40.png" alt="botão1" />
+	</div> 
+	<table id="tabuleiro" border="1px;" class="tabela">
+		<tr>
+			<td id="casa1" class="casaInativa" >Start</td>
+			<td id="casa2" class="casaEspecial"> 2 </td>
+			<td id="casa3" class="casaInativa"> 3 </td>
+			<td id="casa4" class="casaInativa"> 4 </td>
+			<td id="casa5" class="casaInativa"> 5 </td>
+			<td id="casa6" class="casaInativa"> 6 </td>
+			<td id="casa7" class="casaInativa"> 7 </td>
+			<td id="casa8" class="casaInativa"> 8 </td>
+			<td id="casa9" class="casaInativa"> 9 </td>
+			<td id="casa10" class="casaInativa"> 10 </td>
+			<td id="casa11" class="casaInativa"> 11 </td>
+			<td id="casa12" class="casaEspecial"> 12 </td>
+			<td id="casa13" class="casaInativa"> 13 </td>
+			<td id="casa14" class="casaInativa"> 14 </td>
+			<td id="casa15" class="casaInativa"> 15 </td>
+			<td id="casa16" class="casaInativa"> 16 </td>			
+		</tr>
+		<tr>
+			<td id="casa46" class="casaInativa">46</td>
+			<td id="centro" class="centro" rowspan="7" colspan="14">CENTRO</td>
+			<td id="casa17" class="casaInativa">17</td>
+		</tr>
+		<tr>
+			<td id="casa45" class="casaInativa">45</td>
+			<td  id="casa18" class="casaInativa">18</td>
+		</tr>
+		<tr>
+			<td id="casa44" class="casaInativa">44</td>
+			<td id="casa19" class="casaInativa">19</td>
+		</tr>
+		<tr>
+			<td id="casa43" class="casaInativa">43</td>
+			<td id="casa20" class="casaInativa">20</td>
+		</tr>
+		<tr>
+			<td id="casa42" class="casaInativa">42</td>
+			<td id="casa21" class="casaInativa">21</td>
+		</tr>
+		<tr>
+			<td id="casa41" class="casaEspecial">41</td>
+			<td id="casa22" class="casaInativa">22</td>
+		</tr>
+		<tr>
+			<td id="casa40" class="casaInativa">40</td>
+			<td id="casa23" class="casaInativa">23</td>
+		</tr>
+		<tr>
+			<td id="casa39" class="casaInativa"> 39 </td>
+			<td id="casa38" class="casaInativa"> 38 </td>
+			<td id="casa37" class="casaInativa"> 37 </td>
+			<td id="casa36" class="casaInativa"> 36 </td>
+			<td id="casa35" class="casaInativa"> 35 </td>
+			<td id="casa34" class="casaInativa"> 34 </td>
+			<td id="casa33" class="casaInativa"> 33 </td>
+			<td id="casa32" class="casaInativa"> 32 </td>
+			<td id="casa31" class="casaEspecial"> 31 </td>
+			<td id="casa30" class="casaInativa"> 30 </td>
+			<td id="casa29" class="casaInativa"> 29 </td>
+			<td id="casa28" class="casaInativa"> 28 </td>
+			<td id="casa27" class="casaInativa"> 27 </td>
+			<td id="casa26" class="casaInativa"> 26 </td>
+			<td id="casa25" class="casaInativa"> 25 </td>
+			<td id="casa24" class="casaEspecial"> 24 </td>
+		</tr>
+	</table>
+</div>
+<span onclick="sortearDado();"> Girar dado</span>
 </body>
 </html>
