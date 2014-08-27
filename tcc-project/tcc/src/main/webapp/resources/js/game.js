@@ -10,8 +10,8 @@ var peao4 = null;
 var peao5 = null;
 
 $( document ).ready(function(){
-	peao1 = new Peao("jogador1", "juca", 1);
-	peao2 = new Peao("jogador2", "ganso", 1);
+	peao1 = new Peao("jogador1", "juca", 0);
+	peao2 = new Peao("jogador2", "ganso", 0);
 	jogadorAtual = peao1;
 	
 });
@@ -22,8 +22,13 @@ function habilitarCasa(id){
 	$('#' + id).addClass('casaAtiva');
 	$('#' + id).show('slow');
 	
-	$('#' +id).droppable();
-	
+	$('#' +id).droppable({
+      drop: function( event, ui ) {
+          $( this ).addClass("casaOcupada");
+          $( this ).removeClass('casaAtiva');
+        }
+      });
+
 }
 
 function atualizarJogador(){
@@ -51,9 +56,8 @@ function sortearDado(){
 	habilitarCasa(jogadorAtual.idCasa);
 	//ator deve mover sua peça
 		$(jogadorAtual.id).draggable({
-			revert:true,
 			drag: function(event, ui){
-				alert("joguei");
+				//alert("joguei");
 			}
 		});
 		//apos movido desabilita e passa a vez;
@@ -61,5 +65,3 @@ function sortearDado(){
 	
 	
 	}
-
-
