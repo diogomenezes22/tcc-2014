@@ -52,16 +52,38 @@ function sortearDado(){
 	alert("Número sorteado " + numeroSorteado);
 	//chamar pergunta
 	//se acertou 
-	atualizarJogador();	
-	habilitarCasa(jogadorAtual.idCasa);
+	moverPeca(jogadorAtual.id, jogadorAtual.idCasa, numeroSorteado);
+	atualizarJogador();
+	alternaJogador();
 	//ator deve mover sua peça
-		$(jogadorAtual.id).draggable({
-			drag: function(event, ui){
-				//alert("joguei");
-			}
-		});
 		//apos movido desabilita e passa a vez;
 	//se não passa a vez e paga prenda
 	
 	
 	}
+
+function moverPeca(idJogador, idCasa, casas){
+	for(var i = 0; i < casas; i++ ){
+		$(idJogador).animate({opacity : '0.5'}, 1000, function(){
+			if(idCasa.length == 6){
+				nCasa = idCasa.substr(idCasa.length - 1, idCasa.length);
+			}
+			else{
+				nCasa = idCasa.substr(idCasa.length - 2, idCasa.length);
+			}
+			idCasa = idCasa.replace(nCasa, "");
+			nCasa++;
+			idCasa = idCasa.concat(nCasa);
+			var jogador = $(idJogador);
+			$(idCasa).append(jogador);
+		});
+	}
+}
+
+function aalternaJogador(){
+	if(jogadorAtual === peao1){
+		jogadorAtual = peao2;
+	}else if(jogadorAtual == peao2){
+		jogadorAtual = peao1;
+	}
+} 

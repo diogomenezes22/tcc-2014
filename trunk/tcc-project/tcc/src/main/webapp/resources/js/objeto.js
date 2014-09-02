@@ -1,7 +1,7 @@
 /**
  *  Object Domain
  */
-var CASA = 'casa';
+var CASA = '#casa';
 
 function Peao( _id, _nome, _posicao){
 	this.id = '#' + _id;
