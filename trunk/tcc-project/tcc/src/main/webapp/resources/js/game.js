@@ -64,7 +64,7 @@ function sortearDado(){
 
 function moverPeca(idJogador, idCasa, casas){
 	for(var i = 0; i < casas; i++ ){
-		$(idJogador).animate({opacity : '0.5'}, 1000, function(){
+		$(idJogador).animate({opacity : '0.8'}, 500, function(){
 			if(idCasa.length == 6){
 				nCasa = idCasa.substr(idCasa.length - 1, idCasa.length);
 			}
@@ -80,7 +80,7 @@ function moverPeca(idJogador, idCasa, casas){
 	}
 }
 
-function aalternaJogador(){
+function alternaJogador(){
 	if(jogadorAtual === peao1){
 		jogadorAtual = peao2;
 	}else if(jogadorAtual == peao2){
