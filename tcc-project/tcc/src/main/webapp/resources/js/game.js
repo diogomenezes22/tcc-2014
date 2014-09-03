@@ -16,21 +16,6 @@ $( document ).ready(function(){
 	
 });
 
-function habilitarCasa(id){
-	$('#' + id).hide('slow');
-	$('#' + id).removeClass('casaInativa');
-	$('#' + id).addClass('casaAtiva');
-	$('#' + id).show('slow');
-	
-	$('#' +id).droppable({
-      drop: function( event, ui ) {
-          $( this ).addClass("casaOcupada");
-          $( this ).removeClass('casaAtiva');
-        }
-      });
-
-}
-
 function atualizarJogador(){
 	jogadorAtual.posicao += numeroSorteado;
 	jogadorAtual.idCasa = CASA + jogadorAtual.posicao;
@@ -45,7 +30,16 @@ function atualizarJogador(){
 		peao4 = jogadorAtual;
 	}else if(peao5.id === jogadorAtual.id){
 		peao4 = jogadorAtual;
-}}
+	}
+}
+
+function alternaJogador(){
+	if(jogadorAtual === peao1){
+		jogadorAtual = peao2;
+	}else if(jogadorAtual == peao2){
+		jogadorAtual = peao1;
+	}
+} 
 
 function sortearDado(){
 	numeroSorteado = Math.floor((Math.random() * 6 +1));
@@ -60,7 +54,7 @@ function sortearDado(){
 	//se não passa a vez e paga prenda
 	
 	
-	}
+}
 
 function moverPeca(idJogador, idCasa, casas){
 	for(var i = 0; i < casas; i++ ){
@@ -80,10 +74,3 @@ function moverPeca(idJogador, idCasa, casas){
 	}
 }
 
-function alternaJogador(){
-	if(jogadorAtual === peao1){
-		jogadorAtual = peao2;
-	}else if(jogadorAtual == peao2){
-		jogadorAtual = peao1;
-	}
-} 

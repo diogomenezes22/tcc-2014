@@ -1,92 +1,106 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a4j="http://richfaces.org/a4j"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-    <script src="resources/js/jquery-2.1.1.min.js"></script>
-    <script src="resources/js/jquery-ui.js"></script>
-    <script src="resources/js/jquery-ui.min.js"></script>
-    <script src="resources/js/objeto.js"></script>
-    <script src="resources/js/game.js"></script>
-    <link rel="stylesheet" type="text/css" href="resources/css/gamestyle.css"/>
-    <link rel="stylesheet" type="text/css" href="resources/css/jquerycss/jquery-ui.css"/>
-    <link rel="stylesheet" type="text/css" href="resources/css/jquerycss/jquery-ui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="resources/css/jquerycss/jquery-ui.structure.min.css"/>
-    <link rel="stylesheet" type="text/css" href="resources/css/jquerycss/jquery-ui.structure.min.css"/>
-    <link rel="stylesheet" type="text/css" href="resources/css/jquerycss/jquery-ui.theme.css"/>
-    <link rel="stylesheet" type="text/css" href="resources/css/jquerycss/jquery-ui.theme.min.css"/>
+	<script src="resources/js/jquery-2.1.1.min.js"></script>
+	<script src="resources/js/jquery-ui.js"></script>
+	<script src="resources/js/jquery-ui.min.js"></script>
+	<script src="resources/js/objeto.js"></script>
+	<script src="resources/js/game.js"></script>
+	<link rel="stylesheet" type="text/css"
+		href="resources/css/gamestyle.css" />
+	<link rel="stylesheet" type="text/css"
+		href="resources/css/jquerycss/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css"
+		href="resources/css/jquerycss/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="resources/css/jquerycss/jquery-ui.structure.min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="resources/css/jquerycss/jquery-ui.structure.min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="resources/css/jquerycss/jquery-ui.theme.css" />
+	<link rel="stylesheet" type="text/css"
+		href="resources/css/jquerycss/jquery-ui.theme.min.css" />
 </h:head>
 
 
 <body>
-<div id="divTabuleiro">
-	<div>
-		<img id="jogador1" src="resources/images/ui-bg_diagonals-thick_18_b81900_40x40.png" alt="botão1" />
-		<img id="jogador2" src="resources/images/ui-bg_diagonals-thick_20_666666_40x40.png" alt="botão1" />
-	</div> 
-	<table id="tabuleiro" border="1px;" class="tabela">
-		<tr>
-			<td id="casa40" class="casaInativa" >Start<br />Finish</td>
-			<td id="casa1" class="casaEspecial"> 1 </td>
-			<td id="casa2" class="casaInativa"> 2 </td>
-			<td id="casa3" class="casaInativa"> 3 </td>
-			<td id="casa4" class="casaInativa"> 4 </td>
-			<td id="casa5" class="casaInativa"> 5 </td>
-			<td id="casa6" class="casaInativa"> 6 </td>
-			<td id="casa7" class="casaInativa"> 7 </td>
-			<td id="casa8" class="casaInativa"> 8 </td>
-			<td id="casa9" class="casaInativa"> 9 </td>
-			<td id="casa10" class="casaInativa"> 10 </td>
-			<td id="casa11" class="casaEspecial"> 11 </td>
-			<td id="casa12" class="casaInativa"> 12 </td>
-			<td id="casa13" class="casaInativa"> 13 </td>
-			<td id="casa14" class="casaInativa"> 14 </td>			
-		</tr>
-		<tr>
-			<td id="casa39" class="casaInativa">39</td>
-			<td id="centro" class="centro" rowspan="5" colspan="13">CENTRO</td>
-			<td id="casa15" class="casaInativa">15</td>
-		</tr>
-		<tr>
-			<td id="casa38" class="casaInativa">38</td>
-			<td id="casa16" class="casaInativa">16</td>
-		</tr>
-		<tr>
-			<td id="casa37" class="casaInativa">37</td>
-			<td id="casa17" class="casaInativa">17</td>
-		</tr>
-		<tr>
-			<td id="casa36" class="casaInativa">36</td>
-			<td id="casa18" class="casaInativa">18</td>
-		</tr>
-		<tr>
-			<td id="casa35" class="casaEspecial">35</td>
-			<td id="casa19" class="casaInativa">19</td>
-		</tr>
-	
-		<tr>
-			<td id="casa34" class="casaInativa"> 34 </td>
-			<td id="casa33" class="casaInativa"> 33 </td>
-			<td id="casa32" class="casaInativa"> 32 </td>
-			<td id="casa31" class="casaInativa"> 31 </td>
-			<td id="casa30" class="casaInativa"> 30 </td>
-			<td id="casa29" class="casaInativa"> 29 </td>
-			<td id="casa28" class="casaInativa"> 28 </td>
-			<td id="casa27" class="casaEspecial"> 27 </td>
-			<td id="casa26" class="casaInativa"> 26 </td>
-			<td id="casa25" class="casaInativa"> 25 </td>
-			<td id="casa24" class="casaInativa"> 24 </td>
-			<td id="casa23" class="casaInativa"> 23 </td>
-			<td id="casa22" class="casaInativa"> 22 </td>
-			<td id="casa21" class="casaInativa"> 21 </td>
-			<td id="casa20" class="casaEspecial"> 20 </td>
-		</tr>
-	</table>
-</div>
-<span onclick="sortearDado();"> Girar dado</span>
+	<h:form id="idFormTabuleiro">
+		<ui:param name="controller" value="#{gameController}" />
+		<div id="divTabuleiro">
+			<div>
+				<img id="jogador1"
+					src="resources/images/ui-bg_diagonals-thick_18_b81900_40x40.png"
+					alt="botão1" /> <img id="jogador2"
+					src="resources/images/ui-bg_diagonals-thick_20_666666_40x40.png"
+					alt="botão1" />
+			</div>
+			<table id="tabuleiro" border="1px;" class="tabela">
+				<tr>
+					<td id="casa40" class="casaInativa">Start<br />Finish
+					</td>
+					<td id="casa1" class="casaEspecial">1</td>
+					<td id="casa2" class="casaInativa">2</td>
+					<td id="casa3" class="casaInativa">3</td>
+					<td id="casa4" class="casaInativa">4</td>
+					<td id="casa5" class="casaInativa">5</td>
+					<td id="casa6" class="casaInativa">6</td>
+					<td id="casa7" class="casaInativa">7</td>
+					<td id="casa8" class="casaInativa">8</td>
+					<td id="casa9" class="casaInativa">9</td>
+					<td id="casa10" class="casaInativa">10</td>
+					<td id="casa11" class="casaEspecial">11</td>
+					<td id="casa12" class="casaInativa">12</td>
+					<td id="casa13" class="casaInativa">13</td>
+					<td id="casa14" class="casaInativa">14</td>
+				</tr>
+				<tr>
+					<td id="casa39" class="casaInativa">39</td>
+					<td id="centro" class="centro" rowspan="5" colspan="13">CENTRO</td>
+					<td id="casa15" class="casaInativa">15</td>
+				</tr>
+				<tr>
+					<td id="casa38" class="casaInativa">38</td>
+					<td id="casa16" class="casaInativa">16</td>
+				</tr>
+				<tr>
+					<td id="casa37" class="casaInativa">37</td>
+					<td id="casa17" class="casaInativa">17</td>
+				</tr>
+				<tr>
+					<td id="casa36" class="casaInativa">36</td>
+					<td id="casa18" class="casaInativa">18</td>
+				</tr>
+				<tr>
+					<td id="casa35" class="casaEspecial">35</td>
+					<td id="casa19" class="casaInativa">19</td>
+				</tr>
+
+				<tr>
+					<td id="casa34" class="casaInativa">34</td>
+					<td id="casa33" class="casaInativa">33</td>
+					<td id="casa32" class="casaInativa">32</td>
+					<td id="casa31" class="casaInativa">31</td>
+					<td id="casa30" class="casaInativa">30</td>
+					<td id="casa29" class="casaInativa">29</td>
+					<td id="casa28" class="casaInativa">28</td>
+					<td id="casa27" class="casaEspecial">27</td>
+					<td id="casa26" class="casaInativa">26</td>
+					<td id="casa25" class="casaInativa">25</td>
+					<td id="casa24" class="casaInativa">24</td>
+					<td id="casa23" class="casaInativa">23</td>
+					<td id="casa22" class="casaInativa">22</td>
+					<td id="casa21" class="casaInativa">21</td>
+					<td id="casa20" class="casaEspecial">20</td>
+				</tr>
+			</table>
+		</div>
+		<span onclick="sortearDado();"> Girar dado</span>
+	</h:form>
 </body>
 </html>
