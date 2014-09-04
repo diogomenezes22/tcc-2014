@@ -32,6 +32,7 @@
 <body>
 	<h:form id="idFormTabuleiro">
 		<ui:param name="controller" value="#{gameController}" />
+		<ui:param name="view" value="#{gameControllerView}" />
 		<div id="divTabuleiro">
 			<div>
 				<img id="jogador1"
@@ -100,8 +101,10 @@
 				</tr>
 			</table>
 		</div>
-		<span onclick="sortearDado();"> Girar dado</span>
-		<h:commandButton value="Sortear Dado" action="#{gameController.sortearDado()}" />
+		<!-- span onclick="sortearDado();"> Girar dado</span-->
+		<h:commandButton value="Sortear Dado" onclick="sortearDado();">
+			<f:ajax event="click" execute="@form" listener="#{controller.sortearDado()}"></f:ajax>
+		</h:commandButton>
 	</h:form>
 </body>
 </html>
