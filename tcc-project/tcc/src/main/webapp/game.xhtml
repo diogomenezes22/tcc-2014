@@ -4,7 +4,8 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <h:head>
 	<script src="resources/js/jquery-2.1.1.min.js"></script>
@@ -30,7 +31,7 @@
 
 
 <body>
-	<h:form id="idFormTabuleiro">
+	<h:form id="idFormTabuleiro" prependId="false">
 		<ui:param name="controller" value="#{gameController}" />
 		<ui:param name="view" value="#{gameControllerView}" />
 		<div id="divTabuleiro">
@@ -62,7 +63,18 @@
 				</tr>
 				<tr>
 					<td id="casa39" class="casaInativa">39</td>
-					<td id="centro" class="centro" rowspan="5" colspan="13">CENTRO</td>
+					<td id="centro" class="centro" rowspan="5" colspan="13">
+						<h:panelGroup id="grupoPergunta">
+							<h:outputLabel id="pergunta" readonly="true" value="#{gameController.view.variavelTeste}" />
+							<h:selectOneRadio value="#{gameControllerView.repostaEscolhida}">
+								<f:selectItems value="#{gameControllerView.pergunta.respostas}"
+                                       var="resposta"
+                                       itemValue="#{resposta.correta}"
+                                       itemLabel="#{resposta.descricao}"
+                                       />
+							</h:selectOneRadio>
+						</h:panelGroup>
+					</td>
 					<td id="casa15" class="casaInativa">15</td>
 				</tr>
 				<tr>
@@ -102,9 +114,7 @@
 			</table>
 		</div>
 		<!-- span onclick="sortearDado();"> Girar dado</span-->
-		<h:commandButton value="Sortear Dado" onclick="sortearDado();">
-			<f:ajax event="click" execute="@form" listener="#{controller.sortearDado()}"></f:ajax>
-		</h:commandButton>
+		<a4j:commandButton value="Pergunta" action="#{gameController.buscarPergunta()}" onclick="sortearDado();" render="grupoPergunta"/>
 	</h:form>
 </body>
 </html>

@@ -11,7 +11,7 @@ public class Resposta implements Serializable{
 	
 	private int id;
 	private char alternativa;
-	private String descrição;
+	private String descricao;
 	private boolean correta;
 	
 	
@@ -28,11 +28,11 @@ public class Resposta implements Serializable{
 	public void setAlternativa(char alternativa) {
 		this.alternativa = alternativa;
 	}
-	public String getDescrição() {
-		return descrição;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setDescrição(String descrição) {
-		this.descrição = descrição;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	public boolean isCorreta() {
 		return correta;
@@ -48,7 +48,7 @@ public class Resposta implements Serializable{
 		result = prime * result + alternativa;
 		result = prime * result + (correta ? 1231 : 1237);
 		result = prime * result
-				+ ((descrição == null) ? 0 : descrição.hashCode());
+				+ ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + id;
 		return result;
 	}
@@ -66,10 +66,10 @@ public class Resposta implements Serializable{
 			return false;
 		if (correta != other.correta)
 			return false;
-		if (descrição == null) {
-			if (other.descrição != null)
+		if (descricao == null) {
+			if (other.descricao != null)
 				return false;
-		} else if (!descrição.equals(other.descrição))
+		} else if (!descricao.equals(other.descricao))
 			return false;
 		if (id != other.id)
 			return false;
