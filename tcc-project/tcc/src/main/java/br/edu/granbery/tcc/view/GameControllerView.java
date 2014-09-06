@@ -2,14 +2,13 @@ package br.edu.granbery.tcc.view;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 
 import br.edu.granbery.model.Jogo;
 import br.edu.granbery.model.Pergunta;
+import br.edu.granbery.model.Resposta;
 
 @Named
-@ViewScoped
 public class GameControllerView implements Serializable{
 
 	/**
@@ -19,11 +18,13 @@ public class GameControllerView implements Serializable{
 	
 	private Jogo jogo = new Jogo();
 	private Pergunta pergunta = new Pergunta();	
-	private boolean repostaEscolhida;
-	private boolean mostrarPergunta = false;
+	private char repostaEscolhida;
 	
-	private String variavelTeste;
-
+	private Resposta r1 = new Resposta();
+	private Resposta r2 = new Resposta();
+	private Resposta r3 = new Resposta();
+	private Resposta r4 = new Resposta();
+	
 	public Jogo getJogo() {
 		return jogo;
 	}
@@ -40,27 +41,44 @@ public class GameControllerView implements Serializable{
 		this.pergunta = pergunta;
 	}
 
-	public boolean isRepostaEscolhida() {
+	public char getRepostaEscolhida() {
 		return repostaEscolhida;
 	}
 
-	public void setRepostaEscolhida(boolean repostaEscolhida) {
+	public void setRepostaEscolhida(char repostaEscolhida) {
 		this.repostaEscolhida = repostaEscolhida;
 	}
 
-	public boolean isMostrarPergunta() {
-		return mostrarPergunta;
+	public Resposta getR1() {
+		return r1;
 	}
 
-	public void setMostrarPergunta(boolean mostrarPergunta) {
-		this.mostrarPergunta = mostrarPergunta;
+	public void setR1(Resposta r1) {
+		this.r1 = r1;
 	}
 
-	public String getVariavelTeste() {
-		return variavelTeste;
+	public Resposta getR2() {
+		return r2;
 	}
 
-	public void setVariavelTeste(String variavelTeste) {
-		this.variavelTeste = variavelTeste;
+	public void setR2(Resposta r2) {
+		this.r2 = r2;
 	}
+
+	public Resposta getR3() {
+		return r3;
+	}
+
+	public void setR3(Resposta r3) {
+		this.r3 = r3;
+	}
+
+	public Resposta getR4() {
+		return r4;
+	}
+
+	public void setR4(Resposta r4) {
+		this.r4 = r4;
+	}
+	
 }

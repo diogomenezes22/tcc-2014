@@ -1,10 +1,11 @@
 package br.edu.granbery.tcc.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,40 +13,47 @@ import br.edu.granbery.model.Resposta;
 import br.edu.granbery.tcc.view.GameControllerView;
 
 @Named
-@ViewScoped
-public class GameController {
+@SessionScoped
+public class GameController implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@Inject
 	private GameControllerView view;
-
-	public void load(){
-		this.view.setMostrarPergunta(false);
-		//this.view.setVariavelTeste("Por que esta meerda não aparece na tela");
-	}
+	
+	private boolean mostraPergunta;
+	
 	@PostConstruct
+	public void load(){
+	
+	}
+	
+	
 	public void buscarPergunta(){
 		//mock temporario para testes
-		this.view.setVariavelTeste("Por que esta buceta não aparece na tela");
-		Resposta r1 = new Resposta();
-		Resposta r2 = new Resposta();
-		Resposta r3 = new Resposta();
-		Resposta r4 = new Resposta();
-		r1.setDescricao("Sim");
-		r1.setCorreta(false);
-		r2.setDescricao("Com certeza");
-		r2.setCorreta(false);
-		r3.setDescricao("óbvio");
-		r3.setCorreta(false);
-		r4.setDescricao("todas as alternativas anteriores");
-		r4.setCorreta(true);
+		view.getR1().setDescricao("1");
+		view.getR1().setAlternativa('A');
+		view.getR1().setCorreta(false);
+		view.getR2().setDescricao("2");
+		view.getR2().setAlternativa('B');
+		view.getR2().setCorreta(true);
+		view.getR3().setDescricao("3");
+		view.getR3().setAlternativa('C');
+		view.getR3().setCorreta(false);
+		view.getR4().setDescricao("34");
+		view.getR4().setAlternativa('D');
+		view.getR4().setCorreta(false);
 		List<Resposta> respostas = new ArrayList<Resposta>();
-		respostas.add(r4);
-		respostas.add(r3);
-		respostas.add(r2);
-		respostas.add(r1);
-		this.view.getPergunta().setDescricao("O renato e gay ?");
-		this.view.getPergunta().setRespostas(respostas);
-		this.view.setMostrarPergunta(true);
+		respostas.add(view.getR4());
+		respostas.add(view.getR3());
+		respostas.add(view.getR2());
+		respostas.add(view.getR1());
+		view.getPergunta().setDescricao("Qual a raiz quadrada de 499 ?");
+		view.getPergunta().setRespostas(respostas);
+		mostraPergunta = true;
 	}
 	
 	public GameControllerView getView() {
@@ -54,5 +62,15 @@ public class GameController {
 	
 	public void setView(GameControllerView view) {
 		this.view = view;
+	}
+
+
+	public boolean isMostraPergunta() {
+		return mostraPergunta;
+	}
+
+
+	public void setMostraPergunta(boolean mostraPergunta) {
+		this.mostraPergunta = mostraPergunta;
 	}
 }

@@ -31,7 +31,7 @@
 
 
 <body>
-	<h:form id="idFormTabuleiro" prependId="false">
+	<h:form id="idForm" prependId="false">
 		<ui:param name="controller" value="#{gameController}" />
 		<ui:param name="view" value="#{gameControllerView}" />
 		<div id="divTabuleiro">
@@ -42,7 +42,7 @@
 					src="resources/images/ui-bg_diagonals-thick_20_666666_40x40.png"
 					alt="botão1" />
 			</div>
-			<table id="tabuleiro" border="1px;" class="tabela">
+			<table id="idTabuleiro" border="1px;" class="tabela">
 				<tr>
 					<td id="casa40" class="casaInativa">Start<br />Finish
 					</td>
@@ -64,16 +64,17 @@
 				<tr>
 					<td id="casa39" class="casaInativa">39</td>
 					<td id="centro" class="centro" rowspan="5" colspan="13">
-						<h:panelGroup id="grupoPergunta">
-							<h:outputLabel id="pergunta" readonly="true" value="#{gameController.view.variavelTeste}" />
-							<h:selectOneRadio value="#{gameControllerView.repostaEscolhida}">
-								<f:selectItems value="#{gameControllerView.pergunta.respostas}"
-                                       var="resposta"
-                                       itemValue="#{resposta.correta}"
-                                       itemLabel="#{resposta.descricao}"
-                                       />
+						<a4j:outputPanel id="painelPergunta">
+						<h:panelGroup id="grupoPergunta" rendered="#{gameController.mostraPergunta}">
+							<h:outputLabel id="pergunta" readonly="true" value="#{gameController.view.pergunta.descricao}" />
+							<h:selectOneRadio style="border:0px;" styleClass="centro" value="#{gameControllerView.repostaEscolhida}">
+								<f:selectItem itemValue="#{gameController.view.r1.alternativa}" itemLabel="#{gameController.view.r1.descricao}"></f:selectItem>
+								<f:selectItem itemValue="#{gameController.view.r2.alternativa}" itemLabel="#{gameController.view.r2.descricao}"></f:selectItem>
+								<f:selectItem itemValue="#{gameController.view.r3.alternativa}" itemLabel="#{gameController.view.r3.descricao}"></f:selectItem>
+								<f:selectItem itemValue="#{gameController.view.r4.alternativa}" itemLabel="#{gameController.view.r4.descricao}"></f:selectItem>
 							</h:selectOneRadio>
 						</h:panelGroup>
+						</a4j:outputPanel>
 					</td>
 					<td id="casa15" class="casaInativa">15</td>
 				</tr>
@@ -114,7 +115,11 @@
 			</table>
 		</div>
 		<!-- span onclick="sortearDado();"> Girar dado</span-->
-		<a4j:commandButton value="Pergunta" action="#{gameController.buscarPergunta()}" onclick="sortearDado();" render="grupoPergunta"/>
+		<a4j:commandButton value="Pergunta" action="#{gameController.buscarPergunta()}" onclick="sortearDado();" render="painelPergunta"/>
+		
+		<h:commandButton value="Pergunta2" onclick="sortearDado();">
+			<f:ajax execute="@form" event="click" render="painelPergunta" listener="#{gameController.buscarPergunta()}"></f:ajax>
+		</h:commandButton>
 	</h:form>
 </body>
 </html>
