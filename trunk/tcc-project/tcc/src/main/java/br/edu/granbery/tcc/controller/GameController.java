@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -27,17 +28,26 @@ public class GameController implements Serializable {
 	private GameControllerView view;
 	
 	private boolean mostraPergunta;
+	private boolean mostraPoPup;
+	private boolean acertou;
 	
 	@PostConstruct
 	public void load(){
+		try{
 		Jogador jogador1 = new Jogador();
 		Jogador jogador2 = new Jogador();
+		jogador1.setId(1);
 		jogador1.setNome("Jão");
 		jogador1.setVez(true);
 		jogador1.setPosicaoAtual(0);
+		jogador1.setProximaPosicao(0);
+		jogador1.setPodeAndar(false);
+		jogador2.setId(2);
 		jogador2.setNome("Zé");
 		jogador2.setVez(false);
 		jogador2.setPosicaoAtual(0);
+		jogador2.setPodeAndar(false);
+		jogador2.setProximaPosicao(0);
 		
 		view.getJogo().setDataInicio(new Date());
 		view.getJogo().setJogadores(new ArrayList<Jogador>());
@@ -48,6 +58,9 @@ public class GameController implements Serializable {
 			if(jogador.isVez()){
 				view.setJogadorAtual(jogador);
 			}
+		}
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		
 	}
@@ -74,18 +87,41 @@ public class GameController implements Serializable {
 		respostas.add(view.getR1());
 		view.getPergunta().setDescricao("Qual a raiz quadrada de 499 ?");
 		view.getPergunta().setRespostas(respostas);
-		if(mostraPergunta)
-			mostraPergunta = false;
-		else
-			mostraPergunta = true;
+		mostraPergunta = true;
 	}
 	
 	
 	public void responder(){
-		
-		
-		
+		Random r = new Random();
+		int numeroSorteado = r.nextInt(6) + 1;
+		if(verificaResposta(view.getRepostaEscolhida())){
+			acertou = true;
+			view.getJogadorAtual().setPodeAndar(true);
+			view.getJogadorAtual().setProximaPosicao(view.getJogadorAtual().getPosicaoAtual() + numeroSorteado);
+		}
+		mostraPoPup = true;
+		acertou = false;	
 	}
+	
+	public void passaVez(){
+		for(int i = 0; i < view.getJogo().getJogadores().size(); i++){
+			if(view.getJogo().getJogadores().get(i).isVez()){
+				view.getJogo().getJogadores().get(i).setVez(false);
+				view.getJogo().getJogadores().get(i).setPosicaoAtual(view.getJogo().getJogadores().get(i).getProximaPosicao());
+				if(i + 1 >= view.getJogo().getJogadores().size()){
+					view.getJogo().getJogadores().get(0).setVez(true);
+					view.setJogadorAtual(view.getJogo().getJogadores().get(0));
+				}else{
+					view.getJogo().getJogadores().get(i+1).setVez(true);
+					view.setJogadorAtual(view.getJogo().getJogadores().get(i+1));
+				}
+			}
+		}
+		
+		mostraPergunta = false;
+		mostraPoPup = false;
+	}
+	
 	
 	public boolean verificaResposta(String alternativa){
 		
@@ -125,5 +161,25 @@ public class GameController implements Serializable {
 	
 	public void setMostraPergunta(boolean mostraPergunta) {
 		this.mostraPergunta = mostraPergunta;
+	}
+
+
+	public boolean isMostraPoPup() {
+		return mostraPoPup;
+	}
+
+
+	public void setMostraPoPup(boolean mostraPoPup) {
+		this.mostraPoPup = mostraPoPup;
+	}
+
+
+	public boolean isAcertou() {
+		return acertou;
+	}
+
+
+	public void setAcertou(boolean acertou) {
+		this.acertou = acertou;
 	}
 }
