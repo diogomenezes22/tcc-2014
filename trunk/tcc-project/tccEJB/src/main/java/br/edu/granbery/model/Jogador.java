@@ -2,8 +2,6 @@ package br.edu.granbery.model;
 
 import java.io.Serializable;
 
-import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
-
 public class Jogador implements Serializable{
 
 	/**
@@ -13,9 +11,16 @@ public class Jogador implements Serializable{
 	
 	private int id;
 	private String nome;
-	private int posicaoAtual;
 	private boolean vez;
+	private boolean podeAndar;
+	private int posicaoAtual;
+	private int proximaPosicao;
 	
+	@Override
+	public String toString(){
+		return id + ","+ nome + "," + posicaoAtual + "," + podeAndar + "," + proximaPosicao;
+		
+	}
 	
 	public int getId() {
 		return id;
@@ -37,46 +42,23 @@ public class Jogador implements Serializable{
 	}
 	
 	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + (vez ? 1231 : 1237);
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Jogador other = (Jogador) obj;
-		if (id != other.id)
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (vez != other.vez)
-			return false;
-		return true;
-	}
-	
-	@Override
-	public String toString(){
-		return id + ","+ nome + "," + posicaoAtual;
-		
-	}
 	public int getPosicaoAtual() {
 		return posicaoAtual;
 	}
 	public void setPosicaoAtual(int posicaoAtual) {
 		this.posicaoAtual = posicaoAtual;
+	}
+	public boolean isPodeAndar() {
+		return podeAndar;
+	}
+	public void setPodeAndar(boolean podeAndar) {
+		this.podeAndar = podeAndar;
+	}
+	public int getProximaPosicao() {
+		return proximaPosicao;
+	}
+	public void setProximaPosicao(int proximaPosicao) {
+		this.proximaPosicao = proximaPosicao;
 	}
 	
 }
