@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.inject.Named;
 
+import br.edu.granbery.model.Jogador;
 import br.edu.granbery.model.Jogo;
 import br.edu.granbery.model.Pergunta;
 import br.edu.granbery.model.Resposta;
@@ -18,8 +19,8 @@ public class GameControllerView implements Serializable{
 	
 	private Jogo jogo = new Jogo();
 	private Pergunta pergunta = new Pergunta();	
-	private char repostaEscolhida;
-	
+	private String repostaEscolhida;
+	private Jogador jogadorAtual = new Jogador();
 	private Resposta r1 = new Resposta();
 	private Resposta r2 = new Resposta();
 	private Resposta r3 = new Resposta();
@@ -41,11 +42,11 @@ public class GameControllerView implements Serializable{
 		this.pergunta = pergunta;
 	}
 
-	public char getRepostaEscolhida() {
+	public String getRepostaEscolhida() {
 		return repostaEscolhida;
 	}
 
-	public void setRepostaEscolhida(char repostaEscolhida) {
+	public void setRepostaEscolhida(String	 repostaEscolhida) {
 		this.repostaEscolhida = repostaEscolhida;
 	}
 
@@ -79,6 +80,14 @@ public class GameControllerView implements Serializable{
 
 	public void setR4(Resposta r4) {
 		this.r4 = r4;
+	}
+
+	public Jogador getJogadorAtual() {
+		return jogadorAtual;
+	}
+
+	public void setJogadorAtual(Jogador jogadorAtual) {
+		this.jogadorAtual = jogadorAtual;
 	}
 	
 }

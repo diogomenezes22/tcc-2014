@@ -2,6 +2,7 @@ package br.edu.granbery.tcc.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,6 +10,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.edu.granbery.model.Jogador;
 import br.edu.granbery.model.Resposta;
 import br.edu.granbery.tcc.view.GameControllerView;
 
@@ -28,7 +30,24 @@ public class GameController implements Serializable {
 	
 	@PostConstruct
 	public void load(){
-	
+		Jogador jogador1 = new Jogador();
+		Jogador jogador2 = new Jogador();
+		jogador1.setNome("Jão");
+		jogador1.setVez(true);
+		jogador2.setNome("Zé");
+		jogador2.setVez(false);
+		
+		view.getJogo().setDataInicio(new Date());
+		view.getJogo().setJogadores(new ArrayList<Jogador>());
+		view.getJogo().getJogadores().add(jogador1);
+		view.getJogo().getJogadores().add(jogador2);
+		
+		for (Jogador jogador : view.getJogo().getJogadores()) {
+			if(jogador.isVez()){
+				view.setJogadorAtual(jogador);
+			}
+		}
+		
 	}
 	
 	
@@ -53,7 +72,39 @@ public class GameController implements Serializable {
 		respostas.add(view.getR1());
 		view.getPergunta().setDescricao("Qual a raiz quadrada de 499 ?");
 		view.getPergunta().setRespostas(respostas);
-		mostraPergunta = true;
+		if(mostraPergunta)
+			mostraPergunta = false;
+		else
+			mostraPergunta = true;
+	}
+	
+	
+	public void responder(){
+		
+		
+		
+	}
+	
+	public boolean verificaResposta(String alternativa){
+		
+		if(alternativa.equals(view.getR1().getAlternativa())){
+			if(view.getR1().isCorreta()){
+				return true;
+			}
+		}else if(alternativa.equals(view.getR2().getAlternativa())){
+			if(view.getR2().isCorreta()){
+				return true;
+			}
+		}else if(alternativa.equals(view.getR3().getAlternativa())){
+			if(view.getR3().isCorreta()){
+				return true;
+			}
+		}else if(alternativa.equals(view.getR4().getAlternativa())){
+			if(view.getR4().isCorreta()){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public GameControllerView getView() {
@@ -63,13 +114,13 @@ public class GameController implements Serializable {
 	public void setView(GameControllerView view) {
 		this.view = view;
 	}
-
-
+	
+	
 	public boolean isMostraPergunta() {
 		return mostraPergunta;
 	}
-
-
+	
+	
 	public void setMostraPergunta(boolean mostraPergunta) {
 		this.mostraPergunta = mostraPergunta;
 	}

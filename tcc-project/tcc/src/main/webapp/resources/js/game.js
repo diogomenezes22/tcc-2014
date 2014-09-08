@@ -45,7 +45,10 @@ function sortearDado(){
 	numeroSorteado = Math.floor((Math.random() * 6 +1));
 	alert("Número sorteado " + numeroSorteado);
 	//chamar pergunta
-	//se acertou 
+	//se acertou
+	
+	var testeJogador = $("#jogadorAtual").val();
+	
 	moverPeca(jogadorAtual.id, jogadorAtual.idCasa, numeroSorteado);
 	atualizarJogador();
 	alternaJogador();

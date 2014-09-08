@@ -34,6 +34,9 @@
 	<h:form id="idForm" prependId="false">
 		<ui:param name="controller" value="#{gameController}" />
 		<ui:param name="view" value="#{gameControllerView}" />
+		
+		<h:inputHidden id="jogadorAtual" value="#{gameController.view.jogadorAtual}" />
+		
 		<div id="divTabuleiro">
 			<div>
 				<img id="jogador1"
@@ -65,15 +68,14 @@
 					<td id="casa39" class="casaInativa">39</td>
 					<td id="centro" class="centro" rowspan="5" colspan="13">
 						<a4j:outputPanel id="painelPergunta">
-						<h:panelGroup id="grupoPergunta" rendered="#{gameController.mostraPergunta}">
-							<h:outputLabel id="pergunta" readonly="true" value="#{gameController.view.pergunta.descricao}" />
-							<h:selectOneRadio style="border:0px;" styleClass="centro" value="#{gameControllerView.repostaEscolhida}">
+							<h:outputLabel id="pergunta" readonly="true" value="#{gameController.view.pergunta.descricao}"  rendered="#{gameController.mostraPergunta}"/>
+							<h:selectOneRadio style="border:0px;" styleClass="centro" value="#{gameControllerView.repostaEscolhida}" rendered="#{gameController.mostraPergunta}">
 								<f:selectItem itemValue="#{gameController.view.r1.alternativa}" itemLabel="#{gameController.view.r1.descricao}"></f:selectItem>
 								<f:selectItem itemValue="#{gameController.view.r2.alternativa}" itemLabel="#{gameController.view.r2.descricao}"></f:selectItem>
 								<f:selectItem itemValue="#{gameController.view.r3.alternativa}" itemLabel="#{gameController.view.r3.descricao}"></f:selectItem>
 								<f:selectItem itemValue="#{gameController.view.r4.alternativa}" itemLabel="#{gameController.view.r4.descricao}"></f:selectItem>
 							</h:selectOneRadio>
-						</h:panelGroup>
+							<a4j:commandButton value="Responder" action="#{gameController.verificaResposta()}" oncomplete="sortearDado();" render="painelPergunta" rendered="#{gameController.mostraPergunta}"/>
 						</a4j:outputPanel>
 					</td>
 					<td id="casa15" class="casaInativa">15</td>
@@ -117,9 +119,6 @@
 		<!-- span onclick="sortearDado();"> Girar dado</span-->
 		<a4j:commandButton value="Pergunta" action="#{gameController.buscarPergunta()}" onclick="sortearDado();" render="painelPergunta"/>
 		
-		<h:commandButton value="Pergunta2" onclick="sortearDado();">
-			<f:ajax execute="@form" event="click" render="painelPergunta" listener="#{gameController.buscarPergunta()}"></f:ajax>
-		</h:commandButton>
 	</h:form>
 </body>
 </html>
