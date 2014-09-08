@@ -34,8 +34,10 @@ public class GameController implements Serializable {
 		Jogador jogador2 = new Jogador();
 		jogador1.setNome("Jão");
 		jogador1.setVez(true);
+		jogador1.setPosicaoAtual(0);
 		jogador2.setNome("Zé");
 		jogador2.setVez(false);
+		jogador2.setPosicaoAtual(0);
 		
 		view.getJogo().setDataInicio(new Date());
 		view.getJogo().setJogadores(new ArrayList<Jogador>());

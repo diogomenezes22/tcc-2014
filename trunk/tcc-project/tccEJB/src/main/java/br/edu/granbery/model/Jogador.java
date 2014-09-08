@@ -2,6 +2,8 @@ package br.edu.granbery.model;
 
 import java.io.Serializable;
 
+import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
+
 public class Jogador implements Serializable{
 
 	/**
@@ -11,6 +13,7 @@ public class Jogador implements Serializable{
 	
 	private int id;
 	private String nome;
+	private int posicaoAtual;
 	private boolean vez;
 	
 	
@@ -64,6 +67,16 @@ public class Jogador implements Serializable{
 		return true;
 	}
 	
-	
+	@Override
+	public String toString(){
+		return id + ","+ nome + "," + posicaoAtual;
+		
+	}
+	public int getPosicaoAtual() {
+		return posicaoAtual;
+	}
+	public void setPosicaoAtual(int posicaoAtual) {
+		this.posicaoAtual = posicaoAtual;
+	}
 	
 }
