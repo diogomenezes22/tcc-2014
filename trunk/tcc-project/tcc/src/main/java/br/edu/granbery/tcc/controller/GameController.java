@@ -65,7 +65,6 @@ public class GameController implements Serializable {
 		
 	}
 	
-	
 	public void buscarPergunta(){
 		//mock temporario para testes
 		view.getR1().setDescricao("1");
@@ -89,8 +88,7 @@ public class GameController implements Serializable {
 		view.getPergunta().setRespostas(respostas);
 		mostraPergunta = true;
 	}
-	
-	
+		
 	public void responder(){
 		Random r = new Random();
 		int numeroSorteado = r.nextInt(6) + 1;
@@ -121,8 +119,7 @@ public class GameController implements Serializable {
 		mostraPergunta = false;
 		mostraPoPup = false;
 	}
-	
-	
+		
 	public boolean verificaResposta(String alternativa){
 		
 		if(alternativa.equals(view.getR1().getAlternativa())){

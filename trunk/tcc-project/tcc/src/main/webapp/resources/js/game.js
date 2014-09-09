@@ -1,8 +1,6 @@
 /**
  *  Game Control
  */
-var jogadorAtual = null;
-
 $( document ).ready(function(){
 
 });
@@ -11,7 +9,7 @@ $( document ).ready(function(){
 function moverPeca(){
 	var jogador = $("#jogadorAtual").val().split(',');
 	
-	jogadorAtual = new Peao('jogador' + jogador[0], jogador[1], jogador[2]);
+	var jogadorAtual = new Peao('jogador' + jogador[0], jogador[1], jogador[2]);
 	var podeAndar = jogador[3];
 	var proximaCasa = jogador[4];
 	var andar = proximaCasa - jogadorAtual.posicao;
