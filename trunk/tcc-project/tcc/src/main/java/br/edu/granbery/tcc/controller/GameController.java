@@ -121,9 +121,13 @@ public class GameController implements Serializable {
 				if(i + 1 >= view.getJogo().getJogadores().size()){
 					view.getJogo().getJogadores().get(0).setVez(true);
 					view.setJogadorAtual(view.getJogo().getJogadores().get(0));
+					preencherCamposHidden(view.getJogadorAtual());
+					break;
 				}else{
 					view.getJogo().getJogadores().get(i+1).setVez(true);
 					view.setJogadorAtual(view.getJogo().getJogadores().get(i+1));
+					preencherCamposHidden(view.getJogadorAtual());
+					break;
 				}
 			}
 		}
