@@ -18,7 +18,7 @@ public class Jogador implements Serializable, BaseEntity{
 	
 	@Override
 	public String toString(){
-		return String.valueOf(id + ";"+ nome + ";" + posicaoAtual + ";" + podeAndar + ";" + proximaPosicao);
+		return String.valueOf(id + ","+ nome + "," + posicaoAtual + "," + podeAndar + "," + proximaPosicao);
 		
 	}
 	
