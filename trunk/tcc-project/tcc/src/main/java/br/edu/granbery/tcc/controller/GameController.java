@@ -68,16 +68,16 @@ public class GameController implements Serializable {
 	public void buscarPergunta(){
 		//mock temporario para testes
 		view.getR1().setDescricao("1");
-		view.getR1().setAlternativa('A');
+		view.getR1().setAlternativa("A");
 		view.getR1().setCorreta(false);
 		view.getR2().setDescricao("2");
-		view.getR2().setAlternativa('B');
+		view.getR2().setAlternativa("B");
 		view.getR2().setCorreta(true);
 		view.getR3().setDescricao("3");
-		view.getR3().setAlternativa('C');
+		view.getR3().setAlternativa("C");
 		view.getR3().setCorreta(false);
 		view.getR4().setDescricao("34");
-		view.getR4().setAlternativa('D');
+		view.getR4().setAlternativa("D");
 		view.getR4().setCorreta(false);
 		List<Resposta> respostas = new ArrayList<Resposta>();
 		respostas.add(view.getR4());
@@ -96,9 +96,11 @@ public class GameController implements Serializable {
 			acertou = true;
 			view.getJogadorAtual().setPodeAndar(true);
 			view.getJogadorAtual().setProximaPosicao(view.getJogadorAtual().getPosicaoAtual() + numeroSorteado);
+		}else{
+			acertou = false;
 		}
 		mostraPoPup = true;
-		acertou = false;	
+		mostraPergunta = false;
 	}
 	
 	public void passaVez(){
@@ -123,21 +125,17 @@ public class GameController implements Serializable {
 	public boolean verificaResposta(String alternativa){
 		
 		if(alternativa.equals(view.getR1().getAlternativa())){
-			if(view.getR1().isCorreta()){
-				return true;
-			}
+			return view.getR1().isCorreta();
+
 		}else if(alternativa.equals(view.getR2().getAlternativa())){
-			if(view.getR2().isCorreta()){
-				return true;
-			}
+			return view.getR2().isCorreta();
+
 		}else if(alternativa.equals(view.getR3().getAlternativa())){
-			if(view.getR3().isCorreta()){
-				return true;
-			}
+			return view.getR3().isCorreta();
+
 		}else if(alternativa.equals(view.getR4().getAlternativa())){
-			if(view.getR4().isCorreta()){
-				return true;
-			}
+			return view.getR4().isCorreta();
+
 		}
 		return false;
 	}

@@ -51,16 +51,21 @@
 					<td id="casa39" class="casaInativa">39</td>
 					<td id="centro" class="centro" rowspan="5" colspan="13">
 						<a4j:outputPanel id="painelPergunta">
-							<h:outputLabel id="pergunta" readonly="true" value="#{gameController.view.pergunta.descricao}"  rendered="#{gameController.mostraPergunta}"/>
-							<h:selectOneRadio style="border:0px;" styleClass="centro" value="#{gameControllerView.repostaEscolhida}" rendered="#{gameController.mostraPergunta}">
-								<f:selectItem itemValue="#{gameController.view.r1.alternativa}" itemLabel="#{gameController.view.r1.descricao}"></f:selectItem>
-								<f:selectItem itemValue="#{gameController.view.r2.alternativa}" itemLabel="#{gameController.view.r2.descricao}"></f:selectItem>
-								<f:selectItem itemValue="#{gameController.view.r3.alternativa}" itemLabel="#{gameController.view.r3.descricao}"></f:selectItem>
-								<f:selectItem itemValue="#{gameController.view.r4.alternativa}" itemLabel="#{gameController.view.r4.descricao}"></f:selectItem>
-							</h:selectOneRadio>
-							<a4j:commandButton value="Responder" action="#{gameController.responder()}" render="painelPergunta" rendered="#{gameController.mostraPergunta}">
-								<rich:componentControl  target="popup" operation="show"/>
-							</a4j:commandButton>
+							<h:panelGroup rendered="#{gameController.mostraPergunta}">
+								<h:panelGrid>
+									<h:outputLabel id="pergunta" value="#{gameController.view.pergunta.descricao}"/>
+
+									<h:selectOneRadio immediate="false"	value="#{gameController.view.repostaEscolhida}">
+										<f:selectItem itemValue="#{gameController.view.r1.alternativa}" itemLabel="#{gameController.view.r1.descricao}"></f:selectItem>
+										<f:selectItem itemValue="#{gameController.view.r2.alternativa}" itemLabel="#{gameController.view.r2.descricao}"></f:selectItem>
+										<f:selectItem itemValue="#{gameController.view.r3.alternativa}" itemLabel="#{gameController.view.r3.descricao}"></f:selectItem>
+										<f:selectItem itemValue="#{gameController.view.r4.alternativa}" itemLabel="#{gameController.view.r4.descricao}"></f:selectItem>
+									</h:selectOneRadio>
+
+									<a4j:commandButton value="Responder" actionListener="#{gameController.responder()}" render="popup painelPergunta"/>
+										
+								</h:panelGrid>
+							</h:panelGroup>
 						</a4j:outputPanel>
 					</td>
 					<td id="casa15" class="casaInativa">15</td>
@@ -102,28 +107,22 @@
 			</table>
 		</div>
 		<br />
-		<h:commandButton  value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta" ></h:commandButton>
-
-		<rich:popupPanel id="popup" modal="true" autosized="true"
-			rendered="#{gameController.mostraPoPup}" resizeable="false">
-			<c:if test="#{gameController.acertou}">
+		<a4j:commandButton  value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta" ></a4j:commandButton>
+		
+		<rich:popupPanel domElementAttachment="form" id="popup" resizeable="false" modal="true" autosized="true" rendered="#{gameController.mostraPoPup}" show="true">
+			<rich:panel rendered="#{gameController.acertou}">
 				<f:facet name="header">
 					<h:outputText value="Parabens Você acertou!" />
 				</f:facet>
-				<f:facet name="controls">
-					<a4j:commandButton value="OK" action="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide(); return false;" oncomplete="moverPeca();" />
-				</f:facet>
-			</c:if>
-			<c:otherwise>
+				<a4j:commandButton value="OK" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide(); moverPeca();"/>
+			</rich:panel>
+			<rich:panel rendered="#{!gameController.acertou}">	
 				<f:facet name="header">
 					<h:outputText value="Que pena você errou!" />
 				</f:facet>
-				<f:facet name="controls">
-					<a4j:commandButton value="OK" action="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide(); return false;" />
-				</f:facet>
-			</c:otherwise>
-		</rich:popupPanel>
-		
+				<a4j:commandButton value="OK" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide(); return false;" />
+			</rich:panel>
+		</rich:popupPanel>	
 	</h:form>
 </body>
 </html>

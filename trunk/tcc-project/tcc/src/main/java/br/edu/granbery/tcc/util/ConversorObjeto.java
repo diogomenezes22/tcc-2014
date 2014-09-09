@@ -12,7 +12,7 @@ import br.edu.granbery.model.BaseEntity;
 @FacesConverter("conversorObjeto")
 public class ConversorObjeto implements Converter {
 
-	public Object getAsObject(FacesContext arg0, UIComponent component,	String value) {
+	public Object getAsObject(FacesContext context, UIComponent component,	String value) {
 		if (value != null) {
 			return this.getAttributesFrom(component).get(value);
 		}

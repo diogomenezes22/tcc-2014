@@ -40,3 +40,7 @@ function andar(idJogador, idCasa, andar){
 	}
 }
 
+function abrirPoPPup() {
+	 $('#popPup').dialog({modal:true});
+	}
+
