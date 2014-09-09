@@ -97,7 +97,7 @@ public class GameController implements Serializable {
 			acertou = true;
 			view.getJogadorAtual().setPodeAndar(true);
 			view.getJogadorAtual().setProximaPosicao(view.getJogadorAtual().getPosicaoAtual() + numeroSorteado);
-			//preencherCamposHidden(view.getJogadorAtual());
+			preencherCamposHidden(view.getJogadorAtual());
 		}else{
 			acertou = false;
 		}
