@@ -5,22 +5,6 @@ $( document ).ready(function(){
 
 });
  
-
-function moverPeca(){
-	var id = $("#jogadorId").val();
-	var nome = $("#jogadorNome").val();
-	var posicaoAtual = $("#jogadorPosicaoAtual").val();
-	var jogadorAtual = new Peao('jogador' + id, nome, posicaoAtual);
-	var podeAndar = $("#jogadorPodeAndar").val();
-	var proximaCasa = $("#jogadorProximaPosicao").val();
-	
-	var andar = proximaCasa - jogadorAtual.posicao;
-	
-	if(podeAndar =="true"){
-		andar(jogadorAtual.id, jogadorAtual.idCasa, andar);
-	}	
-}
-
 function andar(idJogador, idCasa, andar){
 	for(var i = 0; i < andar; i++ ){
 		$(idJogador).animate({opacity : '0.8'}, 500, function(){
@@ -38,4 +22,20 @@ function andar(idJogador, idCasa, andar){
 		});
 	}
 }
+
+function moverPeca(){
+	var id = $("#jogadorId").val();
+	var nome = $("#jogadorNome").val();
+	var posicaoAtual = $("#jogadorPosicaoAtual").val();
+	var jogadorAtual = new Peao('jogador' + id, nome, posicaoAtual);
+	var podeAndar = $("#jogadorPodeAndar").val();
+	var proximaCasa = $("#jogadorProximaPosicao").val();
+	
+	var passos = proximaCasa - jogadorAtual.posicao;
+	
+	if(podeAndar =="true"){
+		andar(jogadorAtual.id, jogadorAtual.idCasa, passos);
+	}	
+}
+
 
