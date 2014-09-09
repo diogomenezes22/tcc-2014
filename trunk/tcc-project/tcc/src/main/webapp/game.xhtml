@@ -20,13 +20,13 @@
 	<h:form id="idForm" prependId="false"  >
 		<ui:param name="controller" value="#{gameController}" />
 		<ui:param name="view" value="#{gameControllerView}" />
-		
-		<h:inputHidden id="jogadorId" value="#{gameController.view.idJogador}"/>
-		<h:inputHidden id="jogadorNome" value="#{gameController.view.nome}"/>
-		<h:inputHidden id="jogadorPodeAndar" value="#{gameController.view.podeAndar}" />
-		<h:inputHidden id="jogadorPosicaoAtual" value="#{gameController.view.posicaoAtual}" />
-		<h:inputHidden id="jogadorProximaPosicao" value="#{gameController.view.proximaPosicao}" />
-		
+		<a4j:outputPanel style="display:none" id="camposHidden">
+			<h:inputHidden id="jogadorId" value="#{gameController.view.idJogador}"/>
+			<h:inputHidden id="jogadorNome" value="#{gameController.view.nome}"/>
+			<h:inputHidden id="jogadorPodeAndar" value="#{gameController.view.podeAndar}" />
+			<h:inputHidden id="jogadorPosicaoAtual" value="#{gameController.view.posicaoAtual}" />
+			<h:inputHidden id="jogadorProximaPosicao" value="#{gameController.view.proximaPosicao}" />
+		</a4j:outputPanel>
 		<div id="divTabuleiro">
 			<div>
 				<img id="jogador1" src="resources/images/ui-bg_diagonals-thick_18_b81900_40x40.png"	alt="botão1" /> 
@@ -55,10 +55,8 @@
 					<td id="casa39" class="casaInativa">39</td>
 					<td id="centro" class="centro" rowspan="5" colspan="13">
 						<a4j:outputPanel id="painelPergunta">
-							<h:panelGroup rendered="#{gameController.mostraPergunta}">
-								<h:panelGrid>
+							<rich:panel rendered="#{gameController.mostraPergunta}">
 									<h:outputLabel id="pergunta" value="#{gameController.view.pergunta.descricao}"/>
-
 									<h:selectOneRadio immediate="false"	value="#{gameController.view.repostaEscolhida}">
 										<f:selectItem itemValue="#{gameController.view.r1.alternativa}" itemLabel="#{gameController.view.r1.descricao}"></f:selectItem>
 										<f:selectItem itemValue="#{gameController.view.r2.alternativa}" itemLabel="#{gameController.view.r2.descricao}"></f:selectItem>
@@ -66,10 +64,8 @@
 										<f:selectItem itemValue="#{gameController.view.r4.alternativa}" itemLabel="#{gameController.view.r4.descricao}"></f:selectItem>
 									</h:selectOneRadio>
 
-									<a4j:commandButton value="Responder" actionListener="#{gameController.responder()}" render="popup painelPergunta"/>
-										
-								</h:panelGrid>
-							</h:panelGroup>
+									<a4j:commandButton value="Responder" actionListener="#{gameController.responder()}" render="popup painelPergunta camposHidden"/>
+							</rich:panel> 
 						</a4j:outputPanel>
 					</td>
 					<td id="casa15" class="casaInativa">15</td>
@@ -111,20 +107,20 @@
 			</table>
 		</div>
 		<br />
-		<a4j:commandButton  value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta" ></a4j:commandButton>
+		<a4j:commandButton  value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden" ></a4j:commandButton>
 		
 		<rich:popupPanel domElementAttachment="form" id="popup" resizeable="false" modal="true" autosized="true" rendered="#{gameController.mostraPoPup}" show="true">
 			<rich:panel rendered="#{gameController.acertou}">
 				<f:facet name="header">
 					<h:outputText value="Parabens Você acertou!" />
 				</f:facet>
-				<a4j:commandButton value="OK" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide(); moverPeca();"/>
+				<a4j:commandButton value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide(); moverPeca();"/>
 			</rich:panel>
 			<rich:panel rendered="#{!gameController.acertou}">	
 				<f:facet name="header">
 					<h:outputText value="Que pena você errou!" />
 				</f:facet>
-				<a4j:commandButton value="OK" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide(); return false;" />
+				<a4j:commandButton value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide(); return false;" />
 			</rich:panel>
 		</rich:popupPanel>	
 	</h:form>
