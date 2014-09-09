@@ -2,7 +2,7 @@ package br.edu.granbery.model;
 
 import java.io.Serializable;
 
-public class Jogador implements Serializable, BaseEntity{
+public class Jogador implements Serializable{
 
 	/**
 	 * 

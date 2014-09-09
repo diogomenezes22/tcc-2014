@@ -26,6 +26,48 @@ public class GameControllerView implements Serializable{
 	private Resposta r3 = new Resposta();
 	private Resposta r4 = new Resposta();
 	
+	
+	
+	
+	//variaveis para controle na parte javascript
+	private int idJogador;
+	private String nome;
+	private boolean podeAndar;
+	private int posicaoAtual;
+	private int proximaPosicao;
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public boolean isPodeAndar() {
+		return podeAndar;
+	}
+
+	public void setPodeAndar(boolean podeAndar) {
+		this.podeAndar = podeAndar;
+	}
+
+	public int getPosicaoAtual() {
+		return posicaoAtual;
+	}
+
+	public void setPosicaoAtual(int posicaoAtual) {
+		this.posicaoAtual = posicaoAtual;
+	}
+
+	public int getProximaPosicao() {
+		return proximaPosicao;
+	}
+
+	public void setProximaPosicao(int proximaPosicao) {
+		this.proximaPosicao = proximaPosicao;
+	}
+
 	public Jogo getJogo() {
 		return jogo;
 	}
@@ -88,6 +130,19 @@ public class GameControllerView implements Serializable{
 
 	public void setJogadorAtual(Jogador jogadorAtual) {
 		this.jogadorAtual = jogadorAtual;
+		this.idJogador = jogadorAtual.getId();
+		this.nome = jogadorAtual.getNome();
+		this.podeAndar = jogadorAtual.isPodeAndar();
+		this.posicaoAtual = jogadorAtual.getPosicaoAtual();
+		this.proximaPosicao = jogadorAtual.getProximaPosicao();
+	}
+
+	public int getIdJogador() {
+		return idJogador;
+	}
+
+	public void setIdJogador(int idJogador) {
+		this.idJogador = idJogador;
 	}
 	
 }
