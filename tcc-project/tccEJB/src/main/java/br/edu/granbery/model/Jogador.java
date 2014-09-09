@@ -2,7 +2,7 @@ package br.edu.granbery.model;
 
 import java.io.Serializable;
 
-public class Jogador implements Serializable{
+public class Jogador implements Serializable, BaseEntity{
 
 	/**
 	 * 
@@ -18,7 +18,7 @@ public class Jogador implements Serializable{
 	
 	@Override
 	public String toString(){
-		return id + ","+ nome + "," + posicaoAtual + "," + podeAndar + "," + proximaPosicao;
+		return String.valueOf(id + ";"+ nome + ";" + posicaoAtual + ";" + podeAndar + ";" + proximaPosicao);
 		
 	}
 	
