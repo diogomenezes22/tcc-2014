@@ -7,20 +7,19 @@ $( document ).ready(function(){
  
 
 function moverPeca(){
-	var jogador = $("#jogadorAtual").val().split(',');
+	var id = $("#jogadorId").val();
+	var nome = $("#jogadorNome").val();
+	var posicaoAtual = $("#jogadorPosicaoAtual").val();
+	var jogadorAtual = new Peao('jogador' + id, nome, posicaoAtual);
+	var podeAndar = $("#jogadorPodeAndar").val();
+	var proximaCasa = $("#jogadorProximaPosicao").val();
 	
-	var jogadorAtual = new Peao('jogador' + jogador[0], jogador[1], jogador[2]);
-	var podeAndar = jogador[3];
-	var proximaCasa = jogador[4];
 	var andar = proximaCasa - jogadorAtual.posicao;
 	
 	if(podeAndar =="true"){
 		andar(jogadorAtual.id, jogadorAtual.idCasa, andar);
 	}	
 }
-
-
-
 
 function andar(idJogador, idCasa, andar){
 	for(var i = 0; i < andar; i++ ){
@@ -39,8 +38,4 @@ function andar(idJogador, idCasa, andar){
 		});
 	}
 }
-
-function abrirPoPPup() {
-	 $('#popPup').dialog({modal:true});
-	}
 

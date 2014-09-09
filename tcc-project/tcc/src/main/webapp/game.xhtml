@@ -18,10 +18,14 @@
 
 <body>
 	<h:form id="idForm" prependId="false"  >
-		<h:inputHidden id="jogadorAtual" value="#{gameController.view.jogadorAtual}" converter="conversorObjeto" />
 		<ui:param name="controller" value="#{gameController}" />
 		<ui:param name="view" value="#{gameControllerView}" />
 		
+		<h:inputHidden id="jogadorId" value="#{gameController.view.idJogador}"/>
+		<h:inputHidden id="jogadorNome" value="#{gameController.view.nome}"/>
+		<h:inputHidden id="jogadorPodeAndar" value="#{gameController.view.podeAndar}" />
+		<h:inputHidden id="jogadorPosicaoAtual" value="#{gameController.view.posicaoAtual}" />
+		<h:inputHidden id="jogadorProximaPosicao" value="#{gameController.view.proximaPosicao}" />
 		
 		<div id="divTabuleiro">
 			<div>

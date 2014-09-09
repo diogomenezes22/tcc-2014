@@ -59,10 +59,11 @@ public class GameController implements Serializable {
 				view.setJogadorAtual(jogador);
 			}
 		}
+		mostraPoPup = false;
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
+	
 	}
 	
 	public void buscarPergunta(){
@@ -76,7 +77,7 @@ public class GameController implements Serializable {
 		view.getR3().setDescricao("3");
 		view.getR3().setAlternativa("C");
 		view.getR3().setCorreta(false);
-		view.getR4().setDescricao("34");
+		view.getR4().setDescricao("4");
 		view.getR4().setAlternativa("D");
 		view.getR4().setCorreta(false);
 		List<Resposta> respostas = new ArrayList<Resposta>();
@@ -84,7 +85,7 @@ public class GameController implements Serializable {
 		respostas.add(view.getR3());
 		respostas.add(view.getR2());
 		respostas.add(view.getR1());
-		view.getPergunta().setDescricao("Qual a raiz quadrada de 499 ?");
+		view.getPergunta().setDescricao("Qual a raiz quadrada de 4 ?");
 		view.getPergunta().setRespostas(respostas);
 		mostraPergunta = true;
 	}
@@ -96,6 +97,7 @@ public class GameController implements Serializable {
 			acertou = true;
 			view.getJogadorAtual().setPodeAndar(true);
 			view.getJogadorAtual().setProximaPosicao(view.getJogadorAtual().getPosicaoAtual() + numeroSorteado);
+			//preencherCamposHidden(view.getJogadorAtual());
 		}else{
 			acertou = false;
 		}
@@ -103,6 +105,14 @@ public class GameController implements Serializable {
 		mostraPergunta = false;
 	}
 	
+	private void preencherCamposHidden(Jogador jogadorAtual) {
+		view.setIdJogador(jogadorAtual.getId());
+		view.setNome(jogadorAtual.getNome());
+		view.setPodeAndar(jogadorAtual.isPodeAndar());
+		view.setPosicaoAtual(jogadorAtual.getPosicaoAtual());
+		view.setProximaPosicao(jogadorAtual.getProximaPosicao());	
+	}
+
 	public void passaVez(){
 		for(int i = 0; i < view.getJogo().getJogadores().size(); i++){
 			if(view.getJogo().getJogadores().get(i).isVez()){
