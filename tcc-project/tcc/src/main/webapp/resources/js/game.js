@@ -2,7 +2,7 @@
  *  Game Control
  */
 $( document ).ready(function(){
-
+	
 });
  
 function andar(idJogador, idCasa, andar){
