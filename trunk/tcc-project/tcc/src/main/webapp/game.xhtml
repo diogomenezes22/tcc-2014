@@ -34,8 +34,7 @@
 			</div>
 			<table id="idTabuleiro" border="1px;" class="tabela">
 				<tr>
-					<td id="casa40" class="casaInativa">Start<br />Finish
-					</td>
+					<td id="casa40" class="casaInativa">Start<br/>Finish</td>
 					<td id="casa1" class="casaEspecial">1</td>
 					<td id="casa2" class="casaInativa">2</td>
 					<td id="casa3" class="casaInativa">3</td>
@@ -120,7 +119,7 @@
 				<f:facet name="header">
 					<h:outputText value="Que pena você errou!" />
 				</f:facet>
-				<a4j:commandButton value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide(); return false;" />
+				<a4j:commandButton value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide();" />
 			</rich:panel>
 		</rich:popupPanel>	
 	</h:form>
