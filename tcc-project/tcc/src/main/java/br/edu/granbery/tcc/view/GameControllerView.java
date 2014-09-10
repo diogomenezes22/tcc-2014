@@ -30,7 +30,7 @@ public class GameControllerView implements Serializable{
 	
 	
 	//variaveis para controle na parte javascript
-	private int idJogador;
+	private String idPeao;
 	private String nome;
 	private boolean podeAndar;
 	private int posicaoAtual;
@@ -130,19 +130,18 @@ public class GameControllerView implements Serializable{
 
 	public void setJogadorAtual(Jogador jogadorAtual) {
 		this.jogadorAtual = jogadorAtual;
-		this.idJogador = jogadorAtual.getId();
+		this.idPeao = jogadorAtual.getPeao().getDescricao();
 		this.nome = jogadorAtual.getNome();
-		this.podeAndar = jogadorAtual.isPodeAndar();
-		this.posicaoAtual = jogadorAtual.getPosicaoAtual();
-		this.proximaPosicao = jogadorAtual.getProximaPosicao();
+		this.podeAndar = jogadorAtual.getPeao().isPodeAndar();
+		this.posicaoAtual = jogadorAtual.getPeao().getPosicaoAtual();
+		this.proximaPosicao = jogadorAtual.getPeao().getProximaPosicao();
 	}
 
-	public int getIdJogador() {
-		return idJogador;
+	public String getIdPeao() {
+		return idPeao;
 	}
 
-	public void setIdJogador(int idJogador) {
-		this.idJogador = idJogador;
+	public void setIdPeao(String idPeao) {
+		this.idPeao = idPeao;
 	}
-	
 }

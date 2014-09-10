@@ -24,12 +24,12 @@ function andar(idJogador, idCasa, andar){
 }
 
 function moverPeca(){
-	var id = $("#jogadorId").val();
+	var id = $("#peaoId").val();
 	var nome = $("#jogadorNome").val();
-	var posicaoAtual = $("#jogadorPosicaoAtual").val();
-	var jogadorAtual = new Peao('jogador' + id, nome, posicaoAtual);
-	var podeAndar = $("#jogadorPodeAndar").val();
-	var proximaCasa = $("#jogadorProximaPosicao").val();
+	var posicaoAtual = $("#peaoPosicaoAtual").val();
+	var jogadorAtual = new Peao(id, nome, posicaoAtual);
+	var podeAndar = $("#peaoPodeAndar").val();
+	var proximaCasa = $("#peaoProximaPosicao").val();
 	
 	var passos = proximaCasa - jogadorAtual.posicao;
 	

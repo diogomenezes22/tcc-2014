@@ -12,15 +12,8 @@ public class Jogador implements Serializable{
 	private int id;
 	private String nome;
 	private boolean vez;
-	private boolean podeAndar;
-	private int posicaoAtual;
-	private int proximaPosicao;
 	
-	@Override
-	public String toString(){
-		return String.valueOf(id + ","+ nome + "," + posicaoAtual + "," + podeAndar + "," + proximaPosicao);
-		
-	}
+	private Peao peao = new Peao();
 	
 	public int getId() {
 		return id;
@@ -40,25 +33,11 @@ public class Jogador implements Serializable{
 	public void setVez(boolean vez) {
 		this.vez = vez;
 	}
-	
-	
-	public int getPosicaoAtual() {
-		return posicaoAtual;
+	public Peao getPeao() {
+		return peao;
 	}
-	public void setPosicaoAtual(int posicaoAtual) {
-		this.posicaoAtual = posicaoAtual;
-	}
-	public boolean isPodeAndar() {
-		return podeAndar;
-	}
-	public void setPodeAndar(boolean podeAndar) {
-		this.podeAndar = podeAndar;
-	}
-	public int getProximaPosicao() {
-		return proximaPosicao;
-	}
-	public void setProximaPosicao(int proximaPosicao) {
-		this.proximaPosicao = proximaPosicao;
+	public void setPeao(Peao peao) {
+		this.peao = peao;
 	}
 	
 }
