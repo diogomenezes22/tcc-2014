@@ -55,41 +55,4 @@ public class Jogo implements Serializable{
 		this.jogadores = jogadores;
 	}
 	
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((dataFim == null) ? 0 : dataFim.hashCode());
-		result = prime * result
-				+ ((dataInicio == null) ? 0 : dataInicio.hashCode());
-		result = prime * result + id;
-		return result;
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Jogo other = (Jogo) obj;
-		if (dataFim == null) {
-			if (other.dataFim != null)
-				return false;
-		} else if (!dataFim.equals(other.dataFim))
-			return false;
-		if (dataInicio == null) {
-			if (other.dataInicio != null)
-				return false;
-		} else if (!dataInicio.equals(other.dataInicio))
-			return false;
-		if (id != other.id)
-			return false;
-		return true;
-	}
-	
-	
 }

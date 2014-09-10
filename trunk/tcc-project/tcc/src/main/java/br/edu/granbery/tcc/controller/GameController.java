@@ -39,15 +39,17 @@ public class GameController implements Serializable {
 		jogador1.setId(1);
 		jogador1.setNome("Jão");
 		jogador1.setVez(true);
-		jogador1.setPosicaoAtual(0);
-		jogador1.setProximaPosicao(0);
-		jogador1.setPodeAndar(false);
+		jogador1.getPeao().setDescricao("#jogador1");
+		jogador1.getPeao().setPosicaoAtual(0);
+		jogador1.getPeao().setProximaPosicao(0);
+		jogador1.getPeao().setPodeAndar(false);
 		jogador2.setId(2);
 		jogador2.setNome("Zé");
 		jogador2.setVez(false);
-		jogador2.setPosicaoAtual(0);
-		jogador2.setPodeAndar(false);
-		jogador2.setProximaPosicao(0);
+		jogador2.getPeao().setDescricao("#jogador2");
+		jogador2.getPeao().setPosicaoAtual(0);
+		jogador2.getPeao().setPodeAndar(false);
+		jogador2.getPeao().setProximaPosicao(0);
 		
 		view.getJogo().setDataInicio(new Date());
 		view.getJogo().setJogadores(new ArrayList<Jogador>());
@@ -95,8 +97,8 @@ public class GameController implements Serializable {
 		int numeroSorteado = r.nextInt(6) + 1;
 		if(verificaResposta(view.getRepostaEscolhida())){
 			acertou = true;
-			view.getJogadorAtual().setPodeAndar(true);
-			view.getJogadorAtual().setProximaPosicao(view.getJogadorAtual().getPosicaoAtual() + numeroSorteado);
+			view.getJogadorAtual().getPeao().setPodeAndar(true);
+			view.getJogadorAtual().getPeao().setProximaPosicao(view.getJogadorAtual().getPeao().getPosicaoAtual() + numeroSorteado);
 			preencherCamposHidden(view.getJogadorAtual());
 		}else{
 			acertou = false;
@@ -106,18 +108,18 @@ public class GameController implements Serializable {
 	}
 	
 	private void preencherCamposHidden(Jogador jogadorAtual) {
-		view.setIdJogador(jogadorAtual.getId());
+		view.setIdPeao(jogadorAtual.getPeao().getDescricao());
 		view.setNome(jogadorAtual.getNome());
-		view.setPodeAndar(jogadorAtual.isPodeAndar());
-		view.setPosicaoAtual(jogadorAtual.getPosicaoAtual());
-		view.setProximaPosicao(jogadorAtual.getProximaPosicao());	
+		view.setPodeAndar(jogadorAtual.getPeao().isPodeAndar());
+		view.setPosicaoAtual(jogadorAtual.getPeao().getPosicaoAtual());
+		view.setProximaPosicao(jogadorAtual.getPeao().getProximaPosicao());	
 	}
 
 	public void passaVez(){
 		for(int i = 0; i < view.getJogo().getJogadores().size(); i++){
 			if(view.getJogo().getJogadores().get(i).isVez()){
 				view.getJogo().getJogadores().get(i).setVez(false);
-				view.getJogo().getJogadores().get(i).setPosicaoAtual(view.getJogo().getJogadores().get(i).getProximaPosicao());
+				view.getJogo().getJogadores().get(i).getPeao().setPosicaoAtual(view.getJogo().getJogadores().get(i).getPeao().getProximaPosicao());
 				if(i + 1 >= view.getJogo().getJogadores().size()){
 					view.getJogo().getJogadores().get(0).setVez(true);
 					view.setJogadorAtual(view.getJogo().getJogadores().get(0));

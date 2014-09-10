@@ -33,37 +33,4 @@ public class Tabuleiro implements Serializable{
 		this.inicio = inicio;
 	}
 	
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((casas == null) ? 0 : casas.hashCode());
-		result = prime * result + id;
-		result = prime * result + inicio;
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Tabuleiro other = (Tabuleiro) obj;
-		if (casas == null) {
-			if (other.casas != null)
-				return false;
-		} else if (!casas.equals(other.casas))
-			return false;
-		if (id != other.id)
-			return false;
-		if (inicio != other.inicio)
-			return false;
-		return true;
-	}
-	
-	
-
 }
