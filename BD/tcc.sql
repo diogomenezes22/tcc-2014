@@ -102,7 +102,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tccdb`.`Peao` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `idPeao` VARCHAR(45) NOT NULL,
+  `descricao` VARCHAR(45) NOT NULL,
   `posicaoAtual` INT NULL,
   `podeAndar` TINYINT(1) NULL,
   PRIMARY KEY (`id`))
