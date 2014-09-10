@@ -54,21 +54,6 @@ td.clicked {
 	font: bold;
 	font-size: 20px;
 }
-.casaAtiva{
-	width: 6%;
-	height: 80px;
-	background-color: white;
-	font: bold;
-	font-size: 20px;
-}
-
-.casaOcupada{
-	width: 6%;
-	height: 80px;
-	background-color: red;
-	font: bold;
-	font-size: 20px;
-}
 
 .casaEspecial {
 	width: 6%;

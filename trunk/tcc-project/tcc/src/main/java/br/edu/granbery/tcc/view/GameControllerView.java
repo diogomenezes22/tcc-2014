@@ -24,10 +24,7 @@ public class GameControllerView implements Serializable{
 	private Resposta r1 = new Resposta();
 	private Resposta r2 = new Resposta();
 	private Resposta r3 = new Resposta();
-	private Resposta r4 = new Resposta();
-	
-	
-	
+	private Resposta r4 = new Resposta();	
 	
 	//variaveis para controle na parte javascript
 	private String idPeao;

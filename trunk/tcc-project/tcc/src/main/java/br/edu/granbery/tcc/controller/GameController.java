@@ -1,5 +1,6 @@
 package br.edu.granbery.tcc.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Random;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -107,19 +109,13 @@ public class GameController implements Serializable {
 		mostraPergunta = false;
 	}
 	
-	private void preencherCamposHidden(Jogador jogadorAtual) {
-		view.setIdPeao(jogadorAtual.getPeao().getDescricao());
-		view.setNome(jogadorAtual.getNome());
-		view.setPodeAndar(jogadorAtual.getPeao().isPodeAndar());
-		view.setPosicaoAtual(jogadorAtual.getPeao().getPosicaoAtual());
-		view.setProximaPosicao(jogadorAtual.getPeao().getProximaPosicao());	
-	}
 
 	public void passaVez(){
 		for(int i = 0; i < view.getJogo().getJogadores().size(); i++){
 			if(view.getJogo().getJogadores().get(i).isVez()){
 				view.getJogo().getJogadores().get(i).setVez(false);
 				view.getJogo().getJogadores().get(i).getPeao().setPosicaoAtual(view.getJogo().getJogadores().get(i).getPeao().getProximaPosicao());
+				verificaFimJogo(view.getJogo().getJogadores().get(i));
 				if(i + 1 >= view.getJogo().getJogadores().size()){
 					view.getJogo().getJogadores().get(0).setVez(true);
 					view.setJogadorAtual(view.getJogo().getJogadores().get(0));
@@ -154,6 +150,25 @@ public class GameController implements Serializable {
 
 		}
 		return false;
+	}
+	
+	private void preencherCamposHidden(Jogador jogadorAtual) {
+		view.setIdPeao(jogadorAtual.getPeao().getDescricao());
+		view.setNome(jogadorAtual.getNome());
+		view.setPodeAndar(jogadorAtual.getPeao().isPodeAndar());
+		view.setPosicaoAtual(jogadorAtual.getPeao().getPosicaoAtual());
+		view.setProximaPosicao(jogadorAtual.getPeao().getProximaPosicao());	
+	}
+	
+	
+	private void verificaFimJogo(Jogador jogador){
+		if(jogador.getPeao().getPosicaoAtual() >= 40){
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("fimJogo.xhtml");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public GameControllerView getView() {

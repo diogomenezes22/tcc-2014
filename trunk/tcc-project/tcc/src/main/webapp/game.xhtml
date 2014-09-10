@@ -56,14 +56,14 @@
 						<a4j:outputPanel id="painelPergunta">
 							<rich:panel rendered="#{gameController.mostraPergunta}">
 									<h:outputLabel id="pergunta" value="#{gameController.view.pergunta.descricao}"/>
-									<h:selectOneRadio immediate="false"	value="#{gameController.view.repostaEscolhida}">
+									<h:selectOneRadio styleClass="reposta" immediate="false"	value="#{gameController.view.repostaEscolhida}" border="0">
 										<f:selectItem itemValue="#{gameController.view.r1.alternativa}" itemLabel="#{gameController.view.r1.descricao}"></f:selectItem>
 										<f:selectItem itemValue="#{gameController.view.r2.alternativa}" itemLabel="#{gameController.view.r2.descricao}"></f:selectItem>
 										<f:selectItem itemValue="#{gameController.view.r3.alternativa}" itemLabel="#{gameController.view.r3.descricao}"></f:selectItem>
 										<f:selectItem itemValue="#{gameController.view.r4.alternativa}" itemLabel="#{gameController.view.r4.descricao}"></f:selectItem>
 									</h:selectOneRadio>
 
-									<a4j:commandButton value="Responder" actionListener="#{gameController.responder()}" render="popup painelPergunta camposHidden"/>
+									<a4j:commandButton value="Responder" actionListener="#{gameController.responder()}" render="painelPopPup painelPergunta camposHidden"/>
 							</rich:panel> 
 						</a4j:outputPanel>
 					</td>
@@ -107,21 +107,25 @@
 		</div>
 		<br />
 		<a4j:commandButton  value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden" ></a4j:commandButton>
-		
-		<rich:popupPanel domElementAttachment="form" id="popup" resizeable="false" modal="true" autosized="true" rendered="#{gameController.mostraPoPup}" show="true">
-			<rich:panel rendered="#{gameController.acertou}">
+		<a4j:outputPanel id="painelPopPup">
+		<rich:popupPanel id="popup" resizeable="false" modal="true" autosized="true" rendered="#{gameController.mostraPoPup}" show="true">
+			<rich:panel rendered="#{gameController.acertou and gameController.mostraPoPup}">
 				<f:facet name="header">
-					<h:outputText value="Parabens Você acertou!" />
+					<h:outputText value="Parabéns #{gameController.view.nome} você acertou!" />
 				</f:facet>
+					<h:outputText value="Uhhuuuu!!! vá para a casa #{gameController.view.proximaPosicao}" />
 				<a4j:commandButton value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide(); moverPeca();"/>
 			</rich:panel>
-			<rich:panel rendered="#{!gameController.acertou}">	
+			<rich:panel rendered="#{!gameController.acertou and gameController.mostraPoPup}">	
 				<f:facet name="header">
-					<h:outputText value="Que pena você errou!" />
+					<h:outputText value="Que pena #{gameController.view.nome} você errou!" />
 				</f:facet>
+					<h:outputText value="Permaneça na casa #{gameController.view.posicaoAtual}" />
+				
 				<a4j:commandButton value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide();" />
 			</rich:panel>
-		</rich:popupPanel>	
+		</rich:popupPanel>
+		</a4j:outputPanel>	
 	</h:form>
 </body>
 </html>
