@@ -10,12 +10,10 @@
 	<title>Projeto TCC</title>
 </h:head> 
 <body>
-<h1>TCC</h1>
-<p>teste</p>
-<h:form id="testeForm">
+<h:form id="jogadorForm">
 	<rich:panel>
-	<h:outputText value="Panel Body" />
-	<a type="button" href="/tcc/game.jsf">Jogar</a>
+		<h:outputText value="Nome:" /> <h:inputText value="#{jogadorController.view.jogador.nome}" />
+		<h:commandButton action="salvar" value="salvar" actionListener="#{jogadorController.salvar()}" />
 	</rich:panel>
 </h:form>
 </body> 

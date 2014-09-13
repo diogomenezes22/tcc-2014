@@ -2,6 +2,15 @@ package br.edu.granbery.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="PEAO")
 public class Peao implements Serializable{
 
 	/**
@@ -9,10 +18,21 @@ public class Peao implements Serializable{
 	 */
 	private static final long serialVersionUID = 4705377933463097580L;
 	
+		@Id
+		@GeneratedValue(strategy=GenerationType.IDENTITY)
+		@Column(name="ID")
 		private int id;
+		
+		@Column(name="DESCRICAO")
 		private String descricao;
+		
+		@Column(name="POSICAOATUAL")
 		private int posicaoAtual;
+		
+		@Column(name="PROXIMAPOSICAO")
 		private int proximaPosicao;
+		
+		@Column(name="PODEANDAR")
 		private boolean podeAndar;
 		
 		public int getId() {
