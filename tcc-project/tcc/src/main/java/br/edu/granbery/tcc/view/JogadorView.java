@@ -2,7 +2,8 @@ package br.edu.granbery.tcc.view;
 
 import javax.inject.Named;
 
-import br.edu.granbery.model.Jogador;
+import br.edu.granbery.tcc.model.Jogador;
+
 
 @Named
 public class JogadorView {

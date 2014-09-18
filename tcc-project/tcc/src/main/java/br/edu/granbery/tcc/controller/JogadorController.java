@@ -5,8 +5,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.edu.granbery.manager.JogadorManager;
-import br.edu.granbery.model.Peao;
+import br.edu.granbery.tcc.manager.JogadorManager;
 import br.edu.granbery.tcc.view.JogadorView;
 
 @Named
@@ -25,7 +24,6 @@ public class JogadorController {
 	}
 	
 	public String salvar(){
-		view.getJogador().setVez(false);
 		jogadorManager.salvar(view.getJogador());
 		return "sucesso.xhtml";
 	}
