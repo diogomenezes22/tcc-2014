@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 import javax.inject.Named;
 
-import br.edu.granbery.model.Jogador;
-import br.edu.granbery.model.Jogo;
-import br.edu.granbery.model.Pergunta;
-import br.edu.granbery.model.Resposta;
+import br.edu.granbery.tcc.model.Jogador;
+import br.edu.granbery.tcc.model.Jogo;
+import br.edu.granbery.tcc.model.Pergunta;
+import br.edu.granbery.tcc.model.Resposta;
+
 
 @Named
 public class GameControllerView implements Serializable{
@@ -127,11 +128,6 @@ public class GameControllerView implements Serializable{
 
 	public void setJogadorAtual(Jogador jogadorAtual) {
 		this.jogadorAtual = jogadorAtual;
-		this.idPeao = jogadorAtual.getPeao().getDescricao();
-		this.nome = jogadorAtual.getNome();
-		this.podeAndar = jogadorAtual.getPeao().isPodeAndar();
-		this.posicaoAtual = jogadorAtual.getPeao().getPosicaoAtual();
-		this.proximaPosicao = jogadorAtual.getPeao().getProximaPosicao();
 	}
 
 	public String getIdPeao() {

@@ -13,8 +13,14 @@
 <h:form id="jogadorForm">
 	<rich:panel>
 		<h:outputText value="Nome:" /> <h:inputText value="#{jogadorController.view.jogador.nome}" />
-		<h:commandButton action="salvar" value="salvar" actionListener="#{jogadorController.salvar()}" />
 	</rich:panel>
+	<rich:panel>
+		<h:outputText value="Idade:" /> <h:inputText value="#{jogadorController.view.jogador.idade}" />
+	</rich:panel>
+	<rich:panel>
+		<h:outputText value="Período:" /> <h:inputText value="#{jogadorController.view.jogador.periodo}" />
+	</rich:panel>
+		<h:commandButton action="salvar" value="salvar" actionListener="#{jogadorController.salvar()}" />
 </h:form>
 </body> 
 </html>
