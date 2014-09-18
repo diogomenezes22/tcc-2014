@@ -8,4 +8,23 @@
   <artifactId>tccEJB</artifactId>
   <packaging>ejb</packaging>
   <name>tcc - EJB</name>
+  <dependency>
+	<groupId>javax.ejb</groupId>
+	<artifactId>ejb-api</artifactId>
+</dependency>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>javax.ejb</groupId>
+  		<artifactId>ejb-api</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>javax.persistence</groupId>
+  		<artifactId>ejb</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>javax.persistence</groupId>
+  		<artifactId>persistence-api</artifactId>
+  	</dependency>
+  </dependencies>
 </project>
