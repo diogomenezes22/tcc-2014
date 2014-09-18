@@ -10,7 +10,7 @@
 	<packaging>ejb</packaging>
 	<name>tcc - EJB</name>
 
-
+	<dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>javax.ejb</groupId>
@@ -29,4 +29,5 @@
 			<artifactId>persistence-api</artifactId>
 		</dependency>
 	</dependencies>
+	</dependencyManagement>
 </project>
