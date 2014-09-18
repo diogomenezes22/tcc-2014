@@ -7,18 +7,17 @@
 		<artifactId>tcc-project</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	
 	<artifactId>tccEJB</artifactId>
 	<packaging>ejb</packaging>
 	<name>tcc - EJB</name>
+	
 	<dependencies>
 		<dependency>
 			<groupId>javax.ejb</groupId>
 			<artifactId>ejb-api</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>ejb</artifactId>
-		</dependency>
+		
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
