@@ -1,11 +1,10 @@
-package br.edu.granbery.model;
+package br.edu.granbery.tcc.model;
 
 import java.io.Serializable;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="PEAO")
+
 public class Peao implements Serializable{
 
 	/**

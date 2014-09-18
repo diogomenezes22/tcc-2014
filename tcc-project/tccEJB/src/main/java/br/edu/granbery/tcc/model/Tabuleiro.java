@@ -1,4 +1,4 @@
-package br.edu.granbery.model;
+package br.edu.granbery.tcc.model;
 
 import java.io.Serializable;
 import java.util.List;

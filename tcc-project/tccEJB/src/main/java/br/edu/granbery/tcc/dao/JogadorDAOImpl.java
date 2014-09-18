@@ -1,10 +1,9 @@
-package br.edu.granbery.dao;
+package br.edu.granbery.tcc.dao;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.*;
 
-import br.edu.granbery.model.Jogador;
+import br.edu.granbery.tcc.model.Jogador;
 
 
 @Stateless
