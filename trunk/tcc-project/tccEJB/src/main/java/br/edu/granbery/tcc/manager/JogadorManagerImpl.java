@@ -1,10 +1,10 @@
-package br.edu.granbery.manager;
+package br.edu.granbery.tcc.manager;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import br.edu.granbery.dao.JogadorDAO;
-import br.edu.granbery.model.Jogador;
+import br.edu.granbery.tcc.dao.JogadorDAO;
+import br.edu.granbery.tcc.model.Jogador;
 
 
 

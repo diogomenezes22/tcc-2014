@@ -1,9 +1,9 @@
-package br.edu.granbery.manager;
+package br.edu.granbery.tcc.manager;
 
 import javax.ejb.Local;
 import javax.inject.Named;
 
-import br.edu.granbery.model.Jogador;
+import br.edu.granbery.tcc.model.Jogador;
 
 @Named
 @Local
