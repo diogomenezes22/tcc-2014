@@ -2,6 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
+		<relativePath>../pom.xml</relativePath>	
 		<groupId>br.edu.granbery.tcc</groupId>
 		<artifactId>tcc-project</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
@@ -9,13 +10,7 @@
 	<artifactId>tccEJB</artifactId>
 	<packaging>ejb</packaging>
 	<name>tcc - EJB</name>
-
-	<dependencyManagement>
 	<dependencies>
-		<dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>ejb-api</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>javax.ejb</groupId>
 			<artifactId>ejb-api</artifactId>
@@ -29,5 +24,4 @@
 			<artifactId>persistence-api</artifactId>
 		</dependency>
 	</dependencies>
-	</dependencyManagement>
 </project>
