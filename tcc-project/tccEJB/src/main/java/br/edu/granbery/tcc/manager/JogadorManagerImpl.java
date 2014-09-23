@@ -1,5 +1,7 @@
 package br.edu.granbery.tcc.manager;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -12,12 +14,22 @@ import br.edu.granbery.tcc.model.Jogador;
 public class JogadorManagerImpl implements JogadorManager{
 	
 	@Inject
-	JogadorDAO usuarioDAO;
+	JogadorDAO jogadorDAO;
 	
 	public Jogador salvar(Jogador jogador) {
 		try {
-			usuarioDAO.save(jogador);
+			jogadorDAO.saveOrUpdate(jogador);
 			return jogador;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public Jogador consultar(Jogador jogador) {
+		try {
+			List<Jogador> jogadores = jogadorDAO.findByParameters(jogador);
+			return jogadores.get(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

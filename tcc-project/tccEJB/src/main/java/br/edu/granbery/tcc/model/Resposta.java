@@ -25,12 +25,21 @@ public class Resposta implements Serializable{
 	@Column(name="ID_RESPOSTA")
 	private Long id;	
 	
-	@JoinColumn(name = "ID_PERGUNTA", referencedColumnName = "ID_PERGUNTA", nullable = true, updatable = false, insertable = false)
+	@JoinColumn(name = "ID_PERGUNTA", referencedColumnName = "ID_PERGUNTA", updatable = false)
 	@ManyToOne(optional = true)
 	private Pergunta pergunta;	
 
 	@Column(name="DE_RESPOSTA")
 	private String descricao;
+	
+	public Resposta(Pergunta perg){
+		pergunta = perg;
+		descricao = "";
+	}
+	
+	public Resposta(){
+		descricao = "";
+	}
 	
 	
 	public Long getId() {
