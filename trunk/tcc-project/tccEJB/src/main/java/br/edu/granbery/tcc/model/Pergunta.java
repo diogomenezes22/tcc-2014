@@ -1,6 +1,7 @@
 package br.edu.granbery.tcc.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -30,6 +31,14 @@ public class Pergunta implements Serializable{
 	
 	@OneToMany(mappedBy = "pergunta")
 	private List<Resposta> respostas;
+	
+	public Pergunta(){
+		respostas = new ArrayList<Resposta>();
+		descricao = "";
+		for (int i = 0; i < 4; i++) {
+			respostas.add(new Resposta(this));			
+		}
+	}
 	
 	public Long getId() {
 		return id;

@@ -1,11 +1,15 @@
 package br.edu.granbery.tcc.dao;
 
-import javax.inject.Named;
+import java.util.List;
+
+import javax.ejb.Local;
 
 import br.edu.granbery.tcc.model.Jogador;
 
 
-@Named
-public interface JogadorDAO {
-	public Jogador save(Jogador jogador) throws Exception;
+@Local
+public interface JogadorDAO extends GenericDao<Jogador, Long> {
+	
+	public List<Jogador> findByParameters(final Jogador jog);
+	
 }

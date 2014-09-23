@@ -35,7 +35,6 @@ public abstract class GenericDaoImpl<T extends Serializable , ID extends Seriali
         return type;
     }
     
-    
     public T findById(ID id) {
         return (T) getEntityManager().find(getType(), id);
     }
