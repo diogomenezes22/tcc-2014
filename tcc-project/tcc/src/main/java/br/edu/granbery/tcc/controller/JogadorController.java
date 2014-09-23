@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.edu.granbery.tcc.manager.JogadorManager;
+import br.edu.granbery.tcc.model.Jogador;
 import br.edu.granbery.tcc.view.JogadorView;
 
 @Named
@@ -24,8 +25,26 @@ public class JogadorController {
 	}
 	
 	public String salvar(){
+		if(validaJogador())
 		jogadorManager.salvar(view.getJogador());
-		return "sucesso.xhtml";
+		return "Salvo";
+	}	
+	
+	public String buscar(){
+		Jogador jog = jogadorManager.consultar(view.getJogador());
+		view.setJogador(jog);		
+		return "Buscado";
+	}
+	
+	public String deletar(){
+		Jogador jog = jogadorManager.consultar(view.getJogador());
+		view.setJogador(jog);		
+		return "ok";
+	}
+
+	private boolean validaJogador() {
+		Jogador jog = view.getJogador();		
+		return true;
 	}
 
 	public JogadorView getView() {
