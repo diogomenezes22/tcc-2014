@@ -11,7 +11,7 @@ import br.edu.granbery.tcc.model.Jogador;
 @Stateless
 public class JogadorDAOImpl extends GenericDaoImpl<Jogador, Long> implements JogadorDAO{
 	
-	private final static String SELECT = "SELECT j FROM Jogador j WHERE 1=1";
+	private final static String SELECT = "SELECT j FROM Jogador j WHERE 1=1 ";
 	private boolean informouId, informouNome, informouIdade, informouPeriodo;
 	
 	

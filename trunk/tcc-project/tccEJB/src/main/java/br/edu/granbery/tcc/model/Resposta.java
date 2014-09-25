@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="TB_RESPOSTA")
@@ -32,13 +33,18 @@ public class Resposta implements Serializable{
 	@Column(name="DE_RESPOSTA")
 	private String descricao;
 	
+	@Column(name="IC_CORRETA")
+	private String correta;
+	
 	public Resposta(Pergunta perg){
 		pergunta = perg;
 		descricao = "";
+		correta = "E";
 	}
 	
 	public Resposta(){
 		descricao = "";
+		correta = "E";
 	}
 	
 	
@@ -54,6 +60,20 @@ public class Resposta implements Serializable{
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	public String getCorreta(){
+		return correta;
+	}
+	
+	public void setRespostaCerta(){
+		this.correta = "C";
+	}
+	
+	@Transient
+	public boolean isCorreta(){
+		return "C".equals(correta);
+	}
+	
 	
 		
 }

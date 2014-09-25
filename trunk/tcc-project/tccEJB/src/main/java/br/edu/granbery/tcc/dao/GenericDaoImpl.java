@@ -27,7 +27,7 @@ public abstract class GenericDaoImpl<T extends Serializable , ID extends Seriali
     
     protected EntityManager getEntityManager() {
         if (em == null)
-            throw new IllegalStateException("EntityManager não foi setado antes do uso neste DAO");
+            throw new IllegalStateException("EntityManager nÃ£o foi setado antes do uso neste DAO");
         return em;
     }
 
