@@ -8,5 +8,5 @@ import br.edu.granbery.tcc.model.Pergunta;
 public interface PerguntaManager {
 	
 	public Pergunta salvar(Pergunta pergunta);
-
+	public Pergunta consultar(Pergunta pergunta);
 }

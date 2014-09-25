@@ -1,7 +1,12 @@
 package br.edu.granbery.tcc.manager;
 
+import java.util.Collections;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+
+import org.apache.commons.lang3.StringUtils;
 
 import br.edu.granbery.tcc.dao.PerguntaDAO;
 import br.edu.granbery.tcc.dao.RespostaDAO;
@@ -21,8 +26,10 @@ public class PerguntaManagerImpl implements PerguntaManager {
 		try {
 			perguntaDAO.saveOrUpdate(pergunta);
 			if(pergunta.getRespostas().size() > 0){
-				for (Resposta resp : pergunta.getRespostas()) {					
-					respostaDAO.saveOrUpdate(resp);
+				for (Resposta resp : pergunta.getRespostas()) {
+					if(!StringUtils.isEmpty(resp.getDescricao())){
+						respostaDAO.saveOrUpdate(resp);						
+					}
 				}
 			}
 			return pergunta;
@@ -32,14 +39,14 @@ public class PerguntaManagerImpl implements PerguntaManager {
 		}
 	}
 	
-//	public Pergunta consultar(Pergunta pergunta) {
-//		try {
-//			List<Jogador> jogadores = jogadorDAO.findByParameters(jogador);
-//			return jogadores.get(0);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return null;
-//		}
-//	}
+	public Pergunta consultar(Pergunta pergunta) {
+		try {
+			List<Pergunta> perguntas = perguntaDAO.findByParameters(pergunta);			
+			return perguntas.get(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 }
