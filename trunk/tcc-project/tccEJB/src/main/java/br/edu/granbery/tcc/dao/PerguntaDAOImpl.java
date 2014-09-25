@@ -18,7 +18,7 @@ public class PerguntaDAOImpl extends GenericDaoImpl<Pergunta, Long> implements P
 	}
 
 	public Pergunta buscarPerguntaAleatoria() {
-		String jpql = "SELECT p FROM Pergunta p ORDER BY RAND(SELECT COUNT(p2.id) FROM Pergunta p2)";
+		String jpql = "SELECT p FROM Pergunta p JOIN FETCH p.respostas ORDER BY RAND()";
 		Query query = getEntityManager().createQuery(jpql);
 		Pergunta pergunta = (Pergunta) query.getResultList().get(0);
 		return pergunta;
