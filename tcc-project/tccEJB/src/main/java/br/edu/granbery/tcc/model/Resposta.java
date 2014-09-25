@@ -43,7 +43,7 @@ public class Resposta implements Serializable{
 	public Resposta(Pergunta perg){
 		pergunta = perg;
 		descricao = "";
-		correta = "E";
+		correta = "ERRADA";
 	}
 	
 	public Resposta(){
@@ -65,26 +65,21 @@ public class Resposta implements Serializable{
 		this.descricao = descricao;
 	}
 	
-<<<<<<< .mine	public String getCorreta() {
-		return correta;
-	}
-	
 	public void setCorreta(String correta) {
 		this.correta = correta;
 	}
-=======	public String getCorreta(){
+	public String getCorreta(){
 		return correta;
 	}
 	
 	public void setRespostaCerta(){
-		this.correta = "C";
+		this.correta = "CORRETA";
 	}
 	
 	@Transient
 	public boolean isCorreta(){
-		return "C".equals(correta);
+		return "CORRETA".equals(correta);
 	}
 	
 	
-		
->>>>>>> .theirs}
+}
