@@ -1,10 +1,12 @@
 package br.edu.granbery.tcc.dao;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 public abstract class GenericDaoImpl<T extends Serializable , ID extends Serializable> implements GenericDao<T, ID>{
 
@@ -45,5 +47,10 @@ public abstract class GenericDaoImpl<T extends Serializable , ID extends Seriali
     
     public void saveOrUpdate(T obj) {
     	getEntityManager().persist(obj);
+    }
+    public List<T> findAll(){
+    	String select = "SELECT o FROM ".concat(getType().getSimpleName()).concat(" o");
+    	Query query = getEntityManager().createQuery(select);
+    	return query.getResultList();
     }
 }

@@ -16,6 +16,13 @@ public class PerguntaDAOImpl extends GenericDaoImpl<Pergunta, Long> implements P
 	public void saveOrUpdate(Pergunta pergunta){
 		super.saveOrUpdate(pergunta);
 	}
+
+	public Pergunta buscarPerguntaAleatoria() {
+		String jpql = "SELECT p FROM Pergunta p ORDER BY RAND(SELECT COUNT(p2.id) FROM Pergunta p2)";
+		Query query = getEntityManager().createQuery(jpql);
+		Pergunta pergunta = (Pergunta) query.getResultList().get(0);
+		return pergunta;
+	}
 	
 	public List<Pergunta> findByParameters(final Pergunta perg){
 		StringBuffer query = new StringBuffer(SELECT);		

@@ -1,5 +1,7 @@
 package br.edu.granbery.tcc.manager;
 
+import java.io.Serializable;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -14,8 +16,13 @@ import br.edu.granbery.tcc.model.Pergunta;
 import br.edu.granbery.tcc.model.Resposta;
 
 @Stateless
-public class PerguntaManagerImpl implements PerguntaManager {
+public class PerguntaManagerImpl implements PerguntaManager, Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Inject
 	PerguntaDAO perguntaDAO;
 	
@@ -24,6 +31,12 @@ public class PerguntaManagerImpl implements PerguntaManager {
 	
 	public Pergunta salvar(Pergunta pergunta) {
 		try {
+			for(Resposta resp : pergunta.getRespostas()){
+				if(resp.getCorreta().isEmpty()){
+					resp.setCorreta(Resposta.ERRADA);
+				}
+			}
+			
 			perguntaDAO.saveOrUpdate(pergunta);
 			if(pergunta.getRespostas().size() > 0){
 				for (Resposta resp : pergunta.getRespostas()) {
@@ -37,6 +50,11 @@ public class PerguntaManagerImpl implements PerguntaManager {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public Pergunta buscarPerguntaAleatoria() {
+		Pergunta pergunta = perguntaDAO.buscarPerguntaAleatoria();
+		return pergunta;
 	}
 	
 	public Pergunta consultar(Pergunta pergunta) {
