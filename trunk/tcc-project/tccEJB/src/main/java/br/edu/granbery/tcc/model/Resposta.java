@@ -20,6 +20,10 @@ public class Resposta implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -2028054062176867907L;
+			
+	public static final String CORRETA ="C";
+	public static final String ERRADA ="E";
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -44,7 +48,7 @@ public class Resposta implements Serializable{
 	
 	public Resposta(){
 		descricao = "";
-		correta = "E";
+		correta = ERRADA;
 	}
 	
 	
@@ -61,7 +65,14 @@ public class Resposta implements Serializable{
 		this.descricao = descricao;
 	}
 	
-	public String getCorreta(){
+<<<<<<< .mine	public String getCorreta() {
+		return correta;
+	}
+	
+	public void setCorreta(String correta) {
+		this.correta = correta;
+	}
+=======	public String getCorreta(){
 		return correta;
 	}
 	
@@ -76,4 +87,4 @@ public class Resposta implements Serializable{
 	
 	
 		
-}
+>>>>>>> .theirs}

@@ -1,9 +1,6 @@
 package br.edu.granbery.tcc.controller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
 import javax.annotation.PostConstruct;
@@ -11,8 +8,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.edu.granbery.tcc.manager.JogadorManager;
+import br.edu.granbery.tcc.manager.PerguntaManager;
 import br.edu.granbery.tcc.model.Jogador;
-import br.edu.granbery.tcc.model.Resposta;
+import br.edu.granbery.tcc.model.Pergunta;
 import br.edu.granbery.tcc.view.GameControllerView;
 
 @Named
@@ -26,6 +25,12 @@ public class GameController implements Serializable {
 	
 	@Inject
 	private GameControllerView view;
+	@Inject
+	private JogadorManager jogadorManager;
+	@Inject
+	private PerguntaManager perguntaManager;
+	
+	
 	
 	private boolean mostraPergunta;
 	private boolean mostraPoPup;
@@ -34,13 +39,8 @@ public class GameController implements Serializable {
 	@PostConstruct
 	public void load(){
 		try{
-		Jogador jogador1 = new Jogador();
-		Jogador jogador2 = new Jogador();
 		
-		view.getJogo().setDataInicio(new Date());
-		view.getJogo().setJogadores(new ArrayList<Jogador>());
-		view.getJogo().getJogadores().add(jogador1);
-		view.getJogo().getJogadores().add(jogador2);
+		view.getJogo().setJogadores(jogadorManager.buscarTodos());
 		
 		for (Jogador jogador : view.getJogo().getJogadores()) {
 			
@@ -53,14 +53,10 @@ public class GameController implements Serializable {
 	}
 	
 	public void buscarPergunta(){
-		//mock temporario para testes
-		List<Resposta> respostas = new ArrayList<Resposta>();
-		respostas.add(view.getR4());
-		respostas.add(view.getR3());
-		respostas.add(view.getR2());
-		respostas.add(view.getR1());
-		view.getPergunta().setDescricao("Qual a raiz quadrada de 4 ?");
-		view.getPergunta().setRespostas(respostas);
+		Pergunta pergunta = perguntaManager.buscarPerguntaAleatoria();
+		
+		view.getPergunta().setDescricao(pergunta.getDescricao());
+		view.getPergunta().setRespostas(pergunta.getRespostas());
 		mostraPergunta = true;
 	}
 		

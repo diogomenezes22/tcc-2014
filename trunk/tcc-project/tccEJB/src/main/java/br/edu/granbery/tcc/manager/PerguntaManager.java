@@ -9,4 +9,6 @@ public interface PerguntaManager {
 	
 	public Pergunta salvar(Pergunta pergunta);
 	public Pergunta consultar(Pergunta pergunta);
+	public Pergunta buscarPerguntaAleatoria();
+
 }
