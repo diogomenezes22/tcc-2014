@@ -45,7 +45,7 @@ public class JogadorManagerImpl implements JogadorManager, Serializable{
 
 	public List<Jogador> buscarTodos() {
 		try {
-			List<Jogador> jogadores = jogadorDAO.findAll();
+			List<Jogador> jogadores = jogadorDAO.findAll(Jogador.class);
 			return jogadores;
 		} catch (Exception e) {
 			e.printStackTrace();
