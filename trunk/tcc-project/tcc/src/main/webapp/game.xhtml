@@ -55,7 +55,8 @@
 					<td id="centro" class="centro" rowspan="5" colspan="13">
 						<a4j:outputPanel id="painelPergunta">
 							<rich:panel rendered="#{gameController.mostraPergunta}">
-									<h:outputLabel id="pergunta" value="#{gameController.view.pergunta.descricao}"/>
+									<h:inputHidden value="#{gameController.view.pergunta.id}" />
+									<h:outputLabel id="pergunta"  value="#{gameController.view.pergunta.descricao}"/>
 									<h:selectOneRadio styleClass="reposta" immediate="false"	value="#{gameController.view.repostaEscolhida}" border="0">
 										<f:selectItems value="#{gameController.view.pergunta.respostas}" var="resposta" itemLabel="#{resposta.descricao}" itemValue="#{resposta.descricao}" />
 									</h:selectOneRadio>

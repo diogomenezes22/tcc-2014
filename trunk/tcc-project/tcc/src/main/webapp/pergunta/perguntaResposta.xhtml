@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<script src="../resources/js/jquery-2.1.1.min.js"></script>
+	<title>Quiz Game - Pergunta</title>
+</h:head> 
+	<body>
+<h:form id="perguntaRespForm">
+	<rich:panel id="panelPergunta" >
+		<h:outputText value="Pergunta: " /> <h:inputText  label="Nome" maxlength="100" value="#{perguntaRespostaController.pergunta.descricao}" />
+		<br/>	
+		<h:outputText value="Marque uma alternativa correta para pergunta:" /><br/>
+		<ui:repeat var="resposta" value="#{perguntaRespostaController.pergunta.respostas}" size="4" >
+			<h:outputText value="Resposta:" />
+			<h:inputText  label="Reposta " maxlength="100" value="#{resposta.descricao}" />
+			<h:selectOneRadio value="#{resposta.correta}" onclick="desmarcarOutrosRadios(this);">
+				<f:selectItem itemLabel="Correta:" itemValue="C" />
+			</h:selectOneRadio>
+			
+		</ui:repeat>
+		<br/>		
+	</rich:panel>
+		<h:commandButton action="salvar" value="salvar" actionListener="#{perguntaRespostaController.salvar()}" />
+		<br/>
+		<h:commandButton action="buscar" value="Buscar" actionListener="#{perguntaRespostaController.buscar()}" />
+</h:form>
+
+	<script type="text/javascript">
+		function desmarcarOutrosRadios(radio){
+			alert($(radio).attr('id'));
+			$('input:radio').each(function(){
+				if($(this).attr('id') != $(radio).attr('id')){
+					$(this).prop('checked', false);
+					}
+				});
+		}
+	
+	</script>
+</body>
+</html>

@@ -7,6 +7,7 @@ import javax.inject.Named;
 
 import br.edu.granbery.tcc.manager.PerguntaManager;
 import br.edu.granbery.tcc.model.Pergunta;
+import br.edu.granbery.tcc.model.Resposta;
 
 @Named
 @RequestScoped
