@@ -19,7 +19,7 @@ public class PerguntaRespostaController {
 	
 	@PostConstruct
 	public void load(){
-		pergunta = new Pergunta();		
+		pergunta = new Pergunta();
 	}
 
 	public Pergunta getPergunta() {
@@ -37,8 +37,7 @@ public class PerguntaRespostaController {
 	}
 	
 	public void buscar(){
-		perguntaManager.salvar(pergunta);
-		pergunta = new Pergunta();
+		pergunta = perguntaManager.consultar(pergunta);		
 		return ;
 	}
 
