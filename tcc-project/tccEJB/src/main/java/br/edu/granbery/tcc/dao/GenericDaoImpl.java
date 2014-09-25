@@ -48,8 +48,9 @@ public abstract class GenericDaoImpl<T extends Serializable , ID extends Seriali
     public void saveOrUpdate(T obj) {
     	getEntityManager().persist(obj);
     }
-    public List<T> findAll(){
-    	String select = "SELECT o FROM ".concat(getType().getSimpleName()).concat(" o");
+    
+    public List<T> findAll(Class<T> classe){
+    	String select = "SELECT o FROM ".concat(classe.getSimpleName()).concat(" o");
     	Query query = getEntityManager().createQuery(select);
     	return query.getResultList();
     }
