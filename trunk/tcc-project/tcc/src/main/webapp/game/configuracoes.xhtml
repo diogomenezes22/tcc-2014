@@ -24,13 +24,11 @@
 				<f:facet name="header">
 					<h:outputText value="Escolha sua peça:" />
 				</f:facet>
-				<h:selectOneMenu id="boxPeao"
-					value="#{configuracaoController.peaoEscolhido}"
-					converter="genericConverter">
+				<h:selectOneMenu id="boxPeao" value="#{configuracaoController.peaoEscolhido}" converter="genericConverter">
 					<f:selectItem itemValue="" itemLabel="Selecione uma Cor..." />
 					<f:selectItems itemValue="#{peao}" itemLabel="#{peao.cor}" value="#{configuracaoController.listaPeao}" var="peao">
 					</f:selectItems>
-					<a4j:ajax execute="@this" render="boxPeao" listener="#{configuracaoController.associarJogadorPeao(jogador)}"></a4j:ajax>
+					<f:ajax event="click" execute="@this" render="boxPeao" listener="#{configuracaoController.associarJogadorPeao(jogador)}"/>
 				</h:selectOneMenu>
 
 			</h:column>
