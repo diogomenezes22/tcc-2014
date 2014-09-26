@@ -2,32 +2,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j">
 
 <h:head></h:head>
 <h:body>
-	<h:dataTable id="tabelaJogadores" value="#{configuracaoController.listaJogador}" var="jogador"
-		border="1">
-		<f:facet name="header">
-			<h:outputText value="Jogadores Cadastrados" />
-		</f:facet>
-		<h:column>
+	<h:form>
+		<h:dataTable id="tabelaJogadores"
+			value="#{configuracaoController.listaJogador}" var="jogador"
+			border="1">
 			<f:facet name="header">
-				<h:outputText value="Nome:" />
+				<h:outputText value="Jogadores Cadastrados" />
 			</f:facet>
-			<h:outputText value="#{jogador.nome}" />
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Escolha sua peça:" />
-			</f:facet>
-			<h:selectOneMenu value="#{configuracaoController.idPeaoEscolhido}">
-				<f:selectItems itemValue="#{peao.id}" itemLabel="#{peao.cor}" value="#{configuracaoController.listaPeao}" var="peao" />
-			</h:selectOneMenu>
-		</h:column>
-		<f:facet name="footer">
-			<h:outputText value="Total: #{shoppingCartBean.total}" />
-		</f:facet>
-	</h:dataTable>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nome:" />
+				</f:facet>
+				<h:outputText value="#{jogador.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Escolha sua peça:" />
+				</f:facet>
+				<h:selectOneMenu id="boxPeao"
+					value="#{configuracaoController.peaoEscolhido}"
+					converter="genericConverter">
+					<f:selectItem itemValue="" itemLabel="Selecione uma Cor..." />
+					<f:selectItems itemValue="#{peao}" itemLabel="#{peao.cor}" value="#{configuracaoController.listaPeao}" var="peao">
+					</f:selectItems>
+					<a4j:ajax execute="@this" render="boxPeao" listener="#{configuracaoController.associarJogadorPeao(jogador)}"></a4j:ajax>
+				</h:selectOneMenu>
+
+			</h:column>
+		</h:dataTable>
+	</h:form>
 </h:body>
 </html>

@@ -3,8 +3,10 @@
 	<persistence-unit name="tccEJB">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jboss/datasources/tccEJB</jta-data-source>
-		<class>br.edu.granbery.model.Jogador</class>
-		<class>br.edu.granbery.model.Peao</class>
+		<class>br.edu.granbery.tcc.model.Jogador</class>
+		<class>br.edu.granbery.tcc.model.Pergunta</class>
+		<class>br.edu.granbery.tcc.model.Resposta</class>
+		<class>br.edu.granbery.tcc.model.Peao</class>
 		<properties>
 			<!--property name="hibernate.hbm2ddl.auto" value="update"/-->
 			<property name="hibernate.show_sql" value="true"/>
