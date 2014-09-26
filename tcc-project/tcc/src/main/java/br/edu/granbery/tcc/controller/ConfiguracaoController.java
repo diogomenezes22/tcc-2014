@@ -1,10 +1,11 @@
 package br.edu.granbery.tcc.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -14,13 +15,14 @@ import br.edu.granbery.tcc.model.Jogador;
 import br.edu.granbery.tcc.model.Peao;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class ConfiguracaoController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	private List<Jogador> listaJogador;
 	private List<Peao> listaPeao;
+	private List<Peao> listaPeoesUtilizados;
 	private Peao peaoEscolhido;
 	
 	@Inject
@@ -33,7 +35,7 @@ public class ConfiguracaoController implements Serializable{
 	public void load(){
 		listaJogador = jogagorManager.buscarTodos();
 		listaPeao = peaoManager.buscarTodos();
-		
+		listaPeoesUtilizados = new ArrayList<Peao>();
 	}
 
 	public List<Jogador> getListaJogador() {
@@ -45,8 +47,9 @@ public class ConfiguracaoController implements Serializable{
 	}
 	
 	public void associarJogadorPeao(Jogador jogador){
-		System.out.println(jogador);
-		System.out.println(peaoEscolhido.getId());
+		listaPeao.remove(peaoEscolhido);
+		peaoEscolhido.setJogador(jogador);
+		listaPeoesUtilizados.add(peaoEscolhido);
 	}
 	
 	public List<Peao> getListaPeao() {
@@ -61,8 +64,12 @@ public class ConfiguracaoController implements Serializable{
 		return peaoEscolhido;
 	}
 
-	public void setPeaoEscolhido(Peao peaoEscolhido) {
-		this.peaoEscolhido = peaoEscolhido;
+	public List<Peao> getListaPeoesUtilizados() {
+		return listaPeoesUtilizados;
+	}
+
+	public void setListaPeoesUtilizados(List<Peao> listaPeoesUtilizados) {
+		this.listaPeoesUtilizados = listaPeoesUtilizados;
 	}
 
 }
