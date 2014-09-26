@@ -2,6 +2,7 @@ package br.edu.granbery.tcc.view;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import br.edu.granbery.tcc.model.Jogador;
@@ -10,6 +11,7 @@ import br.edu.granbery.tcc.model.Pergunta;
 
 
 @Named
+@SessionScoped
 public class GameControllerView implements Serializable{
 
 	/**

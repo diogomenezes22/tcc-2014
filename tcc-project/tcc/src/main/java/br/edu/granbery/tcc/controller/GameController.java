@@ -12,6 +12,7 @@ import br.edu.granbery.tcc.manager.JogadorManager;
 import br.edu.granbery.tcc.manager.PerguntaManager;
 import br.edu.granbery.tcc.model.Jogador;
 import br.edu.granbery.tcc.model.Pergunta;
+import br.edu.granbery.tcc.model.Resposta;
 import br.edu.granbery.tcc.view.GameControllerView;
 
 @Named
@@ -39,12 +40,8 @@ public class GameController implements Serializable {
 	@PostConstruct
 	public void load(){
 		try{
-		
 		view.getJogo().setJogadores(jogadorManager.buscarTodos());
 		
-		for (Jogador jogador : view.getJogo().getJogadores()) {
-			
-		}
 		mostraPoPup = false;
 		}catch(Exception e){
 			e.printStackTrace();
@@ -54,7 +51,6 @@ public class GameController implements Serializable {
 	
 	public void buscarPergunta(){
 		Pergunta pergunta = perguntaManager.buscarPerguntaAleatoria();
-		
 		view.getPergunta().setDescricao(pergunta.getDescricao());
 		view.getPergunta().setRespostas(pergunta.getRespostas());
 		mostraPergunta = true;
@@ -63,7 +59,7 @@ public class GameController implements Serializable {
 	public void responder(){
 		Random r = new Random();
 		int numeroSorteado = r.nextInt(6) + 1;
-		if(verificaResposta(view.getRepostaEscolhida())){
+		if(verificaResposta()){
 			acertou = true;
 			preencherCamposHidden(view.getJogadorAtual());
 		}else{
@@ -83,8 +79,12 @@ public class GameController implements Serializable {
 		mostraPoPup = false;
 	}
 		
-	public boolean verificaResposta(String alternativa){
-		
+	public boolean verificaResposta(){
+		for(Resposta resposta :view.getPergunta().getRespostas()){
+			if(view.getRepostaEscolhida().equals(resposta.getId().toString())){
+				return resposta.isCorreta();
+			}
+		}
 		
 		return false;
 	}
