@@ -12,6 +12,7 @@ public class Tabuleiro implements Serializable{
 	
 	private int id;
 	private List<Casa> casas;
+	private List<Peao> peoes;
 	private int inicio;
 	
 	public int getId() {
@@ -31,6 +32,12 @@ public class Tabuleiro implements Serializable{
 	}
 	public void setInicio(int inicio) {
 		this.inicio = inicio;
+	}
+	public List<Peao> getPeoes() {
+		return peoes;
+	}
+	public void setPeoes(List<Peao> peoes) {
+		this.peoes = peoes;
 	}
 	
 }
