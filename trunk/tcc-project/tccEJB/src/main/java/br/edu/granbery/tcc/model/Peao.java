@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-
+@Entity
+@Table(name="TB_PEAO" )
 public class Peao implements Serializable{
 
 	/**
@@ -14,25 +15,32 @@ public class Peao implements Serializable{
 	
 		@Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		@Column(name="ID")
-		private int id;
+		@Column(name="ID_PEAO")
+		private Long id;
 		
-		@Column(name="DESCRICAO")
+		@Column(name="DE_DESCRICAO")
 		private String descricao;
 		
-		@Column(name="POSICAOATUAL")
-		private int posicaoAtual;
+		@Column(name="DE_COR")
+		private String cor;
 		
-		@Column(name="PROXIMAPOSICAO")
+		@Column(name="POSICAO_ATUAL")
+		private Integer posicaoAtual;
+		
+		@Transient
 		private int proximaPosicao;
 		
-		@Column(name="PODEANDAR")
+		@Transient
 		private boolean podeAndar;
 		
-		public int getId() {
+		@OneToOne
+		@JoinColumn(name = "ID_JOGADOR", referencedColumnName = "ID_JOGADOR")
+		private Jogador jogador;
+		
+		public Long getId() {
 			return id;
 		}
-		public void setId(int id) {
+		public void setId(Long id) {
 			this.id = id;
 		}
 		public String getDescricao() {
@@ -41,10 +49,16 @@ public class Peao implements Serializable{
 		public void setDescricao(String descricao) {
 			this.descricao = descricao;
 		}
-		public int getPosicaoAtual() {
+		public String getCor() {
+			return cor;
+		}
+		public void setCor(String cor) {
+			this.cor = cor;
+		}
+		public Integer getPosicaoAtual() {
 			return posicaoAtual;
 		}
-		public void setPosicaoAtual(int posicaoAtual) {
+		public void setPosicaoAtual(Integer posicaoAtual) {
 			this.posicaoAtual = posicaoAtual;
 		}
 		public boolean isPodeAndar() {
@@ -58,5 +72,11 @@ public class Peao implements Serializable{
 		}
 		public void setProximaPosicao(int proximaPosicao) {
 			this.proximaPosicao = proximaPosicao;
+		}
+		public Jogador getJogador() {
+			return jogador;
+		}
+		public void setJogador(Jogador jogador) {
+			this.jogador = jogador;
 		}
 }

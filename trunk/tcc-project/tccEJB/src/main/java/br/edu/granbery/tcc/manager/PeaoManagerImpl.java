@@ -7,13 +7,14 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.edu.granbery.tcc.dao.JogadorDAO;
+import br.edu.granbery.tcc.dao.PeaoDAO;
 import br.edu.granbery.tcc.model.Jogador;
+import br.edu.granbery.tcc.model.Peao;
 
 
 @Named
 @Stateless
-public class JogadorManagerImpl implements JogadorManager, Serializable{
+public class PeaoManagerImpl implements PeaoManager, Serializable{
 	
 	/**
 	 * 
@@ -21,32 +22,32 @@ public class JogadorManagerImpl implements JogadorManager, Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	JogadorDAO jogadorDAO;
+	PeaoDAO peaoDAO;
 	
-	public Jogador salvar(Jogador jogador) {
+	public Peao salvar(Peao peao) {
 		try {
-			jogadorDAO.saveOrUpdate(jogador);
-			return jogador;
+			peaoDAO.saveOrUpdate(peao);
+			return peao;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public Jogador consultar(Jogador jogador) {
+	public Peao consultar(Peao peao) {
 		try {
-			List<Jogador> jogadores = jogadorDAO.findByParameters(jogador);
-			return jogadores.get(0);
+			List<Peao> peoes = peaoDAO.findByParameters(peao);
+			return peoes.get(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	public List<Jogador> buscarTodos() {
+	public List<Peao> buscarTodos() {
 		try {
-			List<Jogador> jogadores = jogadorDAO.findAll(Jogador.class);
-			return jogadores;
+			List<Peao> peoes = peaoDAO.findAll(Peao.class);
+			return peoes;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
