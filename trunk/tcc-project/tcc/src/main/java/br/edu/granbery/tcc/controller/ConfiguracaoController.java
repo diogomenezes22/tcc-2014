@@ -21,7 +21,7 @@ public class ConfiguracaoController implements Serializable{
 	
 	private List<Jogador> listaJogador;
 	private List<Peao> listaPeao;
-	private Long idPeaoEscolhido;
+	private Peao peaoEscolhido;
 	
 	@Inject
 	private JogadorManager jogagorManager;
@@ -43,7 +43,12 @@ public class ConfiguracaoController implements Serializable{
 	public void setListaJogador(List<Jogador> listaJogador) {
 		this.listaJogador = listaJogador;
 	}
-
+	
+	public void associarJogadorPeao(Jogador jogador){
+		System.out.println(jogador);
+		System.out.println(peaoEscolhido.getId());
+	}
+	
 	public List<Peao> getListaPeao() {
 		return listaPeao;
 	}
@@ -52,11 +57,12 @@ public class ConfiguracaoController implements Serializable{
 		this.listaPeao = listaPeao;
 	}
 
-	public Long getIdPeaoEscolhido() {
-		return idPeaoEscolhido;
+	public Peao getPeaoEscolhido() {
+		return peaoEscolhido;
 	}
 
-	public void setIdPeaoEscolhido(Long idPeaoEscolhido) {
-		this.idPeaoEscolhido = idPeaoEscolhido;
+	public void setPeaoEscolhido(Peao peaoEscolhido) {
+		this.peaoEscolhido = peaoEscolhido;
 	}
+
 }
