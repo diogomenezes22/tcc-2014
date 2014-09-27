@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import br.edu.granbery.tcc.model.Jogador;
 import br.edu.granbery.tcc.model.Peao;
+import br.edu.granbery.tcc.model.Pergunta;
 
 
 @Stateless
@@ -48,5 +49,13 @@ public class PeaoDAOImpl extends GenericDaoImpl<Peao, Long> implements PeaoDAO{
 		informouDescricao = peao.getDescricao() != null && !"".equals(peao.getDescricao()); 
 		informouCor = peao.getCor() != null && !Integer.valueOf(0).equals(peao.getCor()); 
 		informouPosicaoAtual = peao.getPosicaoAtual() != null && !"".equals(peao.getPosicaoAtual());
+	}
+	
+	@Override
+	public void saveOrUpdate(Peao peao){
+		Peao peaoPersistir = getEntityManager().getReference(Peao.class, peao.getId());
+		peaoPersistir.setJogador(peao.getJogador());
+		
+		super.saveOrUpdate(peaoPersistir);
 	}
 }

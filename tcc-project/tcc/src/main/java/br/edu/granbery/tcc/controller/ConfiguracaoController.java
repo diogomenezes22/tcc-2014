@@ -47,9 +47,27 @@ public class ConfiguracaoController implements Serializable{
 	}
 	
 	public void associarJogadorPeao(Jogador jogador){
-		listaPeao.remove(peaoEscolhido);
-		peaoEscolhido.setJogador(jogador);
-		listaPeoesUtilizados.add(peaoEscolhido);
+		if(peaoEscolhido != null){
+			listaPeao.remove(peaoEscolhido);
+			peaoEscolhido.setJogador(jogador);
+			listaPeoesUtilizados.add(peaoEscolhido);
+		}else{
+			for (Peao peao : listaPeoesUtilizados) {
+				if(peao.getJogador().equals(jogador)){
+					peao.setJogador(null);
+					listaPeao.add(peao);
+					listaPeoesUtilizados.remove(peao);
+				}
+			}
+		}
+	}
+	
+	public String salvarConfiguracoes(){
+		for (Peao peao : listaPeoesUtilizados) {
+			peaoManager.salvar(peao);
+		}
+		
+		return "game.jsf";
 	}
 	
 	public List<Peao> getListaPeao() {
@@ -62,6 +80,10 @@ public class ConfiguracaoController implements Serializable{
 
 	public Peao getPeaoEscolhido() {
 		return peaoEscolhido;
+	}
+
+	public void setPeaoEscolhido(Peao peaoEscolhido) {
+		this.peaoEscolhido = peaoEscolhido;
 	}
 
 	public List<Peao> getListaPeoesUtilizados() {

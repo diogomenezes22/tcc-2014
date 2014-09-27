@@ -8,31 +8,33 @@
 <h:head></h:head>
 <h:body>
 	<h:form>
-		<h:dataTable id="tabelaJogadores"
-			value="#{configuracaoController.listaJogador}" var="jogador"
-			border="1">
-			<f:facet name="header">
-				<h:outputText value="Jogadores Cadastrados" />
-			</f:facet>
-			<h:column>
+			<h:dataTable id="tabelaJogadores"
+				value="#{configuracaoController.listaJogador}" var="jogador"
+				border="1">
 				<f:facet name="header">
-					<h:outputText value="Nome:" />
+					<h:outputText value="Jogadores Cadastrados" />
 				</f:facet>
-				<h:outputText value="#{jogador.nome}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Escolha sua peça:" />
-				</f:facet>
-				<h:selectOneMenu id="boxPeao" value="#{configuracaoController.peaoEscolhido}" converter="genericConverter">
-					<f:selectItem itemValue="" itemLabel="Selecione uma Cor..." />
-					<f:selectItems itemValue="#{peao}" itemLabel="#{peao.cor}" value="#{configuracaoController.listaPeao}" var="peao">
-					</f:selectItems>
-					<f:ajax event="click" execute="@this" render="boxPeao" listener="#{configuracaoController.associarJogadorPeao(jogador)}"/>
-				</h:selectOneMenu>
-
-			</h:column>
-		</h:dataTable>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nome:" />
+					</f:facet>
+					<h:outputText value="#{jogador.nome}" />
+				</h:column>
+					<h:column >
+						<f:facet name="header">
+							<h:outputText value="Escolha sua peça:" />
+						</f:facet>
+							<h:selectOneMenu value="#{configuracaoController.peaoEscolhido}" converter="genericConverter">
+								<f:selectItem itemValue="" itemLabel="Nunhum..." />
+								<f:selectItems itemValue="#{peao}" itemLabel="#{peao.cor}" value="#{configuracaoController.listaPeao}" var="peao">
+								</f:selectItems>
+								<f:ajax event="change" execute="@this" render="tabelaJogadores" listener="#{configuracaoController.associarJogadorPeao(jogador)}"/>
+							</h:selectOneMenu>
+					</h:column>
+			</h:dataTable>
+		
+		<h:commandButton action="#{configuracaoController.salvarConfiguracoes()}" value="Salvar Configurações"/>
+		
 	</h:form>
 </h:body>
 </html>
