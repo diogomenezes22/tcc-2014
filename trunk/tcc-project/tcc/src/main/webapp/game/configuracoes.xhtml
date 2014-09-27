@@ -3,38 +3,65 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:a4j="http://richfaces.org/a4j">
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
 
 <h:head></h:head>
 <h:body>
 	<h:form>
-			<h:dataTable id="tabelaJogadores"
-				value="#{configuracaoController.listaJogador}" var="jogador"
-				border="1">
+		<rich:dataTable id="tabelaJogadores"
+			value="#{configuracaoController.listaJogador}" var="jogador" border="1">
+			<f:facet name="header">
+				<h:outputText value="Jogadores Cadastrados" />
+			</f:facet>
+			<rich:column>
 				<f:facet name="header">
-					<h:outputText value="Jogadores Cadastrados" />
+					<h:outputText value="Nome:" />
 				</f:facet>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Nome:" />
-					</f:facet>
-					<h:outputText value="#{jogador.nome}" />
-				</h:column>
-					<h:column >
-						<f:facet name="header">
-							<h:outputText value="Escolha sua peça:" />
-						</f:facet>
-							<h:selectOneMenu value="#{configuracaoController.peaoEscolhido}" converter="genericConverter">
-								<f:selectItem itemValue="" itemLabel="Nunhum..." />
-								<f:selectItems itemValue="#{peao}" itemLabel="#{peao.cor}" value="#{configuracaoController.listaPeao}" var="peao">
-								</f:selectItems>
-								<f:ajax event="change" execute="@this" render="tabelaJogadores" listener="#{configuracaoController.associarJogadorPeao(jogador)}"/>
-							</h:selectOneMenu>
-					</h:column>
-			</h:dataTable>
-		
-		<h:commandButton action="#{configuracaoController.salvarConfiguracoes()}" value="Salvar Configurações"/>
-		
+				<h:outputText value="#{jogador.nome}" />
+			</rich:column>
+			<rich:column>
+				<f:facet name="header">
+					<h:outputText value="Escolha sua peça:" />
+				</f:facet>
+				<h:selectOneMenu value="#{configuracaoController.peaoEscolhido}" converter="genericConverter">
+					<f:selectItem itemValue="" itemLabel="Nunhum..." />
+					<f:selectItems itemValue="#{peao}" itemLabel="#{peao.cor}"	value="#{configuracaoController.listaPeao}" var="peao">
+					</f:selectItems>
+					<f:ajax event="change" execute="@this" render="panelQuemVaiJogar" listener="#{configuracaoController.associarJogadorPeao(jogador)}" />
+				</h:selectOneMenu>
+			</rich:column>
+			<f:facet name="footer">
+				<rich:column>
+					<a4j:outputPanel id="panelQuemVaiJogar">
+						<rich:dataTable
+							value="#{configuracaoController.listaPeoesUtilizados}" var="peao" border="1">
+							<f:facet name="header">
+								<h:outputText value="Quem vai jogar !!!" />
+							</f:facet>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Nome:" />
+								</f:facet>
+								<h:outputText value="#{peao.jogador.nome}" />
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="Cor:" />
+								</f:facet>
+								<h:outputText value="#{peao.cor}" />
+							</rich:column>
+						</rich:dataTable>
+					</a4j:outputPanel>
+				</rich:column>
+			</f:facet>
+
+		</rich:dataTable>
+
+
+		<h:commandButton
+			action="#{configuracaoController.salvarConfiguracoes()}" value="Salvar Configurações" />
+
 	</h:form>
 </h:body>
 </html>
