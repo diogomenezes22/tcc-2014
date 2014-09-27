@@ -48,7 +48,6 @@ public class ConfiguracaoController implements Serializable{
 	
 	public void associarJogadorPeao(Jogador jogador){
 		if(peaoEscolhido != null){
-			listaPeao.remove(peaoEscolhido);
 			peaoEscolhido.setJogador(jogador);
 			listaPeoesUtilizados.add(peaoEscolhido);
 		}else{
