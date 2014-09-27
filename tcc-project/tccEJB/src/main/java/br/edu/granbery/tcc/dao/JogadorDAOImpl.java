@@ -48,4 +48,11 @@ public class JogadorDAOImpl extends GenericDaoImpl<Jogador, Long> implements Jog
 		informouIdade = jog.getIdade() != null && !Integer.valueOf(0).equals(jog.getIdade()); 
 		informouPeriodo = jog.getPeriodo() != null && !"".equals(jog.getPeriodo());
 	}
+
+	public List<Jogador> buscarQuemVaiJogar() {
+		String jpql = "SELECT j FROM Peao p JOIN p.jogador j";
+		Query query = getEntityManager().createQuery(jpql);
+		List<Jogador> listaJogadores = query.getResultList();
+		return listaJogadores;
+	}
 }

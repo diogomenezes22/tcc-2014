@@ -53,6 +53,16 @@ public class JogadorManagerImpl implements JogadorManager, Serializable{
 		}
 	}
 
+	public List<Jogador> buscarQuemVaiJogar() {
+		try {
+			List<Jogador> jogadores = jogadorDAO.buscarQuemVaiJogar();
+			return jogadores;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	
 
 }

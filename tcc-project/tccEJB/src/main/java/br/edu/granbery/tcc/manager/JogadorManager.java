@@ -14,4 +14,6 @@ public interface JogadorManager{
 	public Jogador consultar(Jogador jogador);
 	
 	public List<Jogador> buscarTodos();
+
+	public List<Jogador> buscarQuemVaiJogar();
 }

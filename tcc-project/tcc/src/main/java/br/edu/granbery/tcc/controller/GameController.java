@@ -40,7 +40,7 @@ public class GameController implements Serializable {
 	@PostConstruct
 	public void load(){
 		try{
-		view.getJogo().setJogadores(jogadorManager.buscarTodos());
+		view.getJogo().setJogadores(jogadorManager.buscarQuemVaiJogar());
 		
 		mostraPoPup = false;
 		}catch(Exception e){
