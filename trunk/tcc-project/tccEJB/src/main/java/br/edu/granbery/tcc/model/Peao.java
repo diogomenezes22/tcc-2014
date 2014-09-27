@@ -32,7 +32,7 @@ public class Peao implements Serializable, SampleEntity{
 		@Transient
 		private boolean podeAndar;
 		
-		@OneToOne
+		@OneToOne(fetch=FetchType.EAGER)
 		@JoinColumn(name = "ID_JOGADOR", referencedColumnName = "ID_JOGADOR")
 		private Jogador jogador;
 		
