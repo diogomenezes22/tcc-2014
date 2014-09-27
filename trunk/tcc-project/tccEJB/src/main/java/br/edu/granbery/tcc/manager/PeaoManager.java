@@ -14,4 +14,6 @@ public interface PeaoManager{
 	public Peao consultar(Peao peao);
 	
 	public List<Peao> buscarTodos();
+
+	public List<Peao> buscarPeoesEmJogo();
 }
