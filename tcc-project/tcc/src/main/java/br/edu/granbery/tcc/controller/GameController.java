@@ -9,10 +9,12 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.edu.granbery.tcc.manager.JogadorManager;
+import br.edu.granbery.tcc.manager.PeaoManager;
 import br.edu.granbery.tcc.manager.PerguntaManager;
 import br.edu.granbery.tcc.model.Jogador;
 import br.edu.granbery.tcc.model.Pergunta;
 import br.edu.granbery.tcc.model.Resposta;
+import br.edu.granbery.tcc.model.Tabuleiro;
 import br.edu.granbery.tcc.view.GameControllerView;
 
 @Named
@@ -30,7 +32,8 @@ public class GameController implements Serializable {
 	private JogadorManager jogadorManager;
 	@Inject
 	private PerguntaManager perguntaManager;
-	
+	@Inject
+	private PeaoManager peaoManager;
 	
 	
 	private boolean mostraPergunta;
@@ -41,7 +44,8 @@ public class GameController implements Serializable {
 	public void load(){
 		try{
 		view.getJogo().setJogadores(jogadorManager.buscarQuemVaiJogar());
-		
+		view.getJogo().setTabuleiro(new Tabuleiro());
+		view.getJogo().getTabuleiro().setPeoes(peaoManager.buscarPeoesEmJogo());
 		mostraPoPup = false;
 		}catch(Exception e){
 			e.printStackTrace();

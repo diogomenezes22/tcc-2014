@@ -11,5 +11,7 @@ import br.edu.granbery.tcc.model.Peao;
 public interface PeaoDAO extends GenericDao<Peao, Long> {
 	
 	public List<Peao> findByParameters(final Peao jog);
+
+	public List<Peao> buscarPeoesEmJogo();
 	
 }

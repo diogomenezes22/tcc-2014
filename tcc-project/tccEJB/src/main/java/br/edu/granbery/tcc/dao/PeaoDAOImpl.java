@@ -58,4 +58,11 @@ public class PeaoDAOImpl extends GenericDaoImpl<Peao, Long> implements PeaoDAO{
 		
 		super.saveOrUpdate(peaoPersistir);
 	}
+
+	public List<Peao> buscarPeoesEmJogo() {
+		String jpql = "SELECT p FROM Peao p JOIN p.jogador";
+		Query query = getEntityManager().createQuery(jpql);
+		List<Peao> listaPeoes = query.getResultList();
+		return listaPeoes;
+	}
 }

@@ -54,6 +54,16 @@ public class PeaoManagerImpl implements PeaoManager, Serializable{
 		}
 	}
 
+	public List<Peao> buscarPeoesEmJogo() {
+		try {
+			List<Peao> peoes = peaoDAO.buscarPeoesEmJogo();
+			return peoes;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	
 
 }
