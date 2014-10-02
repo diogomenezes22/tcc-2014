@@ -1,0 +1,27 @@
+.navbar-toggle {
+	background: #1eb1ee !important;
+	border-color: #fff !important;
+	float: left;
+	margin-left: 15px;
+}
+.icon-bar {
+	background: #fff !important
+}
+
+@media (min-width: 0) {
+  .navbar-toggle {
+    display: block; /* force showing the toggle */
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    padding: 0;
+  }
+  .navbar {
+    right: auto;
+    background: none;
+    border: none;
+	margin-top: 75px
+  }
+}

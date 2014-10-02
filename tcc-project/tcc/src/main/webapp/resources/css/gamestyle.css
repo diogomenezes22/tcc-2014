@@ -23,10 +23,10 @@ td {
 	width: 150px;
 	height: 150px;
 	font-size: 12px;
-	border: 2px outset #FFFF99;
+	border: 1px solid #fff;
 	text-align: center;
-	background-color: #FF9;
-	color: #00C;
+	background-color: #fff;
+	color: rgba(255, 255, 255, 0.5)
 }
 
 td.clicked {
@@ -50,7 +50,7 @@ td.clicked {
 .casaInativa {
 	width: 6%;
 	height: 80px;
-	background-color: silver;
+	background-color: #1eb1ee;
 	font: bold;
 	font-size: 20px;
 }
@@ -58,11 +58,16 @@ td.clicked {
 .casaEspecial {
 	width: 6%;
 	height: 80px;
-	background-color: blue;
+	background-color: #ee8d1e;
 	font: bold;
 	font-size: 20px;
 }
 
 .centro {
 	border: 0px;
+}
+
+#divTabuleiro {
+	width: 90% !important;
+	margin: 0 auto !important
 }
