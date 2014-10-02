@@ -12,64 +12,62 @@
 	 	<ui:define name="content">
 		    <div class="container">			  
 					<div class="row">
-						<div class="col-md-12">
-							<div class="home">
-								<h:form>
-									<rich:dataTable id="tabelaJogadores"
-										value="#{configuracaoController.listaJogador}" var="jogador" border="1">
+						<div class="col-md-12 text-center">
+							<h:form>
+								<rich:dataTable id="tabelaJogadores" styleClass="table table-striped" headerClass="info"
+									value="#{configuracaoController.listaJogador}" var="jogador" border="1">
+									<f:facet name="header">
+										<h:outputText value="Jogadores Cadastrados" />
+									</f:facet>
+									<rich:column>
 										<f:facet name="header">
-											<h:outputText value="Jogadores Cadastrados" />
+											<h:outputText value="Nome:" />
 										</f:facet>
+										<h:outputText value="#{jogador.nome}" />
+									</rich:column>
+									<rich:column>
+										<f:facet name="header">
+											<h:outputText value="Escolha sua peça:" />
+										</f:facet>
+										<h:selectOneMenu value="#{configuracaoController.peaoEscolhido}" converter="genericConverter">
+											<f:selectItem itemValue="" itemLabel="Nunhum..." />
+											<f:selectItems itemValue="#{peao}" itemLabel="#{peao.cor}"	value="#{configuracaoController.listaPeao}" var="peao">
+											</f:selectItems>
+											<f:ajax event="change" execute="@this" render="panelQuemVaiJogar" listener="#{configuracaoController.associarJogadorPeao(jogador)}" />
+										</h:selectOneMenu>
+									</rich:column>
+									<f:facet name="footer">
 										<rich:column>
-											<f:facet name="header">
-												<h:outputText value="Nome:" />
-											</f:facet>
-											<h:outputText value="#{jogador.nome}" />
-										</rich:column>
-										<rich:column>
-											<f:facet name="header">
-												<h:outputText value="Escolha sua peça:" />
-											</f:facet>
-											<h:selectOneMenu value="#{configuracaoController.peaoEscolhido}" converter="genericConverter">
-												<f:selectItem itemValue="" itemLabel="Nunhum..." />
-												<f:selectItems itemValue="#{peao}" itemLabel="#{peao.cor}"	value="#{configuracaoController.listaPeao}" var="peao">
-												</f:selectItems>
-												<f:ajax event="change" execute="@this" render="panelQuemVaiJogar" listener="#{configuracaoController.associarJogadorPeao(jogador)}" />
-											</h:selectOneMenu>
-										</rich:column>
-										<f:facet name="footer">
-											<rich:column>
-												<a4j:outputPanel id="panelQuemVaiJogar">
-													<rich:dataTable
-														value="#{configuracaoController.listaPeoesUtilizados}" var="peao" border="1">
+											<a4j:outputPanel id="panelQuemVaiJogar">
+												<rich:dataTable styleClass="table"
+													value="#{configuracaoController.listaPeoesUtilizados}" var="peao" border="1">
+													<f:facet name="header">
+														<h:outputText value="Quem vai jogar !!!" />
+													</f:facet>
+													<rich:column>
 														<f:facet name="header">
-															<h:outputText value="Quem vai jogar !!!" />
+															<h:outputText value="Nome:" />
 														</f:facet>
-														<rich:column>
-															<f:facet name="header">
-																<h:outputText value="Nome:" />
-															</f:facet>
-															<h:outputText value="#{peao.jogador.nome}" />
-														</rich:column>
-														<rich:column>
-															<f:facet name="header">
-																<h:outputText value="Cor:" />
-															</f:facet>
-															<h:outputText value="#{peao.cor}" />
-														</rich:column>
-													</rich:dataTable>
-												</a4j:outputPanel>
-											</rich:column>
-										</f:facet>
-							
-									</rich:dataTable>
-							
-							
-									<h:commandButton
-										action="#{configuracaoController.salvarConfiguracoes()}" value="Salvar Configurações" />
-							
-								</h:form>
-							</div>
+														<h:outputText value="#{peao.jogador.nome}" />
+													</rich:column>
+													<rich:column>
+														<f:facet name="header">
+															<h:outputText value="Cor:" />
+														</f:facet>
+														<h:outputText value="#{peao.cor}" />
+													</rich:column>
+												</rich:dataTable>
+											</a4j:outputPanel>
+										</rich:column>
+									</f:facet>
+						
+								</rich:dataTable>
+						
+						
+								<h:commandButton
+									action="#{configuracaoController.salvarConfiguracoes()}" value="Salvar Configurações" />
+						
+							</h:form>
 						</div>
 					</div>
 				</div>

@@ -15,18 +15,28 @@
 		    <div class="container">			  
 					<div class="row">
 						<div class="col-md-12">
-							<div class="home">
-								<h:form id="jogadorForm">
-									<rich:panel id="createPanel" title="Inclusão">
-										<h:outputText value="Nome:" /> <h:inputText  label="Nome" maxlength="50" value="#{jogadorController.view.jogador.nome}" />
-										<br/>	
-										<h:outputText value="Idade:" /> <h:inputText label="Idade" maxlength="3" value="#{jogadorController.view.jogador.idade}" />
-										<br/>
-										<h:outputText value="Período:" /> <h:inputText label="Periodo" maxlength="1" value="#{jogadorController.view.jogador.periodo}" />
-									</rich:panel>
-										<h:commandButton action="salvar" value="salvar" actionListener="#{jogadorController.salvar()}" />
-										<br/>
-										<h:commandButton action="buscar" value="Buscar" actionListener="#{jogadorController.buscar()}" />
+							<div class="home text-center">
+								<h:form id="jogadorForm" styleClass="form-horizontal">
+									<div class="form-group" >
+										<h:outputText value="Nome:" styleClass="col-sm-2 control-label" /> 
+										<div class="col-sm-10">
+											<h:inputText styleClass="form-control" label="Nome" maxlength="50" value="#{jogadorController.view.jogador.nome}" />
+										</div>
+									</div>
+									<div class="form-group">
+										<h:outputText value="Idade:" styleClass="col-sm-2 control-label"/> 
+										<div class="col-sm-10">
+											<h:inputText label="Idade" styleClass="form-control" maxlength="3" value="#{jogadorController.view.jogador.idade}" />
+										</div >
+									</div>
+									<div class="form-group">
+										<h:outputText value="Período:" styleClass="col-sm-2 control-label" /> 
+										<div class="col-sm-10">
+											<h:inputText label="Periodo" styleClass="form-control"  maxlength="1" value="#{jogadorController.view.jogador.periodo}" />
+										</div>
+									</div>
+										<h:commandLink action="salvar" style="margin-right: 15px;" styleClass="btn btn-primary"  value="salvar" actionListener="#{jogadorController.salvar()}" />
+										<h:commandLink action="buscar" style="margin-left: 15px;" styleClass="btn btn-primary" value="Buscar" actionListener="#{jogadorController.buscar()}" />
 								</h:form>
 							</div>
 						</div>
