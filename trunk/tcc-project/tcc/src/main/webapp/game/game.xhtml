@@ -6,124 +6,156 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
-
-<h:head>
-	<script src="../resources/js/jquery-2.1.1.min.js"></script>
-	<script src="../resources/js/jquery-ui.js"></script>
-	<script src="../resources/js/jquery-ui.min.js"></script>
-	<script src="../resources/js/objeto.js"></script>
-	<script src="../resources/js/game.js"></script>
-	<link rel="stylesheet" type="text/css" href="../resources/css/gamestyle.css" />
-</h:head>
-
 <body>
-	<h:form id="idForm" prependId="false"  >
-		<ui:param name="controller" value="#{gameController}" />
-		<ui:param name="view" value="#{gameControllerView}" />
-		<a4j:outputPanel style="display:none" id="camposHidden">
-			<h:inputHidden id="peaoId" value="#{gameController.view.idPeao}"/>
-			<h:inputHidden id="jogadorNome" value="#{gameController.view.nome}"/>
-			<h:inputHidden id="peaoPodeAndar" value="#{gameController.view.podeAndar}" />
-			<h:inputHidden id="peaoPosicaoAtual" value="#{gameController.view.posicaoAtual}" />
-			<h:inputHidden id="peaoProximaPosicao" value="#{gameController.view.proximaPosicao}" />
-		</a4j:outputPanel>
-		<div id="divTabuleiro">
-			<div>
-				<img id="jogador1" src="../resources/images/ui-bg_diagonals-thick_18_b81900_40x40.png"	alt="botão1" /> 
-				<img id="jogador2" src="../resources/images/ui-bg_diagonals-thick_20_666666_40x40.png" alt="botão2" />
+<ui:composition template="../templates/template.xhtml">
+	 	<ui:define name="content">
+	 	<div class="content">
+		 	<div class="row">
+				<div class="col-md-12">
+					<div class="tela">
+						<h:form id="idForm" prependId="false"  >
+							<ui:param name="controller" value="#{gameController}" />
+							<ui:param name="view" value="#{gameControllerView}" />
+							<a4j:outputPanel style="display:none" id="camposHidden">
+								<h:inputHidden id="peaoId" value="#{gameController.view.idPeao}"/>
+								<h:inputHidden id="jogadorNome" value="#{gameController.view.nome}"/>
+								<h:inputHidden id="peaoPodeAndar" value="#{gameController.view.podeAndar}" />
+								<h:inputHidden id="peaoPosicaoAtual" value="#{gameController.view.posicaoAtual}" />
+								<h:inputHidden id="peaoProximaPosicao" value="#{gameController.view.proximaPosicao}" />
+							</a4j:outputPanel>
+							<div id="divTabuleiro">
+								<div>
+										<img id="jogador1" src="/tcc/resources/img/peao-preto.png"	alt="botão1" /> 
+										<img id="jogador2" src="/tcc/resources/img/peao-azul.png" alt="botão2" />
+										<img id="jogador3" src="/tcc/resources/img/peao-rosa.png" alt="botão3" />
+										<img id="jogador4" src="/tcc/resources/img/peao-verde.png" alt="botão4" />
+										<img id="jogador5" src="/tcc/resources/img/peao-amarelo.png" alt="botão5" />
+									</div>
+								<table id="idTabuleiro" border="1px;" class="tabela">
+									<tr>
+										<td id="casa40" class="casaInativa">Start<br/>Finish</td>
+										<td id="casa1" class="casaEspecial">1</td>
+										<td id="casa2" class="casaInativa">2</td>
+										<td id="casa3" class="casaInativa">3</td>
+										<td id="casa4" class="casaInativa">4</td>
+										<td id="casa5" class="casaInativa">5</td>
+										<td id="casa6" class="casaEspecial">6</td>
+										<td id="casa7" class="casaInativa">7</td>
+										<td id="casa8" class="casaInativa">8</td>
+										<td id="casa9" class="casaInativa">9</td>
+										<td id="casa10" class="casaInativa">10</td>
+										<td id="casa11" class="casaInativa">11</td>
+										<td id="casa12" class="casaEspecial">12</td>
+										<td id="casa13" class="casaInativa">13</td>
+										<td id="casa14" class="casaInativa">14</td>
+									</tr>
+									<tr>
+										<td id="casa39" class="casaInativa">39</td>
+										<td id="centro" class="centro" rowspan="5" colspan="13">
+											<a4j:outputPanel id="painelPergunta">
+												<rich:panel rendered="#{gameController.mostraPergunta}">
+														<h:inputHidden value="#{gameController.view.pergunta.id}" />
+														<h:outputLabel id="pergunta"  value="#{gameController.view.pergunta.descricao}"/>
+														<h:selectOneRadio styleClass="reposta" immediate="false"	value="#{gameController.view.repostaEscolhida}" border="0">
+															<f:selectItems value="#{gameController.view.pergunta.respostas}" var="resposta" itemLabel="#{resposta.descricao}" itemValue="#{resposta.descricao}" />
+														</h:selectOneRadio>
+					
+														<a4j:commandButton value="Responder" actionListener="#{gameController.responder()}" render="painelPopPup painelPergunta camposHidden"/>
+												</rich:panel> 
+											</a4j:outputPanel>
+											<h2 class="pergunta">Lorem ipsum Pergunta</h2>
+												<h4 class="resposta">Lorem ipsum Resposta</h4>
+												<button type="button" data-toggle="modal" data-target="#modal_resultado" class="btn btn-primary btn-lg">Parabéns</button>
+										</td>
+										<td id="casa15" class="casaInativa">15</td>
+									</tr>
+									<tr>
+										<td id="casa38" class="casaInativa">38</td>
+										<td id="casa16" class="casaInativa">16</td>
+									</tr>
+									<tr>
+										<td id="casa37" class="casaInativa">37</td>
+										<td id="casa17" class="casaInativa">17</td>
+									</tr>
+									<tr>
+										<td id="casa36" class="casaEspecial">36</td>
+										<td id="casa18" class="casaEspecial">18</td>
+									</tr>
+									<tr>
+										<td id="casa35" class="casaInativa">35</td>
+										<td id="casa19" class="casaInativa">19</td>
+									</tr>
+					
+									<tr>
+										<td id="casa34" class="casaInativa">34</td>
+										<td id="casa33" class="casaInativa">33</td>
+										<td id="casa32" class="casaInativa">32</td>
+										<td id="casa31" class="casaInativa">31</td>
+										<td id="casa30" class="casaEspecial">30</td>
+										<td id="casa29" class="casaInativa">29</td>
+										<td id="casa28" class="casaInativa">28</td>
+										<td id="casa27" class="casaInativa">27</td>
+										<td id="casa26" class="casaInativa">26</td>
+										<td id="casa25" class="casaInativa">25</td>
+										<td id="casa24" class="casaEspecial">24</td>
+										<td id="casa23" class="casaInativa">23</td>
+										<td id="casa22" class="casaInativa">22</td>
+										<td id="casa21" class="casaInativa">21</td>
+										<td id="casa20" class="casaInativa">20</td>
+									</tr>
+								</table>
+							</div>
+							<br />
+							<a4j:commandButton  value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden" styleClass="btn btn-primary btn-lg"></a4j:commandButton>
+							<a4j:outputPanel id="painelPopPup">
+							<rich:popupPanel id="popup" resizeable="false" modal="true" autosized="true" rendered="#{gameController.mostraPoPup}" show="true">
+								<rich:panel rendered="#{gameController.acertou and gameController.mostraPoPup}">
+									<f:facet name="header">
+										<h:outputText value="Parabéns #{gameController.view.nome} você acertou!" />
+									</f:facet>
+										<h:outputText value="Uhhuuuu!!! vá para a casa #{gameController.view.proximaPosicao}" />
+									<a4j:commandButton value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide(); moverPeca();"/>
+								</rich:panel>
+								<rich:panel rendered="#{!gameController.acertou and gameController.mostraPoPup}">	
+									<f:facet name="header">
+										<h:outputText value="Que pena #{gameController.view.nome} você errou!" />
+									</f:facet>
+										<h:outputText value="Permaneça na casa #{gameController.view.posicaoAtual}" />
+									
+									<a4j:commandButton value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide();" />
+								</rich:panel>
+							</rich:popupPanel>
+							</a4j:outputPanel>	
+						</h:form>
+					</div>
+				</div>
 			</div>
-			<table id="idTabuleiro" border="1px;" class="tabela">
-				<tr>
-					<td id="casa40" class="casaInativa">Start<br/>Finish</td>
-					<td id="casa1" class="casaEspecial">1</td>
-					<td id="casa2" class="casaInativa">2</td>
-					<td id="casa3" class="casaInativa">3</td>
-					<td id="casa4" class="casaInativa">4</td>
-					<td id="casa5" class="casaInativa">5</td>
-					<td id="casa6" class="casaInativa">6</td>
-					<td id="casa7" class="casaInativa">7</td>
-					<td id="casa8" class="casaInativa">8</td>
-					<td id="casa9" class="casaInativa">9</td>
-					<td id="casa10" class="casaInativa">10</td>
-					<td id="casa11" class="casaEspecial">11</td>
-					<td id="casa12" class="casaInativa">12</td>
-					<td id="casa13" class="casaInativa">13</td>
-					<td id="casa14" class="casaInativa">14</td>
-				</tr>
-				<tr>
-					<td id="casa39" class="casaInativa">39</td>
-					<td id="centro" class="centro" rowspan="5" colspan="13">
-						<a4j:outputPanel id="painelPergunta">
-							<rich:panel rendered="#{gameController.mostraPergunta}">
-									<h:inputHidden value="#{gameController.view.pergunta.id}" />
-									<h:outputLabel id="pergunta"  value="#{gameController.view.pergunta.descricao}"/>
-									<h:selectOneRadio styleClass="reposta" immediate="false"	value="#{gameController.view.repostaEscolhida}" border="0">
-										<f:selectItems value="#{gameController.view.pergunta.respostas}" var="resposta" itemLabel="#{resposta.descricao}" itemValue="#{resposta.descricao}" />
-									</h:selectOneRadio>
-
-									<a4j:commandButton value="Responder" actionListener="#{gameController.responder()}" render="painelPopPup painelPergunta camposHidden"/>
-							</rich:panel> 
-						</a4j:outputPanel>
-					</td>
-					<td id="casa15" class="casaInativa">15</td>
-				</tr>
-				<tr>
-					<td id="casa38" class="casaInativa">38</td>
-					<td id="casa16" class="casaInativa">16</td>
-				</tr>
-				<tr>
-					<td id="casa37" class="casaInativa">37</td>
-					<td id="casa17" class="casaInativa">17</td>
-				</tr>
-				<tr>
-					<td id="casa36" class="casaInativa">36</td>
-					<td id="casa18" class="casaInativa">18</td>
-				</tr>
-				<tr>
-					<td id="casa35" class="casaEspecial">35</td>
-					<td id="casa19" class="casaInativa">19</td>
-				</tr>
-
-				<tr>
-					<td id="casa34" class="casaInativa">34</td>
-					<td id="casa33" class="casaInativa">33</td>
-					<td id="casa32" class="casaInativa">32</td>
-					<td id="casa31" class="casaInativa">31</td>
-					<td id="casa30" class="casaInativa">30</td>
-					<td id="casa29" class="casaInativa">29</td>
-					<td id="casa28" class="casaInativa">28</td>
-					<td id="casa27" class="casaEspecial">27</td>
-					<td id="casa26" class="casaInativa">26</td>
-					<td id="casa25" class="casaInativa">25</td>
-					<td id="casa24" class="casaInativa">24</td>
-					<td id="casa23" class="casaInativa">23</td>
-					<td id="casa22" class="casaInativa">22</td>
-					<td id="casa21" class="casaInativa">21</td>
-					<td id="casa20" class="casaEspecial">20</td>
-				</tr>
-			</table>
 		</div>
-		<br />
-		<a4j:commandButton  value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden" ></a4j:commandButton>
-		<a4j:outputPanel id="painelPopPup">
-		<rich:popupPanel id="popup" resizeable="false" modal="true" autosized="true" rendered="#{gameController.mostraPoPup}" show="true">
-			<rich:panel rendered="#{gameController.acertou and gameController.mostraPoPup}">
-				<f:facet name="header">
-					<h:outputText value="Parabéns #{gameController.view.nome} você acertou!" />
-				</f:facet>
-					<h:outputText value="Uhhuuuu!!! vá para a casa #{gameController.view.proximaPosicao}" />
-				<a4j:commandButton value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide(); moverPeca();"/>
-			</rich:panel>
-			<rich:panel rendered="#{!gameController.acertou and gameController.mostraPoPup}">	
-				<f:facet name="header">
-					<h:outputText value="Que pena #{gameController.view.nome} você errou!" />
-				</f:facet>
-					<h:outputText value="Permaneça na casa #{gameController.view.posicaoAtual}" />
-				
-				<a4j:commandButton value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide();" />
-			</rich:panel>
-		</rich:popupPanel>
-		</a4j:outputPanel>	
-	</h:form>
+		
+		
+			<!-- modal -->
+			<div class="modal fade" id="modal_resultado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+				  <div class="modal-content">
+		
+					<div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+					  <h4 class="modal-title" id="myModalLabel">Resultado</h4>
+					</div>
+					<div class="modal-body">
+						<h2>Título</h2>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					</div>
+					
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					</div>
+		
+				  </div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			  </div>
+			<!-- /modal -->
+		</ui:define>
+	</ui:composition>
 </body>
 </html>

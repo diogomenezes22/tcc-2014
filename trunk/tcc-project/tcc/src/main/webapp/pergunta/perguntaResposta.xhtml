@@ -4,31 +4,38 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:rich="http://richfaces.org/rich"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-
-<h:head>
-	<script src="../resources/js/jquery-2.1.1.min.js"></script>
-	<title>Quiz Game - Pergunta</title>
-</h:head> 
 	<body>
-<h:form id="perguntaRespForm">
-	<rich:panel id="panelPergunta" >
-		<h:outputText value="Pergunta: " /> <h:inputText  label="Nome" maxlength="100" value="#{perguntaRespostaController.pergunta.descricao}" />
-		<br/>	
-		<h:outputText value="Marque uma alternativa correta para pergunta:" /><br/>
-		<ui:repeat var="resposta" value="#{perguntaRespostaController.pergunta.respostas}" size="4" >
-			<h:outputText value="Resposta:" />
-			<h:inputText  label="Reposta " maxlength="100" value="#{resposta.descricao}" />
-			<h:selectOneRadio value="#{resposta.correta}" onclick="desmarcarOutrosRadios(this);">
-				<f:selectItem itemLabel="Correta:" itemValue="C" />
-			</h:selectOneRadio>
-			
-		</ui:repeat>
-		<br/>		
-	</rich:panel>
-		<h:commandButton action="salvar" value="salvar" actionListener="#{perguntaRespostaController.salvar()}" />
-		<br/>
-		<h:commandButton action="buscar" value="Buscar" actionListener="#{perguntaRespostaController.buscar()}" />
-</h:form>
+	<ui:composition template="../templates/templatesemheader.xhtml">
+	 	<ui:define name="content">
+		    <div class="container">			  
+					<div class="row">
+						<div class="col-md-12">
+							<div class="home">
+								<h:form id="perguntaRespForm">
+									<rich:panel id="panelPergunta" >
+										<h:outputText value="Pergunta: " /> <h:inputText  label="Nome" maxlength="100" value="#{perguntaRespostaController.pergunta.descricao}" />
+										<br/>	
+										<h:outputText value="Marque uma alternativa correta para pergunta:" /><br/>
+										<ui:repeat var="resposta" value="#{perguntaRespostaController.pergunta.respostas}" size="4" >
+											<h:outputText value="Resposta:" />
+											<h:inputText  label="Reposta " maxlength="100" value="#{resposta.descricao}" />
+											<h:selectOneRadio value="#{resposta.correta}" onclick="desmarcarOutrosRadios(this);">
+												<f:selectItem itemLabel="Correta:" itemValue="C" />
+											</h:selectOneRadio>
+											
+										</ui:repeat>
+										<br/>		
+									</rich:panel>
+										<h:commandButton action="salvar" value="salvar" actionListener="#{perguntaRespostaController.salvar()}" />
+										<br/>
+										<h:commandButton action="buscar" value="Buscar" actionListener="#{perguntaRespostaController.buscar()}" />
+								</h:form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ui:define>
+		</ui:composition>
 
 	<script type="text/javascript">
 		function desmarcarOutrosRadios(radio){

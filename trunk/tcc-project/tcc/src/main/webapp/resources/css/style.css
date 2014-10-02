@@ -1,0 +1,95 @@
+ @charset "utf-8";
+
+/*
+	Project Name: Game Quiz EZ
+	Description: 
+	Version: 1.0
+	Author: 
+	Author URI: 
+	Tags: 
+
+	License: MIT
+	License URI: http://opensource.org/licenses/mit-license.php
+*/
+
+/*------------------------------------*\
+    main
+\*------------------------------------*/
+body {
+	background: url(../img/bg.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+/*------------------------------------*\
+    home
+\*------------------------------------*/
+.home {
+	padding-top: 12em
+}
+.home button {
+	text-transform: uppercase;
+	padding: 0.5em 3em;
+	margin-top: 1em
+}
+
+header {
+	background: #1eb1ee;
+	width: 100%;
+	height: 4.5em;
+	
+	-moz-box-shadow: 0 0 6px 1px rgba(0, 0, 0, .3);
+		-webkit-box-shadow: 0 0 6px 1px rgba(0, 0, 0, .3);
+			box-shadow: 0 0 6px 1px rgba(0, 0, 0, .3);	
+}
+header p,
+header h4 {
+	margin: 0;
+	color: #fff
+}
+header p {
+	margin-top: 1em;
+	color: #095676
+}
+.logo-header {
+	margin-top: 1.2em
+}
+
+/*------------------------------------*\
+    tela
+\*------------------------------------*/
+.tela {
+	margin-top: 4em;
+	position: relative;
+	margin: 0 auto;
+	width: 100%
+}
+.tela .pergunta {
+	color: #1eb1ee !important
+}
+
+.tela .resposta {
+	color: #20a924 !important;
+	margin-bottom: 2em
+}
+
+/*------------------------------------*\
+    Media Querye
+\*------------------------------------*/
+@media only screen and (max-width: 62em) {
+	header {
+		height: 5em
+	}
+
+}
+@media only screen and (max-width: 52em) {
+	header {
+		height: 5em
+	}
+	.logo-header {
+		display:none
+	}
+
+}

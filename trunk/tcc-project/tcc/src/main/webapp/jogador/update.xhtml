@@ -4,20 +4,29 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:rich="http://richfaces.org/rich"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-
-	<ui:composition template="">
-	</ui:composition>
 	<body>
-<h:form id="jogadorForm">
-	<rich:panel id="UpdatePanel">			
-		<h:outputText value="Nome:" /> <h:inputText  label="Nome" maxlength="50" required="true" value="#{jogadorController.view.jogador.nome}" />
-		<br/>	
-		<h:outputText value="Idade:" /> <h:inputText label="Idade" maxlength="3" required="true" value="#{jogadorController.view.jogador.idade}" />
-		<br/>
-		<h:outputText value="Período:" /> <h:inputText label="Periodo" maxlength="1" required="true" value="#{jogadorController.view.jogador.periodo}" />
-	</rich:panel>
-		<h:commandButton action="buscar" value="Buscar" actionListener="#{jogadorController.buscar()}" />
-		<!-- h:commandButton action="atualizar" value="Atualizar" actionListener="#{jogadorController.atualizar()}" /-->
-</h:form>
+	<ui:composition template="../templates/templatesemheader.xhtml">
+	 	<ui:define name="content">
+		    <div class="container">			  
+					<div class="row">
+						<div class="col-md-12">
+							<div class="home">
+								<h:form id="jogadorForm">
+									<rich:panel id="UpdatePanel">			
+										<h:outputText value="Nome:" /> <h:inputText  label="Nome" maxlength="50" required="true" value="#{jogadorController.view.jogador.nome}" />
+										<br/>	
+										<h:outputText value="Idade:" /> <h:inputText label="Idade" maxlength="3" required="true" value="#{jogadorController.view.jogador.idade}" />
+										<br/>
+										<h:outputText value="Período:" /> <h:inputText label="Periodo" maxlength="1" required="true" value="#{jogadorController.view.jogador.periodo}" />
+									</rich:panel>
+										<h:commandButton action="buscar" value="Buscar" actionListener="#{jogadorController.buscar()}" />
+										<!-- h:commandButton action="atualizar" value="Atualizar" actionListener="#{jogadorController.atualizar()}" /-->
+								</h:form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ui:define>
+		</ui:composition>
 </body>
 </html>
