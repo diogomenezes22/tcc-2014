@@ -122,7 +122,7 @@
 									</f:facet>
 										<h:outputText value="Permaneça na casa #{gameController.view.posicaoAtual}" />
 									
-									<a4j:commandButton value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide();" />
+									<a4j:commandLink styleClass="btn btn-primary" value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide();" />
 								</rich:panel>
 							</rich:popupPanel>
 							</a4j:outputPanel>	
