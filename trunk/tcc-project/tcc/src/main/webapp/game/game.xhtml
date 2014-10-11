@@ -59,11 +59,9 @@
 
 														<ui:repeat var="resposta" value="#{gameController.view.pergunta.respostas}">
 															<div class="radio">
-																<h4><input type="radio" id="#{resposta.id}idresp" onclick="desmarcarOutrosRadios(this)" /><label class="resposta" for="#{resposta.id}idresp">#{resposta.descricao}</label></h4>
+																<h4><input data-toggle="modal" data-target="#modal_confirmacao" type="radio" id="#{resposta.id}idresp" onclick="desmarcarOutrosRadios(this)" /><label class="resposta" for="#{resposta.id}idresp">#{resposta.descricao}</label></h4>
 															</div>
 														</ui:repeat>
-					
-														<a4j:commandButton value="Responder" action="#{gameController.responder()}" render="painelPopPup painelPergunta camposHidden"/>
 												</rich:panel> 
 											</a4j:outputPanel>
 										</td>
@@ -107,53 +105,27 @@
 							</div>
 							<br />
 							
-							<a4j:commandButton  value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden" styleClass="btn btn-primary btn-lg"></a4j:commandButton>
-							
-							<a4j:outputPanel id="painelPopPup">
-							<rich:popupPanel id="popup" resizeable="false" modal="true" autosized="true" rendered="#{gameController.mostraPoPup}" show="true">
-								<rich:panel rendered="#{gameController.acertou and gameController.mostraPoPup}">
-									<f:facet name="header">
-										<h:outputText value="Parabéns #{gameController.view.nome} você acertou!" />
-									</f:facet>
-										<h:outputText value="Uhhuuuu!!! vá para a casa #{gameController.view.proximaPosicao}" />
-									<a4j:commandButton value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide(); moverPeca();"/>
-								</rich:panel>
-								<rich:panel rendered="#{!gameController.acertou and gameController.mostraPoPup}">	
-									<f:facet name="header">
-										<h:outputText value="Que pena #{gameController.view.nome} você errou!" />
-									</f:facet>
-										<h:outputText value="Permaneça na casa #{gameController.view.posicaoAtual}" />
-									
-									<a4j:commandLink styleClass="btn btn-primary" value="OK" render="camposHidden" actionListener="#{gameController.passaVez()}"	onclick="#{rich:component('popup')}.hide();" />
-								</rich:panel>
-							</rich:popupPanel>
-							</a4j:outputPanel>	
+							<a4j:commandLink value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden" styleClass="btn btn-primary"/>
 						</h:form>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		<button type="button" data-toggle="modal" data-target="#modal_resultado" class="btn btn-primary btn-lg">Parabéns</button>
-		
 			<!-- modal -->
-			<div class="modal fade" id="modal_resultado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal fade" id="modal_confirmacao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 				  <div class="modal-content">
 		
 					<div class="modal-header">
 					  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-					  <h4 class="modal-title" id="myModalLabel">Resultado</h4>
+					  <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
 					</div>
 					<div class="modal-body">
-						<h2>Título</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+						<h4>Tem certeza que sua resposta está correta ?</h4>
+						<a4j:commandLink styleClass="btn btn-default" value="Enviar" action="#{gameController.responder()}" render="painelPopPup painelPergunta camposHidden"/>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 					</div>
 					
-					<div class="modal-footer">
-					  <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-					</div>
-		
 				  </div><!-- /.modal-content -->
 				</div><!-- /.modal-dialog -->
 			  </div>
