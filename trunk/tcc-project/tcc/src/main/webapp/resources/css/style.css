@@ -27,7 +27,7 @@ body {
     home
 \*------------------------------------*/
 .home {
-	padding-top: 12em
+	padding-top: 4em;
 }
 .home button {
 	text-transform: uppercase;
@@ -73,6 +73,18 @@ header p {
 .tela .resposta {
 	color: #20a924 !important;
 	margin-bottom: 2em
+}
+
+.container a{
+	color: white !important;
+}
+
+h1 {
+	font-family: Old English Text MT, Algerian, Cooper Black;
+	font-size: 35px;
+	color: #333;
+	text-align: center;
+	
 }
 
 /*------------------------------------*\
