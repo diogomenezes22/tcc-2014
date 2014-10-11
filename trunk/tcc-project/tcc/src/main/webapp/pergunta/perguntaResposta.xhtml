@@ -38,17 +38,5 @@
 				</div>
 			</ui:define>
 		</ui:composition>
-
-	<script type="text/javascript">
-		function desmarcarOutrosRadios(radio){
-			alert($(radio).attr('id'));
-			$('input:radio').each(function(){
-				if($(this).attr('id') != $(radio).attr('id')){
-					$(this).prop('checked', false);
-					}
-				});
-		}
-	
-	</script>
 </body>
 </html>
