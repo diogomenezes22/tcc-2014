@@ -43,5 +43,10 @@ function desmarcarOutrosRadios(radio){
 		});
 }
 
+function prencherRespostaEscolhida(){
+	resposta = $( "input:checked" ).attr('id').replace('idresp', '');
+	$("#respostaEscolhida").val(resposta);
+}
+
 
 
