@@ -1,9 +1,6 @@
 /**
  *  Game Control
  */
-$( document ).ready(function(){
-	
-});
  
 function andar(idJogador, idCasa, andar){
 	for(var i = 0; i < andar; i++ ){
@@ -37,5 +34,14 @@ function moverPeca(){
 		andar(jogadorAtual.id, jogadorAtual.idCasa, passos);
 	}	
 }
+
+function desmarcarOutrosRadios(radio){
+	$('input:radio').each(function(){
+		if($(this).attr('id') != $(radio).attr('id')){
+			$(this).prop('checked', false);
+			}
+		});
+}
+
 
 

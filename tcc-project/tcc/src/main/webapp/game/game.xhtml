@@ -53,19 +53,19 @@
 										<td id="casa39" class="casaInativa">39</td>
 										<td id="centro" class="centro" rowspan="5" colspan="13">
 											<a4j:outputPanel id="painelPergunta">
-												<rich:panel rendered="#{gameController.mostraPergunta}">
+												<rich:panel style="border:0px" rendered="#{gameController.mostraPergunta}">
 														<h:inputHidden value="#{gameController.view.pergunta.id}" />
-														<h:outputLabel id="pergunta"  value="#{gameController.view.pergunta.descricao}"/>
-														<h:selectOneRadio styleClass="reposta" immediate="false"	value="#{gameController.view.repostaEscolhida}" border="0">
-															<f:selectItems value="#{gameController.view.pergunta.respostas}" var="resposta" itemLabel="#{resposta.descricao}" itemValue="#{resposta.descricao}" />
-														</h:selectOneRadio>
+														<h1><h:outputLabel styleClass="pergunta" id="pergunta"  value="#{gameController.view.pergunta.descricao}"/></h1>
+
+														<ui:repeat var="resposta" value="#{gameController.view.pergunta.respostas}">
+															<div class="radio">
+																<h4><input type="radio" id="#{resposta.id}idresp" onclick="desmarcarOutrosRadios(this)" /><label class="resposta" for="#{resposta.id}idresp">#{resposta.descricao}</label></h4>
+															</div>
+														</ui:repeat>
 					
-														<a4j:commandButton value="Responder" actionListener="#{gameController.responder()}" render="painelPopPup painelPergunta camposHidden"/>
+														<a4j:commandButton value="Responder" action="#{gameController.responder()}" render="painelPopPup painelPergunta camposHidden"/>
 												</rich:panel> 
 											</a4j:outputPanel>
-											<h2 class="pergunta">Lorem ipsum Pergunta</h2>
-												<h4 class="resposta">Lorem ipsum Resposta</h4>
-												<button type="button" data-toggle="modal" data-target="#modal_resultado" class="btn btn-primary btn-lg">Parabéns</button>
 										</td>
 										<td id="casa15" class="casaInativa">15</td>
 									</tr>
@@ -106,7 +106,9 @@
 								</table>
 							</div>
 							<br />
+							
 							<a4j:commandButton  value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden" styleClass="btn btn-primary btn-lg"></a4j:commandButton>
+							
 							<a4j:outputPanel id="painelPopPup">
 							<rich:popupPanel id="popup" resizeable="false" modal="true" autosized="true" rendered="#{gameController.mostraPoPup}" show="true">
 								<rich:panel rendered="#{gameController.acertou and gameController.mostraPoPup}">
@@ -132,6 +134,7 @@
 			</div>
 		</div>
 		
+		<button type="button" data-toggle="modal" data-target="#modal_resultado" class="btn btn-primary btn-lg">Parabéns</button>
 		
 			<!-- modal -->
 			<div class="modal fade" id="modal_resultado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
