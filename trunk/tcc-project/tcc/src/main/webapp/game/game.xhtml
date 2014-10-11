@@ -22,6 +22,7 @@
 								<h:inputHidden id="peaoPodeAndar" value="#{gameController.view.podeAndar}" />
 								<h:inputHidden id="peaoPosicaoAtual" value="#{gameController.view.posicaoAtual}" />
 								<h:inputHidden id="peaoProximaPosicao" value="#{gameController.view.proximaPosicao}" />
+								<h:inputHidden id="respostaEscolhida" value="#{gameController.view.repostaEscolhida}" />
 							</a4j:outputPanel>
 							<div id="divTabuleiro">
 								<div>
@@ -59,7 +60,7 @@
 
 														<ui:repeat var="resposta" value="#{gameController.view.pergunta.respostas}">
 															<div class="radio">
-																<h4><input data-toggle="modal" data-target="#modal_confirmacao" type="radio" id="#{resposta.id}idresp" onclick="desmarcarOutrosRadios(this)" /><label class="resposta" for="#{resposta.id}idresp">#{resposta.descricao}</label></h4>
+																<h4><input data-toggle="modal" data-target="#modal_confirmacao" type="radio" id="#{resposta.id}idresp" onclick="desmarcarOutrosRadios(this); prencherRespostaEscolhida();" /><label class="resposta" for="#{resposta.id}idresp">#{resposta.descricao}</label></h4>
 															</div>
 														</ui:repeat>
 												</rich:panel> 
@@ -106,30 +107,53 @@
 							<br />
 							
 							<a4j:commandLink value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden" styleClass="btn btn-primary"/>
+						
+							<!-- modal COnfirmação-->
+							<div class="modal fade" id="modal_confirmacao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+								  <div class="modal-content">
+						
+									<div class="modal-header">
+									  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+									  <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
+									</div>
+									<div class="modal-body">
+										<h4>Tem certeza que sua resposta está correta ?</h4>
+										<h:commandLink styleClass="btn btn-default" value="Enviar" actionListener="#{gameController.responder()}" render="painelPopPup painelPergunta camposHidden"/>
+										<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+									</div>
+									
+								  </div><!-- /.modal-content -->
+								</div><!-- /.modal-dialog -->
+							  </div>
+							<!-- /modal confirmação-->
+							
+							<!-- modal errou-->
+							<div class="modal fade" id="modal_errou" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+								  <div class="modal-content">
+						
+									<div class="modal-header">
+									  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+									  <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
+									</div>
+									<div class="modal-body">
+										<h4>Tem certeza que sua resposta está correta ?</h4>
+										<h:commandLink styleClass="btn btn-default" value="Enviar" actionListener="#{gameController.responder()}" render="painelPopPup painelPergunta camposHidden"/>
+										<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+									</div>
+									
+								  </div><!-- /.modal-content -->
+								</div><!-- /.modal-dialog -->
+							  </div>
+							<!-- /modal errou-->
+							
 						</h:form>
 					</div>
 				</div>
 			</div>
 		</div>
-			<!-- modal -->
-			<div class="modal fade" id="modal_confirmacao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-				  <div class="modal-content">
-		
-					<div class="modal-header">
-					  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-					  <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
-					</div>
-					<div class="modal-body">
-						<h4>Tem certeza que sua resposta está correta ?</h4>
-						<a4j:commandLink styleClass="btn btn-default" value="Enviar" action="#{gameController.responder()}" render="painelPopPup painelPergunta camposHidden"/>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-					</div>
-					
-				  </div><!-- /.modal-content -->
-				</div><!-- /.modal-dialog -->
-			  </div>
-			<!-- /modal -->
+			
 		</ui:define>
 	</ui:composition>
 </body>

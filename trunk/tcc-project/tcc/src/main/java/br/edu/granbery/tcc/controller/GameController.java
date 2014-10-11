@@ -61,8 +61,6 @@ public class GameController implements Serializable {
 	}
 		
 	public void responder(){
-		Random r = new Random();
-		int numeroSorteado = r.nextInt(6) + 1;
 		if(verificaResposta()){
 			acertou = true;
 			preencherCamposHidden(view.getJogadorAtual());
