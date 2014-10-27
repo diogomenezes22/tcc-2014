@@ -1,27 +1,31 @@
 package br.edu.granbery.tcc.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 public class Casa implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 49080706487491416L;
+	private static final long serialVersionUID = 49080706487491416L;	
 	
-	private int id;
 	private String tipo;
+	private Set<Jogador> jogadores;	
 	
+	public Casa(String tipo){
+		this.tipo = tipo;
+	}
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getTipo() {
 		return tipo;
 	}
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+	public Set<Jogador> getJogadores() {
+		return jogadores;
+	}
+	public void setJogadores(Set<Jogador> jogadores) {
+		this.jogadores = jogadores;
 	}	
 }
