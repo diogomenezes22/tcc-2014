@@ -1,8 +1,6 @@
 package br.edu.granbery.tcc.manager;
 
 import java.io.Serializable;
-
-import java.util.Collections;
 import java.util.List;
 
 import javax.ejb.Stateless;

@@ -83,4 +83,12 @@ public class Jogador implements Serializable, SampleEntity{
 		return true;
 	}
 	
+	public Jogador(){
+		
+	}
+	
+	public Jogador(String nome){
+		this.nome = nome;
+	}
+	
 }
