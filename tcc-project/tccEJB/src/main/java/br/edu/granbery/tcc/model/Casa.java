@@ -1,6 +1,7 @@
 package br.edu.granbery.tcc.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Casa implements Serializable{
@@ -10,7 +11,7 @@ public class Casa implements Serializable{
 	private static final long serialVersionUID = 49080706487491416L;	
 	
 	private String tipo;
-	private Set<Jogador> jogadores;	
+	private Set<Jogador> jogadores = new HashSet<Jogador>();	
 	
 	public Casa(String tipo){
 		this.tipo = tipo;

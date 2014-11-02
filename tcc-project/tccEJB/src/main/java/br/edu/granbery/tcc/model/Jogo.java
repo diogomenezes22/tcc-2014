@@ -1,6 +1,7 @@
 package br.edu.granbery.tcc.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Jogo implements Serializable{
 	private Date dataInicio;
 	private Date dataFim;
 	private Tabuleiro tabuleiro;
-	private List<Pergunta> perguntas;
+	private List<Pergunta> perguntas = new ArrayList<Pergunta>();
 	private List<Jogador> jogadores;
 	
 	public Jogo(Tabuleiro tab, List<Jogador> jogadores){
@@ -86,7 +87,19 @@ public class Jogo implements Serializable{
 		return "";
 	}
 	
-	
+	@Transient
+	public Jogador passaVez(Jogador jogadorAtual){
+		for(int i=0; i < jogadores.size(); i++){
+			if(jogadorAtual.equals(jogadores.get(i))){
+				if(i == (jogadores.size()-1)){
+					return jogadores.get(0);
+				}else{
+					return jogadores.get(i+1);
+				}
+			}
+		}
+		return null;
+	}
 	
 //	public  static void Main(String[] args){
 //		List<Jogador> jogadores = new ArrayList<Jogador>();

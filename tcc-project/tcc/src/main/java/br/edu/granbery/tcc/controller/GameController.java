@@ -11,9 +11,11 @@ import br.edu.granbery.tcc.manager.JogadorManager;
 import br.edu.granbery.tcc.manager.PeaoManager;
 import br.edu.granbery.tcc.manager.PerguntaManager;
 import br.edu.granbery.tcc.model.Jogador;
+import br.edu.granbery.tcc.model.Jogo;
 import br.edu.granbery.tcc.model.Peao;
 import br.edu.granbery.tcc.model.Pergunta;
 import br.edu.granbery.tcc.model.Resposta;
+import br.edu.granbery.tcc.model.Tabuleiro;
 import br.edu.granbery.tcc.view.GameControllerView;
 
 @Named
@@ -39,11 +41,18 @@ public class GameController implements Serializable {
 	private boolean mostraPoPup;
 	private boolean acertou;
 	
+	
+	public GameController(){
+		
+	}
+	
 	@PostConstruct
 	public void load(){
-		try{
-		view.getJogo().setJogadores(jogadorManager.buscarQuemVaiJogar());
+		try{			
+		view.setJogo(new Jogo(new Tabuleiro(), jogadorManager.buscarQuemVaiJogar()));
 		view.setListaPeoes(peaoManager.buscarPeoesEmJogo());
+		view.setJogadorAtual(view.getJogo().getJogadores().get(0));
+		view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
 		mostraPoPup = false;
 		}catch(Exception e){
 			e.printStackTrace();
@@ -52,31 +61,31 @@ public class GameController implements Serializable {
 	}
 	
 	public void buscarPergunta(){
-		Pergunta pergunta = perguntaManager.buscarPerguntaAleatoria();
-		view.getPergunta().setDescricao(pergunta.getDescricao());
-		view.getPergunta().setRespostas(pergunta.getRespostas());
+		Pergunta pergunta = new Pergunta();
+		do{
+			pergunta = perguntaManager.buscarPerguntaAleatoria();		
+		}while(view.getJogo().getPerguntas().contains(pergunta));
+		view.setPergunta(pergunta);
 		mostraPergunta = true;
 	}
 		
 	public void responder(){
 		if(verificaResposta()){
 			acertou = true;
+			view.getJogo().getPerguntas().add(view.getPergunta());
 			preencherCamposHidden(view.getJogadorAtual());
+			Jogador proximoJogador = view.getJogo().passaVez(view.getJogadorAtual());
+			view.setJogadorAtual(proximoJogador);
+			view.setPeaoEmJogo(colocarPeaoEmJogo(proximoJogador));
 		}else{
 			acertou = false;
+			preencherCamposHidden(view.getJogadorAtual());
+			Jogador proximoJogador = view.getJogo().passaVez(view.getJogadorAtual());
+			view.setJogadorAtual(proximoJogador);
+			view.setPeaoEmJogo(colocarPeaoEmJogo(proximoJogador));
 		}
 		mostraPoPup = true;
 		mostraPergunta = false;
-	}
-	
-
-	public void passaVez(){
-		for(int i = 0; i < view.getJogo().getJogadores().size(); i++){
-			
-		}
-		
-		mostraPergunta = false;
-		mostraPoPup = false;
 	}
 		
 	public boolean verificaResposta(){
@@ -98,9 +107,12 @@ public class GameController implements Serializable {
 		
 	}
 	
-	
-	private void verificaFimJogo(Jogador jogador){
-		
+	private Peao colocarPeaoEmJogo(Jogador jogadorAtual){
+		for(Peao peao :view.getListaPeoes()){
+			if(peao.getJogador().equals(jogadorAtual))
+				return peao;
+		}
+		return null;
 	}
 	
 	public GameControllerView getView() {

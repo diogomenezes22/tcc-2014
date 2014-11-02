@@ -1,7 +1,6 @@
 package br.edu.granbery.tcc.view;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -11,7 +10,6 @@ import br.edu.granbery.tcc.model.Jogador;
 import br.edu.granbery.tcc.model.Jogo;
 import br.edu.granbery.tcc.model.Peao;
 import br.edu.granbery.tcc.model.Pergunta;
-import br.edu.granbery.tcc.model.Tabuleiro;
 
 
 @Named
@@ -23,16 +21,14 @@ public class GameControllerView implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Jogo jogo = new Jogo(new Tabuleiro(), new ArrayList<Jogador>());
-	private Pergunta pergunta = new Pergunta();	
+	private Jogo jogo;
+	private Pergunta pergunta;	
 	private String repostaEscolhida;
-	private Jogador jogadorAtual = new Jogador();
+	private Jogador jogadorAtual;
 	
 	//Controle Javascript muito Importante
 	private List<Peao> listaPeoes;
 	private Peao peaoEmJogo;
-	
-	
 	
 	public Jogo getJogo() {
 		return jogo;
