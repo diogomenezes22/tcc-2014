@@ -16,6 +16,7 @@ import br.edu.granbery.tcc.model.Peao;
 import br.edu.granbery.tcc.model.Pergunta;
 import br.edu.granbery.tcc.model.Resposta;
 import br.edu.granbery.tcc.model.Tabuleiro;
+import br.edu.granbery.tcc.util.FacesUtil;
 import br.edu.granbery.tcc.view.GameControllerView;
 
 @Named
@@ -77,12 +78,14 @@ public class GameController implements Serializable {
 			Jogador proximoJogador = view.getJogo().passaVez(view.getJogadorAtual());
 			view.setJogadorAtual(proximoJogador);
 			view.setPeaoEmJogo(colocarPeaoEmJogo(proximoJogador));
+			FacesUtil.mostrarMensagemSucesso("game.resposta.correta");
 		}else{
 			acertou = false;
 			preencherCamposHidden(view.getJogadorAtual());
 			Jogador proximoJogador = view.getJogo().passaVez(view.getJogadorAtual());
 			view.setJogadorAtual(proximoJogador);
 			view.setPeaoEmJogo(colocarPeaoEmJogo(proximoJogador));
+			FacesUtil.mostrarMensagemErro("game.resposta.errada");
 		}
 		mostraPoPup = true;
 		mostraPergunta = false;
