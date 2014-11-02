@@ -9,6 +9,29 @@
 <body>
 <ui:composition template="../templates/template.xhtml">
 	 	<ui:define name="content">
+	 	<script type="text/javascript">
+			$(function(){
+				$("#dice").dice();
+				$("#dice, #btn_randRoll").click(function(){
+					$("#dice").dice("roll", duRenato);	
+				});
+				$("#btn_roll").click(function(){
+					$("#dice").dice("roll", $("#rollValue").val(), alert); // TRETA DE ROUBAR
+				});
+
+				$("#btn_setSize").click(function(){
+					$("#dice").dice("option", {diceSize:parseInt($("#dur").val())});
+				});
+
+				$("#btn_setDuration").click(function(){
+					$("#dice").dice("option", {duration: 500});
+				});
+			});
+			
+			function duRenato(valor){
+				$("valorSorteado").val(valor);
+			}
+		</script>
 	 	<div class="content">
 		 	<div class="row">
 				<div class="col-md-12">
@@ -106,6 +129,10 @@
 							</div>
 							<br />
 							<a4j:commandLink id="bntPergunta"  value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden messages" styleClass="btn btn-primary" rendered="#{!gameController.mostraPergunta}"/>					
+							<div id="dice" style="width:100px; height:100px; background:#1eb1ee;"></div>
+							
+							
+							
 						</h:form>
 					</div>
 				</div>
