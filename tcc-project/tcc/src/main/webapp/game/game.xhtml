@@ -17,11 +17,11 @@
 							<ui:param name="controller" value="#{gameController}" />
 							<ui:param name="view" value="#{gameControllerView}" />
 							<a4j:outputPanel style="display:none" id="camposHidden">
-								<h:inputHidden id="peaoId" value="#{gameController.view.idPeao}"/>
-								<h:inputHidden id="jogadorNome" value="#{gameController.view.nome}"/>
-								<h:inputHidden id="peaoPodeAndar" value="#{gameController.view.podeAndar}" />
-								<h:inputHidden id="peaoPosicaoAtual" value="#{gameController.view.posicaoAtual}" />
-								<h:inputHidden id="peaoProximaPosicao" value="#{gameController.view.proximaPosicao}" />
+								<h:inputHidden id="peaoId" value="#{gameController.view.peaoEmJogo.descricao}"/>
+								<h:inputHidden id="jogadorNome" value="#{gameController.view.jogadorAtual.nome}"/>
+								<h:inputHidden id="peaoPodeAndar" value="#{gameController.view.peaoEmJogo.podeAndar}" />
+								<h:inputHidden id="peaoPosicaoAtual" value="#{gameController.view.peaoEmJogo.posicaoAtual}" />
+								<h:inputHidden id="peaoProximaPosicao" value="#{gameController.view.peaoEmJogo.proximaPosicao}" />
 								<h:inputHidden id="respostaEscolhida" value="#{gameController.view.repostaEscolhida}" />
 							</a4j:outputPanel>
 							<div id="divTabuleiro">

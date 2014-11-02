@@ -1,4 +1,4 @@
-package br.edu.granbery.tcc.util;
+package br.edu.granbery.tcc.model;
 
 public interface SampleEntity {
     Long getId();

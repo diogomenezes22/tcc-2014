@@ -1,7 +1,6 @@
 package br.edu.granbery.tcc.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

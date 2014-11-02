@@ -5,9 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 
-import br.edu.granbery.tcc.model.Jogador;
 import br.edu.granbery.tcc.model.Peao;
-import br.edu.granbery.tcc.model.Pergunta;
 
 
 @Stateless

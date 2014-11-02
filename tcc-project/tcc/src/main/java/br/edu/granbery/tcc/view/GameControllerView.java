@@ -2,12 +2,14 @@ package br.edu.granbery.tcc.view;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import br.edu.granbery.tcc.model.Jogador;
 import br.edu.granbery.tcc.model.Jogo;
+import br.edu.granbery.tcc.model.Peao;
 import br.edu.granbery.tcc.model.Pergunta;
 import br.edu.granbery.tcc.model.Tabuleiro;
 
@@ -26,45 +28,12 @@ public class GameControllerView implements Serializable{
 	private String repostaEscolhida;
 	private Jogador jogadorAtual = new Jogador();
 	
-	//variaveis para controle na parte javascript
-	private String idPeao;
-	private String nome;
-	private boolean podeAndar;
-	private int posicaoAtual;
-	private int proximaPosicao;
+	//Controle Javascript muito Importante
+	private List<Peao> listaPeoes;
+	private Peao peaoEmJogo;
 	
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public boolean isPodeAndar() {
-		return podeAndar;
-	}
-
-	public void setPodeAndar(boolean podeAndar) {
-		this.podeAndar = podeAndar;
-	}
-
-	public int getPosicaoAtual() {
-		return posicaoAtual;
-	}
-
-	public void setPosicaoAtual(int posicaoAtual) {
-		this.posicaoAtual = posicaoAtual;
-	}
-
-	public int getProximaPosicao() {
-		return proximaPosicao;
-	}
-
-	public void setProximaPosicao(int proximaPosicao) {
-		this.proximaPosicao = proximaPosicao;
-	}
-
+	
+	
 	public Jogo getJogo() {
 		return jogo;
 	}
@@ -97,11 +66,19 @@ public class GameControllerView implements Serializable{
 		this.jogadorAtual = jogadorAtual;
 	}
 
-	public String getIdPeao() {
-		return idPeao;
+	public List<Peao> getListaPeoes() {
+		return listaPeoes;
 	}
 
-	public void setIdPeao(String idPeao) {
-		this.idPeao = idPeao;
+	public void setListaPeoes(List<Peao> listaPeoes) {
+		this.listaPeoes = listaPeoes;
+	}
+
+	public Peao getPeaoEmJogo() {
+		return peaoEmJogo;
+	}
+
+	public void setPeaoEmJogo(Peao peaoEmJogo) {
+		this.peaoEmJogo = peaoEmJogo;
 	}
 }
