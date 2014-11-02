@@ -44,8 +44,6 @@ public class GameController implements Serializable {
 	public void load(){
 		try{
 		view.getJogo().setJogadores(jogadorManager.buscarQuemVaiJogar());
-		view.getJogo().setTabuleiro(new Tabuleiro());
-		view.getJogo().getTabuleiro().setPeoes(peaoManager.buscarPeoesEmJogo());
 		mostraPoPup = false;
 		}catch(Exception e){
 			e.printStackTrace();
