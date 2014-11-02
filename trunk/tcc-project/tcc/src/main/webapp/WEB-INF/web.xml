@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns="http://java.sun.com/xml/ns/javaee" 
-	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  
-  	<servlet>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
@@ -23,7 +23,7 @@
 	</servlet-mapping>
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
-		<param-value>Development</param-value>
+		<param-value>Production</param-value>
 	</context-param>
 	<!-- FIM CONFIGS JSF 2.2 -->
 
@@ -46,9 +46,10 @@
 	<login-config>
 		<auth-method>BASIC</auth-method>
 	</login-config>
-	
+
 	<listener>
-		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+		<listener-class>com.sun.faces.config.ConfigureListener
+		</listener-class>
 	</listener>
-	
+
 </web-app>

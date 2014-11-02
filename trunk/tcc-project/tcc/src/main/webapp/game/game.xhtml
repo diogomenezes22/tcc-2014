@@ -14,8 +14,6 @@
 				<div class="col-md-12">
 					<div class="tela">
 						<h:form id="idForm" prependId="false"  >
-							<ui:param name="controller" value="#{gameController}" />
-							<ui:param name="view" value="#{gameControllerView}" />
 							<a4j:outputPanel style="display:none" id="camposHidden">
 								<h:inputHidden id="peaoId" value="#{gameController.view.peaoEmJogo.descricao}"/>
 								<h:inputHidden id="jogadorNome" value="#{gameController.view.jogadorAtual.nome}"/>
@@ -26,11 +24,11 @@
 							</a4j:outputPanel>
 							<div id="divTabuleiro">
 								<div>
-										<img id="jogador1" src="/tcc/resources/img/peao-preto.png"	alt="botão1" /> 
-										<img id="jogador2" src="/tcc/resources/img/peao-azul.png" alt="botão2" />
-										<img id="jogador3" src="/tcc/resources/img/peao-rosa.png" alt="botão3" />
-										<img id="jogador4" src="/tcc/resources/img/peao-verde.png" alt="botão4" />
-										<img id="jogador5" src="/tcc/resources/img/peao-amarelo.png" alt="botão5" />
+										<img id="peao1" src="/tcc/resources/img/peao-preto.png"	alt="botão1" /> 
+										<img id="peao2" src="/tcc/resources/img/peao-azul.png" alt="botão2" />
+										<img id="peao3" src="/tcc/resources/img/peao-rosa.png" alt="botão3" />
+										<img id="peao4" src="/tcc/resources/img/peao-verde.png" alt="botão4" />
+										<img id="peao5" src="/tcc/resources/img/peao-amarelo.png" alt="botão5" />
 									</div>
 								<table id="idTabuleiro" border="1px;" class="tabela">
 									<tr>
@@ -63,8 +61,8 @@
 																<h4><input type="radio" id="#{resposta.id}idresp" onclick="desmarcarOutrosRadios(this); prencherRespostaEscolhida();" /><label class="resposta" for="#{resposta.id}idresp">#{resposta.descricao}</label></h4>
 															</div>
 														</ui:repeat>
+												<h:commandLink styleClass="btn btn-default" value="Responder" actionListener="#{gameController.responder()}" render="painelPergunta camposHidden bntPergunta"/>
 												</rich:panel>
-												<h:commandLink styleClass="btn btn-default" value="Enviar" actionListener="#{gameController.responder()}" render="painelPergunta camposHidden bntPergunta"/>
 												 
 											</a4j:outputPanel>
 										</td>
@@ -108,29 +106,7 @@
 							</div>
 							<br />
 							
-							<a4j:commandLink id="bntPergunta" value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden" styleClass="btn btn-primary" rendered="#{!gameController.mostraPergunta}"/>
-							
-							<!-- modal Controle-->
-							<div class="modal fade" id="modal_controle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-								  <div class="modal-content">
-						
-									<div class="modal-header">
-									  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-									  <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
-									</div>
-									<div class="modal-body">
-										<h4><h:messages id="idMensagens"/> </h4>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-									</div>
-									
-								  </div><!-- /.modal-content -->
-								</div><!-- /.modal-dialog -->
-							  </div>
-							<!-- /modal errou-->
-							
+							<a4j:commandLink id="bntPergunta" value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden" styleClass="btn btn-primary" rendered="#{!gameController.mostraPergunta}"/>					
 						</h:form>
 					</div>
 				</div>
