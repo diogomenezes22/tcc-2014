@@ -8,6 +8,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
+import br.edu.granbery.tcc.model.SampleEntity;
+
 
 
 @FacesConverter("genericConverter")

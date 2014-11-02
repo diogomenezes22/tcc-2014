@@ -1,7 +1,6 @@
 package br.edu.granbery.tcc.controller;
 
 import java.io.Serializable;
-import java.util.Random;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -12,9 +11,9 @@ import br.edu.granbery.tcc.manager.JogadorManager;
 import br.edu.granbery.tcc.manager.PeaoManager;
 import br.edu.granbery.tcc.manager.PerguntaManager;
 import br.edu.granbery.tcc.model.Jogador;
+import br.edu.granbery.tcc.model.Peao;
 import br.edu.granbery.tcc.model.Pergunta;
 import br.edu.granbery.tcc.model.Resposta;
-import br.edu.granbery.tcc.model.Tabuleiro;
 import br.edu.granbery.tcc.view.GameControllerView;
 
 @Named
@@ -44,6 +43,7 @@ public class GameController implements Serializable {
 	public void load(){
 		try{
 		view.getJogo().setJogadores(jogadorManager.buscarQuemVaiJogar());
+		view.setListaPeoes(peaoManager.buscarPeoesEmJogo());
 		mostraPoPup = false;
 		}catch(Exception e){
 			e.printStackTrace();
@@ -90,7 +90,12 @@ public class GameController implements Serializable {
 	}
 	
 	private void preencherCamposHidden(Jogador jogadorAtual) {
-		view.setNome(jogadorAtual.getNome());
+		for (Peao peao : view.getListaPeoes()) {
+			if(peao.getJogador().getId().equals(jogadorAtual.getId())){
+				view.setPeaoEmJogo(peao);
+			}
+		}
+		
 	}
 	
 	
