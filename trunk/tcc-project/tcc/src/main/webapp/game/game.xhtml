@@ -14,6 +14,7 @@
 				<div class="col-md-12">
 					<div class="tela">
 						<h:form id="idForm" prependId="false"  >
+							<h:messages id="messages" styleClass="text-info bg-info :focus" />
 							<a4j:outputPanel style="display:none" id="camposHidden">
 								<h:inputHidden id="peaoId" value="#{gameController.view.peaoEmJogo.descricao}"/>
 								<h:inputHidden id="jogadorNome" value="#{gameController.view.jogadorAtual.nome}"/>
@@ -53,17 +54,16 @@
 										<td id="centro" class="centro" rowspan="5" colspan="13">
 											<a4j:outputPanel id="painelPergunta">
 												<rich:panel style="border:0px" rendered="#{gameController.mostraPergunta}">
-														<h:inputHidden value="#{gameController.view.pergunta.id}" />
-														<h1><h:outputLabel styleClass="pergunta" id="pergunta"  value="#{gameController.view.pergunta.descricao}"/></h1>
+													<h:inputHidden value="#{gameController.view.pergunta.id}" />
+													<h1><h:outputLabel styleClass="pergunta" id="pergunta"  value="#{gameController.view.pergunta.descricao}"/></h1>
 
-														<ui:repeat var="resposta" value="#{gameController.view.pergunta.respostas}">
-															<div class="radio">
-																<h4><input type="radio" id="#{resposta.id}idresp" onclick="desmarcarOutrosRadios(this); prencherRespostaEscolhida();" /><label class="resposta" for="#{resposta.id}idresp">#{resposta.descricao}</label></h4>
-															</div>
-														</ui:repeat>
-												<h:commandLink styleClass="btn btn-default" value="Responder" actionListener="#{gameController.responder()}" render="painelPergunta camposHidden bntPergunta"/>
-												</rich:panel>
-												 
+													<ui:repeat var="resposta" value="#{gameController.view.pergunta.respostas}">
+														<div class="radio">
+															<h4><input type="radio" id="#{resposta.id}idresp" onclick="desmarcarOutrosRadios(this); prencherRespostaEscolhida();" /><label class="resposta" for="#{resposta.id}idresp">#{resposta.descricao}</label></h4>
+														</div>
+													</ui:repeat>
+													<h:commandLink styleClass="btn btn-default" value="Responder" actionListener="#{gameController.responder()}" render="painelPergunta camposHidden bntPergunta messages"/>
+												</rich:panel>	 
 											</a4j:outputPanel>
 										</td>
 										<td id="casa15" class="casaInativa">15</td>
@@ -105,8 +105,7 @@
 								</table>
 							</div>
 							<br />
-							
-							<a4j:commandLink id="bntPergunta" value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden" styleClass="btn btn-primary" rendered="#{!gameController.mostraPergunta}"/>					
+							<a4j:commandLink id="bntPergunta"  value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden messages" styleClass="btn btn-primary" rendered="#{!gameController.mostraPergunta}"/>					
 						</h:form>
 					</div>
 				</div>
