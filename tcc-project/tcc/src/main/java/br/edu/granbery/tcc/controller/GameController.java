@@ -67,6 +67,7 @@ public class GameController implements Serializable {
 			pergunta = perguntaManager.buscarPerguntaAleatoria();		
 		}while(view.getJogo().getPerguntas().contains(pergunta));
 		view.setPergunta(pergunta);
+		view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
 		mostraPergunta = true;
 	}
 		
@@ -74,7 +75,7 @@ public class GameController implements Serializable {
 		if(verificaResposta()){
 			acertou = true;
 			view.getJogo().getPerguntas().add(view.getPergunta());
-			view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
+			//view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
 			view.getPeaoEmJogo().setPodeAndar(true);
 			view.getPeaoEmJogo().setPosicaoAtual(view.getPeaoEmJogo().getProximaPosicao());
 			view.getPeaoEmJogo().setProximaPosicao(view.getPeaoEmJogo().getPosicaoAtual() + Integer.parseInt(view.getNumeroSorteado()));
@@ -83,7 +84,7 @@ public class GameController implements Serializable {
 			FacesUtil.mostrarMensagemSucesso("game.resposta.correta");
 		}else{
 			acertou = false;
-			view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
+			//view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
 			view.getPeaoEmJogo().setPodeAndar(false);
 			Jogador proximoJogador = view.getJogo().passaVez(view.getJogadorAtual());
 			view.setJogadorAtual(proximoJogador);

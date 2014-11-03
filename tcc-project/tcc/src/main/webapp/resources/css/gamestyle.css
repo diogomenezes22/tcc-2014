@@ -17,7 +17,7 @@ table {
 	border-spacing: 0px;
 }
 
-td {
+.td-tabuleiro {
 	padding: 0px;
 	margin: 0px;
 	width: 150px;
@@ -71,3 +71,14 @@ td.clicked {
 	margin: 0 auto !important
 }
 
+.tabela-pergunta{
+	width: 50px;
+	border-color: black;
+	text-align: center;
+	border: 5px;
+	margin: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}

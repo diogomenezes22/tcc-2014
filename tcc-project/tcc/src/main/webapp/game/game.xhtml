@@ -35,9 +35,6 @@
 
 	 	function girarDado(valor) {
 	 		$("#numeroSorteado").val(valor);
-	 		//var proximaCasa = parseInt($("#peaoPosicaoAtual").val()) + parseInt(valor);
-	 		//$("#peaoProximaPosicao").val(proximaCasa);
-	 		//moverPeca();
 	 		setTimeout(function(){$("#dice").hide('slow');},2000 );
 
 	 		$("#bntPergunta").show();
@@ -75,30 +72,30 @@
 									</div>
 								<table id="idTabuleiro" border="1px;" class="tabela">
 									<tr>
-										<td id="casa40" class="casaInativa">Start<br/>Finish</td>
-										<td id="casa1" class="casaEspecial">1</td>
-										<td id="casa2" class="casaInativa">2</td>
-										<td id="casa3" class="casaInativa">3</td>
-										<td id="casa4" class="casaInativa">4</td>
-										<td id="casa5" class="casaInativa">5</td>
-										<td id="casa6" class="casaEspecial">6</td>
-										<td id="casa7" class="casaInativa">7</td>
-										<td id="casa8" class="casaInativa">8</td>
-										<td id="casa9" class="casaInativa">9</td>
-										<td id="casa10" class="casaInativa">10</td>
-										<td id="casa11" class="casaInativa">11</td>
-										<td id="casa12" class="casaEspecial">12</td>
-										<td id="casa13" class="casaInativa">13</td>
-										<td id="casa14" class="casaInativa">14</td>
+										<td id="casa40" class="casaInativa td-tabuleiro">Start<br/>Finish</td>
+										<td id="casa1" class="casaEspecial td-tabuleiro">1</td>
+										<td id="casa2" class="casaInativa td-tabuleiro">2</td>
+										<td id="casa3" class="casaInativa td-tabuleiro">3</td>
+										<td id="casa4" class="casaInativa td-tabuleiro">4</td>
+										<td id="casa5" class="casaInativa td-tabuleiro">5</td>
+										<td id="casa6" class="casaEspecial td-tabuleiro">6</td>
+										<td id="casa7" class="casaInativa td-tabuleiro">7</td>
+										<td id="casa8" class="casaInativa td-tabuleiro">8</td>
+										<td id="casa9" class="casaInativa td-tabuleiro">9</td>
+										<td id="casa10" class="casaInativa td-tabuleiro">10</td>
+										<td id="casa11" class="casaInativa td-tabuleiro">11</td>
+										<td id="casa12" class="casaEspecial td-tabuleiro">12</td>
+										<td id="casa13" class="casaInativa td-tabuleiro">13</td>
+										<td id="casa14" class="casaInativa td-tabuleiro">14</td>
 									</tr>
 									<tr>
-										<td id="casa39" class="casaInativa">39</td>
+										<td id="casa39" class="casaInativa td-tabuleiro">39</td>
 										<td id="centro" class="centro" rowspan="5" colspan="13">
 											<a4j:outputPanel id="painelPergunta">
 												<rich:panel style="border:0px" rendered="#{gameController.mostraPergunta}" styleClass="pergunta">
 													<h:inputHidden value="#{gameController.view.pergunta.id}" />
 													<h1><h:outputLabel styleClass="pergunta" id="pergunta"  value="#{gameController.view.pergunta.descricao}"/></h1>
-													<h:selectOneRadio required="true" styleClass="resposta" value="#{gameController.view.repostaEscolhida}">
+													<h:selectOneRadio layout="pageDirection" required="true" styleClass="resposta" value="#{gameController.view.repostaEscolhida}">
 														<f:selectItems  value="#{gameController.view.pergunta.respostas}" var="resposta" itemLabel="#{resposta.descricao}" itemValue="#{resposta.id}"/>
 													</h:selectOneRadio>			
 													
@@ -107,46 +104,46 @@
 											</a4j:outputPanel>
 											<div id="dice" align="center" style="width:100px; height:100px; margin-left:50%;  background:#1eb1ee;"></div>
 										</td>
-										<td id="casa15" class="casaInativa">15</td>
+										<td id="casa15" class="casaInativa td-tabuleiro">15</td>
 									</tr>
 									<tr>
-										<td id="casa38" class="casaInativa">38</td>
-										<td id="casa16" class="casaInativa">16</td>
+										<td id="casa38" class="casaInativa td-tabuleiro">38</td>
+										<td id="casa16" class="casaInativa td-tabuleiro">16</td>
 									</tr>
 									<tr>
-										<td id="casa37" class="casaInativa">37</td>
-										<td id="casa17" class="casaInativa">17</td>
+										<td id="casa37" class="casaInativa td-tabuleiro">37</td>
+										<td id="casa17" class="casaInativa td-tabuleiro">17</td>
 									</tr>
 									<tr>
-										<td id="casa36" class="casaEspecial">36</td>
-										<td id="casa18" class="casaEspecial">18</td>
+										<td id="casa36" class="casaEspecial td-tabuleiro">36</td>
+										<td id="casa18" class="casaEspecial td-tabuleiro">18</td>
 									</tr>
 									<tr>
-										<td id="casa35" class="casaInativa">35</td>
-										<td id="casa19" class="casaInativa">19</td>
+										<td id="casa35" class="casaInativa td-tabuleiro">35</td>
+										<td id="casa19" class="casaInativa td-tabuleiro">19</td>
 									</tr>
 					
 									<tr>
-										<td id="casa34" class="casaInativa">34</td>
-										<td id="casa33" class="casaInativa">33</td>
-										<td id="casa32" class="casaInativa">32</td>
-										<td id="casa31" class="casaInativa">31</td>
-										<td id="casa30" class="casaEspecial">30</td>
-										<td id="casa29" class="casaInativa">29</td>
-										<td id="casa28" class="casaInativa">28</td>
-										<td id="casa27" class="casaInativa">27</td>
-										<td id="casa26" class="casaInativa">26</td>
-										<td id="casa25" class="casaInativa">25</td>
-										<td id="casa24" class="casaEspecial">24</td>
-										<td id="casa23" class="casaInativa">23</td>
-										<td id="casa22" class="casaInativa">22</td>
-										<td id="casa21" class="casaInativa">21</td>
-										<td id="casa20" class="casaInativa">20</td>
+										<td id="casa34" class="casaInativa td-tabuleiro">34</td>
+										<td id="casa33" class="casaInativa td-tabuleiro">33</td>
+										<td id="casa32" class="casaInativa td-tabuleiro">32</td>
+										<td id="casa31" class="casaInativa td-tabuleiro">31</td>
+										<td id="casa30" class="casaEspecial td-tabuleiro">30</td>
+										<td id="casa29" class="casaInativa td-tabuleiro">29</td>
+										<td id="casa28" class="casaInativa td-tabuleiro">28</td>
+										<td id="casa27" class="casaInativa td-tabuleiro">27</td>
+										<td id="casa26" class="casaInativa td-tabuleiro">26</td>
+										<td id="casa25" class="casaInativa td-tabuleiro">25</td>
+										<td id="casa24" class="casaEspecial td-tabuleiro">24</td>
+										<td id="casa23" class="casaInativa td-tabuleiro">23</td>
+										<td id="casa22" class="casaInativa td-tabuleiro">22</td>
+										<td id="casa21" class="casaInativa td-tabuleiro">21</td>
+										<td id="casa20" class="casaInativa td-tabuleiro">20</td>
 									</tr>
 								</table>
 							</div>
 							<br />
-							<a4j:commandLink oncomplete="$('#bntPergunta').hide()" execute="@form" id="bntPergunta"  value="Pergunta" actionListener="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden messages" styleClass="btn btn-primary"/>					
+							<a4j:commandLink onbegin="contagemRegressiva();" oncomplete="$('#bntPergunta').hide()" execute="@all" id="bntPergunta"  value="Pergunta" actionListener="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden messages idNome" styleClass="btn btn-primary"/>					
 						</h:form>
 					</div>
 				</div>
