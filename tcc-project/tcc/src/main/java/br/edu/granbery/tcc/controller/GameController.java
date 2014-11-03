@@ -74,17 +74,19 @@ public class GameController implements Serializable {
 		if(verificaResposta()){
 			acertou = true;
 			view.getJogo().getPerguntas().add(view.getPergunta());
-			preencherCamposHidden(view.getJogadorAtual());
+			view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
+			view.getPeaoEmJogo().setPodeAndar(true);
+			view.getPeaoEmJogo().setPosicaoAtual(view.getPeaoEmJogo().getProximaPosicao());
+			view.getPeaoEmJogo().setProximaPosicao(view.getPeaoEmJogo().getPosicaoAtual() + Integer.parseInt(view.getNumeroSorteado()));
 			Jogador proximoJogador = view.getJogo().passaVez(view.getJogadorAtual());
 			view.setJogadorAtual(proximoJogador);
-			view.setPeaoEmJogo(colocarPeaoEmJogo(proximoJogador));
 			FacesUtil.mostrarMensagemSucesso("game.resposta.correta");
 		}else{
 			acertou = false;
-			preencherCamposHidden(view.getJogadorAtual());
+			view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
+			view.getPeaoEmJogo().setPodeAndar(false);
 			Jogador proximoJogador = view.getJogo().passaVez(view.getJogadorAtual());
 			view.setJogadorAtual(proximoJogador);
-			view.setPeaoEmJogo(colocarPeaoEmJogo(proximoJogador));
 			FacesUtil.mostrarMensagemErro("game.resposta.errada");
 		}
 		mostraPoPup = true;
@@ -93,21 +95,12 @@ public class GameController implements Serializable {
 		
 	public boolean verificaResposta(){
 		for(Resposta resposta :view.getPergunta().getRespostas()){
-			if(view.getRepostaEscolhida().equals(resposta.getId().toString())){
+			if(Long.parseLong(view.getRepostaEscolhida()) == resposta.getId()){
 				return resposta.isCorreta();
 			}
 		}
 		
 		return false;
-	}
-	
-	private void preencherCamposHidden(Jogador jogadorAtual) {
-		for (Peao peao : view.getListaPeoes()) {
-			if(peao.getJogador().getId().equals(jogadorAtual.getId())){
-				view.setPeaoEmJogo(peao);
-			}
-		}
-		
 	}
 	
 	private Peao colocarPeaoEmJogo(Jogador jogadorAtual){

@@ -10,27 +10,46 @@
 <ui:composition template="../templates/template.xhtml">
 	 	<ui:define name="content">
 	 	<script type="text/javascript">
-			$(function(){
-				$("#dice").dice();
-				$("#dice, #btn_randRoll").click(function(){
-					$("#dice").dice("roll", duRenato);	
-				});
-				$("#btn_roll").click(function(){
-					$("#dice").dice("roll", $("#rollValue").val(), alert); // TRETA DE ROUBAR
-				});
+	 	$(function() {
+		 	$("#bntPergunta").hide();
+	 		$("#dice").dice();
+	 		$("#dice, #btn_randRoll").click(function() {
+	 			$("#dice").dice("roll", girarDado);
+	 		});
+	 		$("#btn_roll").click(function() {
+	 			$("#dice").dice("roll", $("#rollValue").val(), alert); // TRETA DE ROUBAR
+	 		});
 
-				$("#btn_setSize").click(function(){
-					$("#dice").dice("option", {diceSize:parseInt($("#dur").val())});
-				});
+	 		$("#btn_setSize").click(function() {
+	 			$("#dice").dice("option", {
+	 				diceSize : parseInt($("#dur").val())
+	 			});
+	 		});
 
-				$("#btn_setDuration").click(function(){
-					$("#dice").dice("option", {duration: 500});
-				});
-			});
-			
-			function duRenato(valor){
-				$("valorSorteado").val(valor);
-			}
+	 		$("#btn_setDuration").click(function() {
+	 			$("#dice").dice("option", {
+	 				duration : 500
+	 			});
+	 		});
+	 	});
+
+	 	function girarDado(valor) {
+	 		$("#numeroSorteado").val(valor);
+	 		//var proximaCasa = parseInt($("#peaoPosicaoAtual").val()) + parseInt(valor);
+	 		//$("#peaoProximaPosicao").val(proximaCasa);
+	 		//moverPeca();
+	 		setTimeout(function(){$("#dice").hide('slow');},2000 );
+
+	 		$("#bntPergunta").show();
+
+	 		$('html, body').animate({ 
+	 	        scrollTop: $('body').offset().top + 100 }, 
+	 	    'slow', function() {
+	 	        $("#bntPergunta").focus();
+	 	    });
+	 		
+	 	}
+	 				
 		</script>
 	 	<div class="content">
 		 	<div class="row">
@@ -44,7 +63,7 @@
 								<h:inputHidden id="peaoPodeAndar" value="#{gameController.view.peaoEmJogo.podeAndar}" />
 								<h:inputHidden id="peaoPosicaoAtual" value="#{gameController.view.peaoEmJogo.posicaoAtual}" />
 								<h:inputHidden id="peaoProximaPosicao" value="#{gameController.view.peaoEmJogo.proximaPosicao}" />
-								<h:inputHidden id="respostaEscolhida" value="#{gameController.view.repostaEscolhida}" />
+								<h:inputHidden id="numeroSorteado" value="#{gameController.view.numeroSorteado}" />
 							</a4j:outputPanel>
 							<div id="divTabuleiro">
 								<div>
@@ -76,18 +95,17 @@
 										<td id="casa39" class="casaInativa">39</td>
 										<td id="centro" class="centro" rowspan="5" colspan="13">
 											<a4j:outputPanel id="painelPergunta">
-												<rich:panel style="border:0px" rendered="#{gameController.mostraPergunta}">
+												<rich:panel style="border:0px" rendered="#{gameController.mostraPergunta}" styleClass="pergunta">
 													<h:inputHidden value="#{gameController.view.pergunta.id}" />
 													<h1><h:outputLabel styleClass="pergunta" id="pergunta"  value="#{gameController.view.pergunta.descricao}"/></h1>
-
-													<ui:repeat var="resposta" value="#{gameController.view.pergunta.respostas}">
-														<div class="radio">
-															<h4><input type="radio" id="#{resposta.id}idresp" onclick="desmarcarOutrosRadios(this); prencherRespostaEscolhida();" /><label class="resposta" for="#{resposta.id}idresp">#{resposta.descricao}</label></h4>
-														</div>
-													</ui:repeat>
-													<h:commandLink styleClass="btn btn-default" value="Responder" actionListener="#{gameController.responder()}" render="painelPergunta camposHidden bntPergunta messages"/>
+													<h:selectOneRadio required="true" styleClass="resposta" value="#{gameController.view.repostaEscolhida}">
+														<f:selectItems  value="#{gameController.view.pergunta.respostas}" var="resposta" itemLabel="#{resposta.descricao}" itemValue="#{resposta.id}"/>
+													</h:selectOneRadio>			
+													
+													<a4j:commandLink oncomplete="moverPeca();" execute="@form" styleClass="btn btn-default" value="Responder" action="#{gameController.responder()}" render="painelPergunta camposHidden bntPergunta messages"/>
 												</rich:panel>	 
 											</a4j:outputPanel>
+											<div id="dice" align="center" style="width:100px; height:100px; margin-left:50%;  background:#1eb1ee;"></div>
 										</td>
 										<td id="casa15" class="casaInativa">15</td>
 									</tr>
@@ -128,11 +146,7 @@
 								</table>
 							</div>
 							<br />
-							<a4j:commandLink id="bntPergunta"  value="Pergunta" action="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden messages" styleClass="btn btn-primary" rendered="#{!gameController.mostraPergunta}"/>					
-							<div id="dice" style="width:100px; height:100px; background:#1eb1ee;"></div>
-							
-							
-							
+							<a4j:commandLink oncomplete="$('#bntPergunta').hide()" execute="@form" id="bntPergunta"  value="Pergunta" actionListener="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden messages" styleClass="btn btn-primary"/>					
 						</h:form>
 					</div>
 				</div>

@@ -25,6 +25,7 @@ public class GameControllerView implements Serializable{
 	private Pergunta pergunta;	
 	private String repostaEscolhida;
 	private Jogador jogadorAtual;
+	private String numeroSorteado;
 	
 	//Controle Javascript muito Importante
 	private List<Peao> listaPeoes;
@@ -44,14 +45,6 @@ public class GameControllerView implements Serializable{
 
 	public void setPergunta(Pergunta pergunta) {
 		this.pergunta = pergunta;
-	}
-
-	public String getRepostaEscolhida() {
-		return repostaEscolhida;
-	}
-
-	public void setRepostaEscolhida(String	 repostaEscolhida) {
-		this.repostaEscolhida = repostaEscolhida;
 	}
 
 	public Jogador getJogadorAtual() {
@@ -76,5 +69,21 @@ public class GameControllerView implements Serializable{
 
 	public void setPeaoEmJogo(Peao peaoEmJogo) {
 		this.peaoEmJogo = peaoEmJogo;
+	}
+
+	public String getRepostaEscolhida() {
+		return repostaEscolhida;
+	}
+
+	public void setRepostaEscolhida(String repostaEscolhida) {
+		this.repostaEscolhida = repostaEscolhida;
+	}
+
+	public String getNumeroSorteado() {
+		return numeroSorteado;
+	}
+
+	public void setNumeroSorteado(String numeroSorteado) {
+		this.numeroSorteado = numeroSorteado;
 	}
 }

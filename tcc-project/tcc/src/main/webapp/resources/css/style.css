@@ -67,11 +67,12 @@ header p {
 	width: 100%
 }
 .tela .pergunta {
-	color: #1eb1ee !important
+	color: #1eb1ee; !important
 }
 
 .tela .resposta {
 	color: #20a924 !important;
+	font-family:cursive;
 	margin-bottom: 2em
 }
 

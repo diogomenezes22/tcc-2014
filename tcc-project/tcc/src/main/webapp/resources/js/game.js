@@ -1,14 +1,15 @@
 /**
- *  Game Control
+ * Game Control
  */
- 
-function andar(idJogador, idCasa, andar){
-	for(var i = 0; i < andar; i++ ){
-		$(idJogador).animate({opacity : '0.8'}, 500, function(){
-			if(idCasa.length == 6){
+
+function andar(idJogador, idCasa, andar) {
+	for (var i = 0; i < andar; i++) {
+		$(idJogador).animate({
+			opacity : '0.8'
+		}, 500, function() {
+			if (idCasa.length == 6) {
 				nCasa = idCasa.substr(idCasa.length - 1, idCasa.length);
-			}
-			else{
+			} else {
 				nCasa = idCasa.substr(idCasa.length - 2, idCasa.length);
 			}
 			idCasa = idCasa.replace(nCasa, "");
@@ -20,33 +21,22 @@ function andar(idJogador, idCasa, andar){
 	}
 }
 
-function moverPeca(){
+function moverPeca() {
 	var id = $("#peaoId").val();
 	var nome = $("#jogadorNome").val();
 	var posicaoAtual = $("#peaoPosicaoAtual").val();
 	var jogadorAtual = new Peao(id, nome, posicaoAtual);
-	var podeAndar = $("#peaoPodeAndar").val();
 	var proximaCasa = $("#peaoProximaPosicao").val();
-	
+
 	var passos = proximaCasa - jogadorAtual.posicao;
-	
-	if(podeAndar =="true"){
+	if ($("#peaoPodeAndar").val() == 'true') {
 		andar(jogadorAtual.id, jogadorAtual.idCasa, passos);
-	}	
-}
-
-function desmarcarOutrosRadios(radio){
-	$('input:radio').each(function(){
-		if($(this).attr('id') != $(radio).attr('id')){
-			$(this).prop('checked', false);
-			}
+	} else {
+		$('html, body').animate({
+			scrollTop : $('body').offset().top - 150
+		}, 'slow', function() {
+			$("#messages").focus();
 		});
+	}
+	$("#dice").show('slow');
 }
-
-function prencherRespostaEscolhida(){
-	resposta = $( "input:checked" ).attr('id').replace('idresp', '');
-	$("#respostaEscolhida").val(resposta);
-}
-
-
-
