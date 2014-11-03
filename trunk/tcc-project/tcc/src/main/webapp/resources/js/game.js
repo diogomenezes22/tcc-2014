@@ -40,3 +40,17 @@ function moverPeca() {
 	}
 	$("#dice").show('slow');
 }
+
+var clock;
+
+function contagemRegressiva(){
+	clock = $('.clock').FlipClock(300, {
+        clockFace: 'MinuteCounter',
+        countdown: true,
+        callbacks: {
+        	stop: function() {
+        		$('.message').html('The clock has stopped!');
+        	}
+        }
+    });
+}

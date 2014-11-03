@@ -73,7 +73,10 @@ header p {
 .tela .resposta {
 	color: #20a924 !important;
 	font-family:cursive;
-	margin-bottom: 2em
+	font-size:large;
+	margin-bottom: 4em;
+	text-align: center;
+	margin: auto;
 }
 
 .container a{
