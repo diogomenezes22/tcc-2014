@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<body>
+	<ui:composition template="../templates/template.xhtml">
+		<ui:define name="content">
+			<div class="content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="tela">							
+								<p></p>
+								<br/>
+								<h2>Como Funciona?</h2>
+								<p>
+									O sistema será responsável por controlar a dinâmica do
+									jogo, dos jogadores e seu andamento a cada rodada. Caberá ao
+									administrador controlar e criar o jogo, assim como adicionar os
+									jogadores que participarão. Cabe ao sistema sortear, antes de
+									cada jogo, quais serão as casas do tabuleiro que corresponderão
+									às prendas. 
+								</p>
+								<p>	
+									Após a criação da partida, as rodadas se alternarão
+									entre os jogadores cadastrados pelo administrador, e, para cada
+									rodada, o jogador terá o direito de jogar o dado. Ao parar numa
+									casa do tabuleiro correspondente a casa de pergunta, o sistema
+									irá sortear uma pergunta pré-cadastrada no banco de dados para
+									o jogador responder. 
+								</p>
+								<p>
+									Se responder corretamente, avançará o
+									número de casas correspondente ao número sorteado no dado, se
+									errar a pergunta, o sistema não permitirá que avance o número
+									de casas sorteado no dado. 
+								</p>	
+								<p>
+									Ao parar numa casa correspondente a
+									prenda, o sistema irá sortear uma prenda e deverá pagá-la
+									diante da turma e o mesmo não avança mais nenhuma casa na
+									rodada.
+								</p>									
+								<h2>Quem vence?</h2>
+								<p> 
+									Vence o primeiro jogador que alcançar a última casa do
+									tabuleiro.
+								</p>
+								<br></br>
+								<h1 class="text-center"><img src="/tcc/resources/img/QuizEZ.png" /></h1>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
