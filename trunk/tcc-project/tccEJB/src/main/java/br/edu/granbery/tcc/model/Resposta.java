@@ -14,7 +14,7 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name="TB_RESPOSTA")
-public class Resposta implements Serializable{
+public class Resposta implements Serializable, SampleEntity{
 	
 	/**
 	 * 
@@ -78,7 +78,7 @@ public class Resposta implements Serializable{
 	
 	@Transient
 	public boolean isCorreta(){
-		return "CORRETA".equals(correta);
+		return "C".equals(correta);
 	}
 	
 	
