@@ -54,4 +54,10 @@ public abstract class GenericDaoImpl<T extends Serializable , ID extends Seriali
     	Query query = getEntityManager().createQuery(select);
     	return query.getResultList();
     }
+    
+    public void atualizar(T entity) {
+    	getEntityManager().merge(entity);
+    	getEntityManager().flush();
+    }
+    
 }

@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import br.edu.granbery.tcc.dao.JogadorDAO;
 import br.edu.granbery.tcc.model.Jogador;
+import br.edu.granbery.tcc.model.Prenda;
 
 
 @Named
@@ -62,7 +63,19 @@ public class JogadorManagerImpl implements JogadorManager, Serializable{
 			return null;
 		}
 	}
-
 	
+	public void excluir(Jogador j){
+		jogadorDAO.excluir(j);
+	}
+	
+	public Jogador alterar(Jogador jogador){
+		try {
+			jogadorDAO.atualizar(jogador);
+			return jogador;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 }

@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+<h:head>
+	<script src="/resources/js/jquery-2.1.1.min.js"></script>
+	<title>Quiz Game - Prenda</title>
+</h:head> 
+<body>
+<ui:composition template="../templates/templatesemheader.xhtml">
+	 	<ui:define name="content">
+		    <div class="container">			  
+					<div class="row">
+						<div class="col-md-12">
+							<div class="home text-center">
+								<h1>Listar Jogador</h1>
+								<h:form id="prendaForm" styleClass="form-horizontal">
+									  <a4j:region>
+									<div class="form-group" >
+										<rich:dataTable  id="table" value="#{jogadorController.jogadores}" var="jogador" 
+										styleClass="table table-striped" headerClass="info"  border="1" height="400px" width="700px" >
+											 <f:facet name="header">
+                        						<rich:columnGroup>
+                        							<rich:column>
+														 <h:outputText value="Nome"/>
+													</rich:column>
+													<rich:column>
+														 <h:outputText value="Idade"/>
+													</rich:column>
+													<rich:column>
+														 <h:outputText value="Periodo"/>
+													</rich:column>
+													<rich:column>
+														 <h:outputText value="Ação"/>
+													</rich:column>
+                        						</rich:columnGroup>
+                        					</f:facet>
+												<rich:column>
+													 <h:outputText value="#{jogador.nome}"/>
+												</rich:column>
+												<rich:column>
+													 <h:outputText value="#{jogador.idade}"/>
+												</rich:column>
+												<rich:column>
+													 <h:outputText value="#{jogador.periodo}"/>
+												</rich:column>
+												<rich:column>
+													 <h:commandButton action="#{jogadorController.excluir(jogador)}" value="Excluir" styleClass="btn btn-primary"  />
+													  &nbsp;
+													 <h:commandButton action="#{jogadorController.editar(jogador)}" value="Editar" styleClass="btn btn-primary"  >
+													 	<f:param name="idJogador" value="#{jogador.id}" />
+													 </h:commandButton>
+												</rich:column>
+										</rich:dataTable >
+									</div>
+										<h:commandLink action="/jogador/cadastrar.jsf" style="margin-right: 15px;" styleClass="btn btn-primary"  value="Novo Jogador" />
+									  </a4j:region>
+								</h:form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ui:define>
+		</ui:composition>
+</body>
+</html>

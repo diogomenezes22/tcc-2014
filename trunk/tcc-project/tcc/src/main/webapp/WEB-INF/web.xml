@@ -42,6 +42,11 @@
 		<param-name>org.richfaces.CONTROL_SKINNING</param-name>
 		<param-value>enable</param-value>
 	</context-param>
+	
+	<context-param>   
+	    <param-name>com.sun.faces.writeStateAtFormEnd</param-name>   
+	    <param-value>false</param-value>   
+	</context-param>  
 
 	<login-config>
 		<auth-method>BASIC</auth-method>

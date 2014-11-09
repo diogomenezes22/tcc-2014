@@ -8,4 +8,5 @@ public interface GenericDao<T , ID extends Serializable> {
     public void delete(T obj);
     public void saveOrUpdate(T obj);
     public List<T> findAll(Class<T> classe);
+    public void atualizar(T entity);
 }
