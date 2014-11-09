@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+<h:head>
+	<script src="/resources/js/jquery-2.1.1.min.js"></script>
+	<title>Quiz Game - Prenda</title>
+</h:head> 
+<body>
+<ui:composition template="../templates/templatesemheader.xhtml">
+	 	<ui:define name="content">
+		    <div class="container">			  
+					<div class="row">
+						<div class="col-md-12">
+							<div class="home text-center">
+								<h1>Manter Prenda</h1>
+								<h:form id="prendaForm" styleClass="form-horizontal">
+									<div class="form-group" >
+										<h:outputText value="Descrição" styleClass="col-sm-2 control-label" /> 
+										<div class="col-sm-10">
+											<h:inputText styleClass="form-control" label="Descricao" maxlength="50" value="#{prendaController.view.prenda.descricao}" />
+										</div>
+									</div>
+										<h:commandButton action="#{prendaController.salvar()}" style="margin-right: 15px;" styleClass="btn btn-primary"  value="salvar" />
+										<h:commandLink action="buscar" style="margin-left: 15px;" styleClass="btn btn-primary" value="Buscar" actionListener="#{jogadorController.buscar()}" />
+								</h:form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ui:define>
+		</ui:composition>
+</body>
+</html>

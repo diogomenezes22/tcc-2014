@@ -55,4 +55,8 @@ public class JogadorDAOImpl extends GenericDaoImpl<Jogador, Long> implements Jog
 		List<Jogador> listaJogadores = query.getResultList();
 		return listaJogadores;
 	}
+	
+	public void excluir(Jogador j){
+	      super.delete(getEntityManager().getReference(Jogador.class, j.getId()));
+	}
 }

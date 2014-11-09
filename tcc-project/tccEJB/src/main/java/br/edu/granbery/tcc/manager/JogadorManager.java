@@ -16,4 +16,8 @@ public interface JogadorManager{
 	public List<Jogador> buscarTodos();
 
 	public List<Jogador> buscarQuemVaiJogar();
+	
+	public void excluir(Jogador j);
+	
+	public Jogador alterar(Jogador jogador);
 }

@@ -7,6 +7,7 @@
 		<class>br.edu.granbery.tcc.model.Pergunta</class>
 		<class>br.edu.granbery.tcc.model.Resposta</class>
 		<class>br.edu.granbery.tcc.model.Peao</class>
+		<class>br.edu.granbery.tcc.model.Prenda</class>
 		<properties>
 			<!--property name="hibernate.hbm2ddl.auto" value="update"/-->
 			<property name="hibernate.show_sql" value="true"/>

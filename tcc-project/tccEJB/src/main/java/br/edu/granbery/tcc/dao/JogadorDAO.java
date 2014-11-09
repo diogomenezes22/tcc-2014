@@ -14,4 +14,6 @@ public interface JogadorDAO extends GenericDao<Jogador, Long> {
 
 	public List<Jogador> buscarQuemVaiJogar();
 	
+	public void excluir(Jogador j);
+	
 }
