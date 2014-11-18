@@ -43,7 +43,7 @@ public class Resposta implements Serializable, SampleEntity{
 	public Resposta(Pergunta perg){
 		pergunta = perg;
 		descricao = "";
-		correta = "ERRADA";
+		correta = ERRADA;
 	}
 	
 	public Resposta(){
