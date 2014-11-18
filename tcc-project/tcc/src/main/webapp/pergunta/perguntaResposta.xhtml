@@ -35,6 +35,33 @@
 													<br/>
 													<h:inputText label="Reposta D" autocomplete="off" maxlength="400" value="#{perguntaRespostaController.pergunta.respostas[3].descricao}" styleClass="form-control"/>
 									</div>
+									<rich:dataTable value="#{perguntaRespostaController.perguntas}" var="pergunta" rendered="#{perguntaRespostaController.perguntas.size() > 0}" rows="5">										 
+                						<f:facet name="header">
+                								<h:outputText value="Perguntas " />
+                						</f:facet>
+                						<rich:column>
+                								<f:facet name="header">ID</f:facet>
+                								<h:outputText value="#{pergunta.id}" styleClass="form-control"/>                								
+                						<f:facet name="footer">ID</f:facet>
+        								</rich:column>
+                						<rich:column>
+                								<f:facet name="header">Descrição</f:facet>
+                								<h:outputText value="#{pergunta.descricao}" styleClass="form-control"/>                								
+                						<f:facet name="footer">Descrição</f:facet>
+        								</rich:column>
+                						<rich:column>
+                								<f:facet name="header">Resposta Correta</f:facet>
+                								<h:outputText value="#{pergunta.respostaCorreta.descricao}" styleClass="form-control"/>                								
+                						<f:facet name="footer">Resposta Correta</f:facet>
+        								</rich:column>
+        								<f:facet name="footer">        								
+                								<h:outputText value="Perguntas " />
+                								 <rich:dataScroller page="#{perguntaRespostaController.pagina}" />
+                						</f:facet>									
+									</rich:dataTable>
+									<br/>
+									<br/>
+									<br/>
 									<h:commandLink action="salvar" style="margin-right:15px;" value="salvar" styleClass="btn btn-primary" actionListener="#{perguntaRespostaController.salvar()}" />
 									<h:commandLink action="buscar"  style="margin-left:15px;" value="Buscar" styleClass="btn btn-primary" actionListener="#{perguntaRespostaController.buscar()}" />
 								</h:form>
