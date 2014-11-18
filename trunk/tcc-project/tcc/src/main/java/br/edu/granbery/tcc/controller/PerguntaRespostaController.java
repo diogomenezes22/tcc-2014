@@ -1,11 +1,11 @@
 package br.edu.granbery.tcc.controller;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.apache.commons.lang3.StringUtils;
 
 import br.edu.granbery.tcc.manager.PerguntaManager;
 import br.edu.granbery.tcc.model.Pergunta;
@@ -16,7 +16,9 @@ import br.edu.granbery.tcc.model.Resposta;
 public class PerguntaRespostaController {
 	
 	private Pergunta pergunta;
+	private List<Pergunta> perguntas;
 	private Integer opcaoCorreta = -1;
+	private int pagina = 2;
 	
 	@Inject
 	PerguntaManager perguntaManager;
@@ -64,7 +66,7 @@ public class PerguntaRespostaController {
 	}
 
 	public void buscar(){
-		pergunta = perguntaManager.consultar(pergunta);		
+		setPerguntas(perguntaManager.consultar(pergunta));		
 		return ;
 	}
 	
@@ -75,6 +77,26 @@ public class PerguntaRespostaController {
 
 	public void setOpcaoCorreta(int opcaoCorreta) {
 		this.opcaoCorreta = opcaoCorreta;
+	}
+
+	public List<Pergunta> getPerguntas() {
+		return perguntas;
+	}
+
+	public void setPerguntas(List<Pergunta> perguntas) {
+		this.perguntas = perguntas;
+	}
+	
+	public void editaPergunta(){
+		
+	}
+
+	public int getPagina() {
+		return pagina;
+	}
+
+	public void setPagina(int pagina) {
+		this.pagina = pagina;
 	}
 
 }
