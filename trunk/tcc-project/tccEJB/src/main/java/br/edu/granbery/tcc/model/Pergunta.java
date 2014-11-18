@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="TB_PERGUNTA")
@@ -82,6 +83,16 @@ public class Pergunta implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+	
+	@Transient
+	public Resposta getRespostaCorreta(){
+		for (Resposta resposta : respostas) {
+			if(resposta.isCorreta()){
+				return resposta;
+			}
+		}
+		return null;
 	}
 	
 }
