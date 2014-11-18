@@ -6,7 +6,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import org.apache.commons.lang3.StringUtils;
 
 import br.edu.granbery.tcc.dao.PerguntaDAO;
 import br.edu.granbery.tcc.dao.RespostaDAO;
@@ -38,7 +37,7 @@ public class PerguntaManagerImpl implements PerguntaManager, Serializable {
 			perguntaDAO.saveOrUpdate(pergunta);
 			if(pergunta.getRespostas().size() > 0){
 				for (Resposta resp : pergunta.getRespostas()) {
-					if(!StringUtils.isEmpty(resp.getDescricao())){
+					if(resp.getDescricao() != null && !"".equals(resp.getDescricao())){
 						respostaDAO.saveOrUpdate(resp);						
 					}
 				}
