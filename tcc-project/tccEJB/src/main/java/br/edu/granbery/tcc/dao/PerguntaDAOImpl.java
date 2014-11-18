@@ -10,7 +10,7 @@ import br.edu.granbery.tcc.model.Pergunta;
 @Stateless
 public class PerguntaDAOImpl extends GenericDaoImpl<Pergunta, Long> implements PerguntaDAO {	
 	
-	private final static String SELECT = "SELECT p FROM Pergunta p JOIN FETCH p.respostas r WHERE 1=1 ";
+	private final static String SELECT = "SELECT DISTINCT(p) FROM Pergunta p JOIN FETCH p.respostas r WHERE 1=1 ";
 	
 	@Override
 	public void saveOrUpdate(Pergunta pergunta){

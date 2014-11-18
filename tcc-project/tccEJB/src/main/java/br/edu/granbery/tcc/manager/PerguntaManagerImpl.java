@@ -54,10 +54,9 @@ public class PerguntaManagerImpl implements PerguntaManager, Serializable {
 		return pergunta;
 	}
 	
-	public Pergunta consultar(Pergunta pergunta) {
+	public List<Pergunta> consultar(Pergunta pergunta) {
 		try {
-			List<Pergunta> perguntas = perguntaDAO.findByParameters(pergunta);			
-			return perguntas.get(0);
+			return perguntaDAO.findByParameters(pergunta);	
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
