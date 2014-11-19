@@ -16,4 +16,6 @@ public interface PeaoManager{
 	public List<Peao> buscarTodos();
 
 	public List<Peao> buscarPeoesEmJogo();
+
+	public void limparJogo();
 }

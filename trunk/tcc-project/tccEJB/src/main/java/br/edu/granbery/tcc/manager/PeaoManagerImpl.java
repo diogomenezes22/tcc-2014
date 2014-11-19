@@ -64,6 +64,10 @@ public class PeaoManagerImpl implements PeaoManager, Serializable{
 		}
 	}
 
+	public void limparJogo() {
+		peaoDAO.limparJogo();
+	}
+
 	
 
 }

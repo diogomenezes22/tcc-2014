@@ -11,11 +11,11 @@ import javax.persistence.Query;
 public abstract class GenericDaoImpl<T extends Serializable , ID extends Serializable> implements GenericDao<T, ID>{
 
     private Class<T> type;
-
+///////teste local
     @PersistenceContext(unitName="tccEJB")
     private EntityManager em;
     
-    
+    //////////
     @PostConstruct
 	private void load(){
 		setEntityManager(em);
@@ -50,7 +50,7 @@ public abstract class GenericDaoImpl<T extends Serializable , ID extends Seriali
     }
     
     public List<T> findAll(Class<T> classe){
-    	String select = "SELECT o FROM ".concat(classe.getSimpleName()).concat(" o");
+    	String select = "SELECT DISTINCT o FROM ".concat(classe.getSimpleName()).concat(" o");
     	Query query = getEntityManager().createQuery(select);
     	return query.getResultList();
     }

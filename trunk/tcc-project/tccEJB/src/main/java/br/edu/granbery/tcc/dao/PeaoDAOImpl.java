@@ -63,4 +63,14 @@ public class PeaoDAOImpl extends GenericDaoImpl<Peao, Long> implements PeaoDAO{
 		List<Peao> listaPeoes = query.getResultList();
 		return listaPeoes;
 	}
+
+	public void limparJogo() {
+		List<Peao> listaPeoes = findAll(Peao.class);
+		for (Peao peao : listaPeoes) {
+			peao.setJogador(null);
+			saveOrUpdate(peao);
+		}
+		
+		
+	}
 }
