@@ -36,7 +36,7 @@
 													<br/>
 													<h:inputText label="Reposta D" autocomplete="off" maxlength="400" value="#{perguntaRespostaController.pergunta.respostas[3].descricao}" styleClass="form-control"/>
 									</div>
-									<rich:dataTable id="tabelaPerguntas" iterationStatusVar="it" value="#{perguntaRespostaController.perguntas}" var="pergunta" rendered="#{perguntaRespostaController.perguntas.size() > 0}" rows="2">										 
+									<rich:dataTable id="tabelaPerguntas" iterationStatusVar="it" value="#{perguntaRespostaController.perguntas}" var="pergunta" rendered="#{perguntaRespostaController.perguntas.size() > 0}" rows="5">										 
                 						<f:facet name="header">
                 								<h:outputText value="Perguntas " />
                 						</f:facet>
