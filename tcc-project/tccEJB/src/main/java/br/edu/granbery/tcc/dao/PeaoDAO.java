@@ -13,5 +13,7 @@ public interface PeaoDAO extends GenericDao<Peao, Long> {
 	public List<Peao> findByParameters(final Peao jog);
 
 	public List<Peao> buscarPeoesEmJogo();
+
+	public void limparJogo();
 	
 }

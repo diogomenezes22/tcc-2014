@@ -33,6 +33,7 @@ public class ConfiguracaoController implements Serializable{
 	
 	@PostConstruct
 	public void load(){
+		peaoManager.limparJogo();
 		listaJogador = jogagorManager.buscarTodos();
 		listaPeao = peaoManager.buscarTodos();
 		listaPeoesUtilizados = new ArrayList<Peao>();
@@ -66,7 +67,7 @@ public class ConfiguracaoController implements Serializable{
 			peaoManager.salvar(peao);
 		}
 		
-		return "game.jsf";
+		return "../game/game.jsf";
 	}
 	
 	public List<Peao> getListaPeao() {
