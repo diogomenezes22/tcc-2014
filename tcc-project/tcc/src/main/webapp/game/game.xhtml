@@ -144,6 +144,11 @@
 							</div>
 							<br />
 							<a4j:commandLink onbegin="contagemRegressiva();" oncomplete="$('#bntPergunta').hide()" execute="@all" id="bntPergunta"  value="Pergunta" actionListener="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden messages idNome" styleClass="btn btn-primary"/>					
+							
+						<rich:popupPanel id="statPane" rendered="#{gameController.mostrarPrenda}" autosized="true">
+							<h:graphicImage value="/resources/img/load.gif" alt="load" />
+								Aguarde...
+						</rich:popupPanel>
 						</h:form>
 					</div>
 				</div>

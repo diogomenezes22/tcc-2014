@@ -79,6 +79,12 @@ header p {
 	margin: auto;
 }
 
+.instrucoes{
+	text-align: center;
+	padding: 5%;
+	font-size: 15pt;
+}
+
 .container a{
 	color: white !important;
 }
