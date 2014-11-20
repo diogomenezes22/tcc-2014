@@ -40,7 +40,8 @@
 											<h:inputText label="Periodo" styleClass="form-control"  maxlength="2" value="#{jogadorController.view.jogador.periodo}"/>
 										</div>
 									</div>
-										<h:commandLink style="margin-right: 15px;" styleClass="btn btn-primary"  value="salvar" action="#{jogadorController.alterar()}" />
+										<h:commandLink style="margin-right: 15px;" styleClass="btn btn-primary"  value="Salvar" action="#{jogadorController.alterar()}" />
+										<h:commandLink immediate="true" action="listarJogador.jsf" style="margin-left: 15px;" styleClass="btn btn-primary" value="Voltar"/>
 								</h:form>
 							</div>
 						</div>

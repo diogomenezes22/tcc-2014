@@ -26,7 +26,8 @@
 											<h:inputText required="true" requiredMessage="O campo Descrição de obrigatório!" styleClass="form-control" label="Descricao" maxlength="50" value="#{prendaController.view.prenda.descricao}" />
 										</div>
 									</div>
-										<h:commandLink action="#{prendaController.alterar()}" style="margin-right: 15px;" styleClass="btn btn-primary"  value="alterar" />
+										<h:commandLink action="#{prendaController.alterar()}" style="margin-right: 15px;" styleClass="btn btn-primary"  value="Alterar" />
+										<h:commandLink immediate="true" action="listarPrenda.jsf" style="margin-left: 15px;" styleClass="btn btn-primary" value="Voltar"/>
 								</h:form>
 							</div>
 						</div>

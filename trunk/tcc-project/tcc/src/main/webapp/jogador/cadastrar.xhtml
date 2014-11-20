@@ -16,7 +16,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="home text-center">
-								<h1>Manter Jogadores</h1>
+								<h1>Cadastrar Jogador</h1>
 								<h:form id="jogadorForm" styleClass="form-horizontal">
 									<h:messages id="messages" styleClass="text-info bg-info :focus"/>
 									<div class="form-group" >
@@ -40,7 +40,7 @@
 										</div>
 									</div>
 										<h:commandLink style="margin-right: 15px;" styleClass="btn btn-primary"  value="Salvar" action="#{jogadorController.salvar()}" />
-										<h:commandLink action="buscar" style="margin-left: 15px;" styleClass="btn btn-primary" value="Buscar" actionListener="#{jogadorController.buscar()}" />
+										<h:commandLink immediate="true" action="listarJogador.jsf" style="margin-left: 15px;" styleClass="btn btn-primary" value="Voltar"/>
 								</h:form>
 							</div>
 						</div>
