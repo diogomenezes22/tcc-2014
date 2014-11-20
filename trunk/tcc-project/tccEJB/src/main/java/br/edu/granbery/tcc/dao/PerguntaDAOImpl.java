@@ -14,6 +14,9 @@ public class PerguntaDAOImpl extends GenericDaoImpl<Pergunta, Long> implements P
 	
 	@Override
 	public void saveOrUpdate(Pergunta pergunta){
+		if(pergunta.getId() != null)
+			pergunta = getEntityManager().getReference(Pergunta.class, pergunta.getId());
+		
 		super.saveOrUpdate(pergunta);
 	}
 

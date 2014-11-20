@@ -43,6 +43,7 @@ public class PerguntaRespostaController implements Serializable {
 
 	public void setPergunta(Pergunta pergunta) {
 		this.pergunta = pergunta;
+		opcaoCorreta = pergunta.getRespostas().indexOf(pergunta.getRespostaCorreta());
 	}
 	
 	public String salvar(){
@@ -51,6 +52,7 @@ public class PerguntaRespostaController implements Serializable {
 		pergunta.getRespostas().get(opcaoCorreta).setCorreta("C");
 		perguntaManager.salvar(pergunta);
 		pergunta = new Pergunta();
+		opcaoCorreta = -1;
 		return "salvo";
 		}
 		return mensagemErro;

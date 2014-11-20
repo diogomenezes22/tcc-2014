@@ -32,8 +32,7 @@ public class PerguntaManagerImpl implements PerguntaManager, Serializable {
 				if(resp.getCorreta().isEmpty()){
 					resp.setCorreta(Resposta.ERRADA);
 				}
-			}
-			
+			}				
 			perguntaDAO.saveOrUpdate(pergunta);
 			if(pergunta.getRespostas().size() > 0){
 				for (Resposta resp : pergunta.getRespostas()) {

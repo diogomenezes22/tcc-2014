@@ -66,15 +66,16 @@ public class Jogo implements Serializable{
 	}
 	
 	@Transient
-	public void mover(final Jogador jog, final int numDado){
+	public boolean mover(final Jogador jog, final int numDado){
 			for (int i = 0; i < tabuleiro.getCasas().length; i++) {
 				if(tabuleiro.getCasas()[i].getJogadores().remove(jog)){
 					i += numDado;
 					i = i > 40? 40: i;
 					tabuleiro.getCasas()[i].getJogadores().add(jog);
-					return;
+					return i==40;
 				}
 			}
+			return false;
 	}
 	
 	@Transient
@@ -99,22 +100,7 @@ public class Jogo implements Serializable{
 			}
 		}
 		return null;
-	}
-	
-//	public  static void Main(String[] args){
-//		List<Jogador> jogadores = new ArrayList<Jogador>();
-//		Jogador renato = new Jogador("Renato");
-//		Jogador ximpa = new Jogador("Ximpa");
-//		Jogador webert = new Jogador("Webert");
-//		Jogador rodrigo = new Jogador("Rodrigo");
-//		jogadores.add(renato);
-//		jogadores.add(ximpa);
-//		jogadores.add(webert);
-//		jogadores.add(rodrigo);
-//		Jogo jogo = new Jogo(new Tabuleiro(), jogadores);
-//		jogo.mover(renato, 5);
-//		jogo.getTipoCasa(renato);		
-//	}
+	}	
 	
 	
 	

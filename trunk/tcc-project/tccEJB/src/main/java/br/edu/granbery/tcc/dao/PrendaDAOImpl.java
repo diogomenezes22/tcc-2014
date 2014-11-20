@@ -4,6 +4,7 @@ import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
+import br.edu.granbery.tcc.model.Pergunta;
 import br.edu.granbery.tcc.model.Prenda;
 
 
@@ -28,6 +29,13 @@ public class PrendaDAOImpl extends GenericDaoImpl<Prenda, Long> implements Prend
 			return null;
 		}
 		
+	}
+
+	public Prenda buscarPerguntaAleatoria() {
+			String jpql = "SELECT p FROM Prenda p ORDER BY RAND()";
+			Query query = getEntityManager().createQuery(jpql);
+			Prenda prenda = (Prenda) query.getResultList().get(0);
+			return prenda;
 	}
 	
 }

@@ -11,4 +11,6 @@ public interface PrendaDAO extends GenericDao<Prenda, Long> {
 	public void excluir(Prenda p);
 	
 	public Prenda buscarPrenda(Integer id);
+
+	public Prenda buscarPerguntaAleatoria();
 }

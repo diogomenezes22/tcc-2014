@@ -20,8 +20,6 @@ public class GameControllerView implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private Jogo jogo;
 	private Pergunta pergunta;	
 	private String repostaEscolhida;
 	private Jogador jogadorAtual;
@@ -30,14 +28,6 @@ public class GameControllerView implements Serializable{
 	//Controle Javascript muito Importante
 	private List<Peao> listaPeoes;
 	private Peao peaoEmJogo;
-	
-	public Jogo getJogo() {
-		return jogo;
-	}
-
-	public void setJogo(Jogo jogo) {
-		this.jogo = jogo;
-	}
 
 	public Pergunta getPergunta() {
 		return pergunta;

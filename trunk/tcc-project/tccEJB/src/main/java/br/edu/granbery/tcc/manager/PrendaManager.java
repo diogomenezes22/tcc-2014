@@ -19,4 +19,6 @@ public interface PrendaManager{
 	
 	public Prenda recuperarPrenda(Integer id);
 
+	public Prenda buscarPrendaAleatoria();
+
 }
