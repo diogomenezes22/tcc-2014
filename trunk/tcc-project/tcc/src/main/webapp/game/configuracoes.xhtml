@@ -15,6 +15,8 @@
 						<div class="col-md-12 text-center">
 							<h1>Configurações de Jogo</h1>
 							<h:form styleClass="form-horizontal">
+								<h:messages id="messages" showDetail="true" styleClass="text-info bg-info :focus"/>
+								
 								<rich:dataTable id="tabelaJogadores" styleClass="table table-striped" headerClass="info"
 									value="#{configuracaoController.listaJogador}" var="jogador" border="1">
 									<f:facet name="header">

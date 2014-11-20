@@ -14,29 +14,59 @@
 							<div class="home test-center">
 								<h1>Manter Perguntas</h1>
 								<!-- a4j:status onstart="#{rich:component('statPane')}.show()" onstop="#{rich:component('statPane')}.hide()" /-->   
-								<h:form id="perguntaRespForm" styleClass="form-horizontal">																
+								<h:form id="perguntaRespForm" styleClass="form-horizontal" role="form" prependId="false">																
+									<h:messages  style="text-align:center;" id="messages" styleClass="text-info bg-info :focus"/>
 									<div id="pergunta" class="form-group" >
 										<h:outputText value="Pergunta: " styleClass="col-sm-2 control-label"/>
 										<div class="col-sm-10"> 
-											<h:inputTextarea  label="Nome" maxlength="500" styleClass="form-control" value="#{perguntaRespostaController.pergunta.descricao}" />
+											<h:inputTextarea  label="Nome" required="true" requiredMessage="O campo Pergunta é um campo obrigatório!" maxlength="500" styleClass="form-control" value="#{perguntaRespostaController.pergunta.descricao}" />
 										</div>
-									
-										<h:outputText value="Marque uma alternativa correta para pergunta:" styleClass="col-sm-2 control-label"/>
-										<h:selectOneRadio  value="#{perguntaRespostaController.opcaoCorreta}" >
-												<f:selectItem itemValue="0" itemLabel="A "/>
-												<f:selectItem itemValue="1" itemLabel="B "/>
-												<f:selectItem itemValue="2" itemLabel="C "/>
-												<f:selectItem itemValue="3" itemLabel="D "/>												
-										</h:selectOneRadio>
-													<h:inputText title="A" label="Reposta A" maxlength="400" autocomplete="off" value="#{perguntaRespostaController.pergunta.respostas[0].descricao}" styleClass="form-control"/>
-													<br/>
-													<h:inputText  label="Reposta B" autocomplete="off" maxlength="400" value="#{perguntaRespostaController.pergunta.respostas[1].descricao}" styleClass="form-control"/>
-													<br/>
-													<h:inputText label="Reposta C" autocomplete="off" maxlength="400" value="#{perguntaRespostaController.pergunta.respostas[2].descricao}" styleClass="form-control"/>
-													<br/>
-													<h:inputText label="Reposta D" autocomplete="off" maxlength="400" value="#{perguntaRespostaController.pergunta.respostas[3].descricao}" styleClass="form-control"/>
 									</div>
-									<rich:dataTable id="tabelaPerguntas" iterationStatusVar="it" value="#{perguntaRespostaController.perguntas}" var="pergunta" rendered="#{perguntaRespostaController.perguntas.size() > 0}" rows="5">										 
+									<div class="form-group">
+										<h:outputText value="Marque a alternativa correta para pergunta:" styleClass="col-sm-4 control-label"/>
+										<div class="col-sm-10"> 
+											<h:selectOneRadio required="true" requiredMessage="O campo Alternativa Correta é um campo obrigatório!" style="margin-left:400px; margin-top:-20px; width:200px;"  layout="lineDirection" value="#{perguntaRespostaController.opcaoCorreta}" >
+													<f:selectItem itemValue="0" itemLabel="A " />
+													<f:selectItem itemValue="1" itemLabel="B "/>
+													<f:selectItem itemValue="2" itemLabel="C "/>
+													<f:selectItem itemValue="3" itemLabel="D "/>
+											</h:selectOneRadio>
+										</div>
+									</div>
+										<div class="form-group">
+											<h:outputText value="A:" styleClass="col-sm-2 control-label"/>
+											<div class="col-sm-10"> 
+												<h:inputText required="true" requiredMessage="O campo Alternativa A é um campo obrigatório!" title="A" label="Reposta A" maxlength="400" autocomplete="off" value="#{perguntaRespostaController.pergunta.respostas[0].descricao}" styleClass="form-control"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<h:outputText value="B:" styleClass="col-sm-2 control-label"/>
+											<div class="col-sm-10"> 
+												<h:inputText required="true" requiredMessage="O campo Alternativa B é um campo obrigatório!" title="B" label="Reposta B" maxlength="400" autocomplete="off" value="#{perguntaRespostaController.pergunta.respostas[1].descricao}" styleClass="form-control"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<h:outputText value="C:" styleClass="col-sm-2 control-label"/>
+											<div class="col-sm-10"> 
+												<h:inputText required="true" requiredMessage="O campo Alternativa C é um campo obrigatório!" title="C" label="Reposta C" maxlength="400" autocomplete="off" value="#{perguntaRespostaController.pergunta.respostas[2].descricao}" styleClass="form-control"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<h:outputText value="D:" styleClass="col-sm-2 control-label"/>
+											<div class="col-sm-10"> 
+												<h:inputText required="true" requiredMessage="O campo Alternativa D é um campo obrigatório!" title="D" label="Reposta D" maxlength="400" autocomplete="off" value="#{perguntaRespostaController.pergunta.respostas[3].descricao}" styleClass="form-control"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10"> 
+												<h:commandLink action="salvar" style="margin-right:15px;" value="Salvar" styleClass="btn btn-primary" actionListener="#{perguntaRespostaController.salvar()}" />
+												<h:commandLink immediate="true" action="buscar"  style="margin-left:15px;" value="Buscar" styleClass="btn btn-primary" actionListener="#{perguntaRespostaController.buscar()}" />
+											</div>
+										</div>
+									<br/>
+									<br/>
+									<br/>
+									<rich:dataTable id="tabelaPerguntas"  iterationStatusVar="it" value="#{perguntaRespostaController.perguntas}" var="pergunta" rendered="#{perguntaRespostaController.perguntas.size() > 0}" styleClass="table table-striped" headerClass="info" rows="5">										 
                 						<f:facet name="header">
                 								<h:outputText value="Perguntas " />
                 						</f:facet>
@@ -65,11 +95,7 @@
                 								 <rich:dataScroller render="tabelaPerguntas" for="tabelaPerguntas"  page="#{perguntaRespostaController.pagina}"/>                								
                 						</f:facet>									
 									</rich:dataTable>
-									<br/>
-									<br/>
-									<br/>
-									<h:commandLink action="salvar" style="margin-right:15px;" value="salvar" styleClass="btn btn-primary" actionListener="#{perguntaRespostaController.salvar()}" />
-									<h:commandLink action="buscar"  style="margin-left:15px;" value="Buscar" styleClass="btn btn-primary" actionListener="#{perguntaRespostaController.buscar()}" />
+									
 										<rich:popupPanel id="statPane" autosized="true">
 								            <h:graphicImage value="/resources/img/load.gif" alt="load" />
 								            Aguarde...
