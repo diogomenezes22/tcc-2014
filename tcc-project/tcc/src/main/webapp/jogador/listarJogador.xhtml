@@ -47,12 +47,12 @@
 												<rich:column>
 													 <h:outputText value="#{jogador.periodo}"/>
 												</rich:column>
-												<rich:column>
-													 <h:commandButton action="#{jogadorController.excluir(jogador)}" value="Excluir" styleClass="btn btn-primary"  />
+												<rich:column style="width: 20%">
+													 <h:commandLink action="#{jogadorController.excluir(jogador)}" value="Excluir" styleClass="btn btn-primary"  />
 													  &nbsp;
-													 <h:commandButton action="#{jogadorController.editar(jogador)}" value="Editar" styleClass="btn btn-primary"  >
+													 <h:commandLink action="#{jogadorController.editar(jogador)}" value="Editar" styleClass="btn btn-primary"  >
 													 	<f:param name="idJogador" value="#{jogador.id}" />
-													 </h:commandButton>
+													 </h:commandLink>
 												</rich:column>
 										</rich:dataTable >
 									</div>

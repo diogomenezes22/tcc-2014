@@ -12,6 +12,7 @@
 						<div class="col-md-12">
 							<div class="home">
 								<h:form id="jogadorForm">
+									<h:messages id="messages" showDetail="true" styleClass="text-info bg-info :focus"/>
 									<rich:panel id="UpdatePanel">			
 										<h:outputText value="Nome:" /> <h:inputText  label="Nome" maxlength="50" required="true" value="#{jogadorController.view.jogador.nome}" />
 										<br/>	
@@ -19,8 +20,8 @@
 										<br/>
 										<h:outputText value="Período:" /> <h:inputText label="Periodo" maxlength="1" required="true" value="#{jogadorController.view.jogador.periodo}" />
 									</rich:panel>
-										<h:commandButton action="buscar" value="Buscar" actionListener="#{jogadorController.buscar()}" />
-										<!-- h:commandButton action="atualizar" value="Atualizar" actionListener="#{jogadorController.atualizar()}" /-->
+										<h:commandLink action="buscar" value="Buscar" actionListener="#{jogadorController.buscar()}" />
+										<!-- h:commandLink action="atualizar" value="Atualizar" actionListener="#{jogadorController.atualizar()}" /-->
 								</h:form>
 							</div>
 						</div>

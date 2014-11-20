@@ -42,11 +42,11 @@
 													 <h:outputText value="#{prenda.descricao}"/>
 												</rich:column>
 												<rich:column>
-													 <h:commandButton action="#{prendaController.excluir(prenda)}" value="Excluir" styleClass="btn btn-primary"  />
+													 <h:commandLink action="#{prendaController.excluir(prenda)}" value="Excluir" styleClass="btn btn-primary"  />
 													  &nbsp;
-													 <h:commandButton action="#{prendaController.editar(prenda)}" value="Editar" styleClass="btn btn-primary"  >
+													 <h:commandLink action="#{prendaController.editar(prenda)}" value="Editar" styleClass="btn btn-primary"  >
 													 	<f:param name="idPrenda" value="#{prenda.id}" />
-													 </h:commandButton>
+													 </h:commandLink>
 												</rich:column>
 										</rich:dataTable >
 									</div>

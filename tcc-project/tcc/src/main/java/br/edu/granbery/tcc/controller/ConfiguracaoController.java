@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -13,26 +14,26 @@ import br.edu.granbery.tcc.manager.JogadorManager;
 import br.edu.granbery.tcc.manager.PeaoManager;
 import br.edu.granbery.tcc.model.Jogador;
 import br.edu.granbery.tcc.model.Peao;
+import br.edu.granbery.tcc.util.FacesUtil;
 
 @Named
 @SessionScoped
-public class ConfiguracaoController implements Serializable{
+public class ConfiguracaoController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private List<Jogador> listaJogador;
 	private List<Peao> listaPeao;
 	private List<Peao> listaPeoesUtilizados;
 	private Peao peaoEscolhido;
-	
+
 	@Inject
 	private JogadorManager jogagorManager;
 	@Inject
 	private PeaoManager peaoManager;
-	
-	
+
 	@PostConstruct
-	public void load(){
+	public void load() {
 		peaoManager.limparJogo();
 		listaJogador = jogagorManager.buscarTodos();
 		listaPeao = peaoManager.buscarTodos();
@@ -46,14 +47,22 @@ public class ConfiguracaoController implements Serializable{
 	public void setListaJogador(List<Jogador> listaJogador) {
 		this.listaJogador = listaJogador;
 	}
-	
-	public void associarJogadorPeao(Jogador jogador){
-		if(peaoEscolhido != null){
-			peaoEscolhido.setJogador(jogador);
-			listaPeoesUtilizados.add(peaoEscolhido);
-		}else{
+
+	public void associarJogadorPeao(Jogador jogador) {
+		if (peaoEscolhido != null && peaoEscolhido.getId() != null) {
+			if (listaPeoesUtilizados.contains(peaoEscolhido)) {
+				for (Peao peao : listaPeoesUtilizados) {
+					if (peao.equals(peaoEscolhido)) {
+						peao.setJogador(jogador);
+					}
+				}
+			}else {
+				peaoEscolhido.setJogador(jogador);
+				listaPeoesUtilizados.add(peaoEscolhido);
+			}
+		} else {
 			for (Peao peao : listaPeoesUtilizados) {
-				if(peao.getJogador().equals(jogador)){
+				if (peao.getJogador().equals(jogador)) {
 					peao.setJogador(null);
 					listaPeao.add(peao);
 					listaPeoesUtilizados.remove(peao);
@@ -61,15 +70,21 @@ public class ConfiguracaoController implements Serializable{
 			}
 		}
 	}
-	
-	public String salvarConfiguracoes(){
-		for (Peao peao : listaPeoesUtilizados) {
-			peaoManager.salvar(peao);
+
+	public String salvarConfiguracoes() {
+		if (listaPeoesUtilizados.size() > 0) {
+			for (Peao peao : listaPeoesUtilizados) {
+				peaoManager.salvar(peao);
+			}
+			FacesContext.getCurrentInstance().getExternalContext()
+					.getSessionMap().remove("configuracaoController");
+			return "../game/game.jsf";
+		} else {
+			FacesUtil.mostrarMensagemAlerta("erro.escolha.um.Jogador");
+			return null;
 		}
-		
-		return "../game/game.jsf";
 	}
-	
+
 	public List<Peao> getListaPeao() {
 		return listaPeao;
 	}
