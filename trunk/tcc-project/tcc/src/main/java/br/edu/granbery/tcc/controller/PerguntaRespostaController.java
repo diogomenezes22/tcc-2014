@@ -1,20 +1,29 @@
 package br.edu.granbery.tcc.controller;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
+
+
+
+
 
 import br.edu.granbery.tcc.manager.PerguntaManager;
 import br.edu.granbery.tcc.model.Pergunta;
 import br.edu.granbery.tcc.model.Resposta;
 
-@Named
-@Singleton
-public class PerguntaRespostaController {
+@ManagedBean
+@ViewScoped
+public class PerguntaRespostaController implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2376361657591540952L;
 	private Pergunta pergunta;
 	private List<Pergunta> perguntas;
 	private Integer opcaoCorreta = -1;
@@ -66,6 +75,9 @@ public class PerguntaRespostaController {
 	}
 
 	public void buscar(){
+		if(pergunta == null)
+			pergunta = new Pergunta();
+		
 		perguntas = perguntaManager.consultar(pergunta);		
 		return ;
 	}
