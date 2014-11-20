@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.edu.granbery.tcc.dao.PrendaDAO;
+import br.edu.granbery.tcc.model.Pergunta;
 import br.edu.granbery.tcc.model.Prenda;
 
 
@@ -53,6 +54,10 @@ public class PrendaManagerImpl implements PrendaManager, Serializable{
 	
 	public void excluir(Prenda prenda){
 		prendaDAO.excluir(prenda);
+	}
+
+	public Prenda buscarPrendaAleatoria() {
+		return prendaDAO.buscarPerguntaAleatoria();
 	}
 	
 

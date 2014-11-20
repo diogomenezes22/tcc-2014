@@ -9,7 +9,6 @@ import javax.inject.Named;
 
 import br.edu.granbery.tcc.dao.JogadorDAO;
 import br.edu.granbery.tcc.model.Jogador;
-import br.edu.granbery.tcc.model.Prenda;
 
 
 @Named
