@@ -18,14 +18,12 @@
 							<div class="home text-center">
 								<h1>Alterar Prenda</h1>
 								<h:form id="prendaForm" styleClass="form-horizontal">
+									<h:messages  style="text-align:center;" id="messages" styleClass="text-info bg-info :focus"/>
 									<div class="form-group" >
-										<h:outputText value="Id" styleClass="col-sm-2 control-label" /> 
-										<div class="col-sm-10">
-											<h:inputText styleClass="form-control" label="Descricao" maxlength="50" value="#{prendaController.view.prenda.id}" />
-										</div>
+										<h:inputHidden value="#{prendaController.view.prenda.id}" />
 										<h:outputText value="Descrição" styleClass="col-sm-2 control-label" /> 
 										<div class="col-sm-10">
-											<h:inputText styleClass="form-control" label="Descricao" maxlength="50" value="#{prendaController.view.prenda.descricao}" />
+											<h:inputText required="true" requiredMessage="O campo Descrição de obrigatório!" styleClass="form-control" label="Descricao" maxlength="50" value="#{prendaController.view.prenda.descricao}" />
 										</div>
 									</div>
 										<h:commandLink action="#{prendaController.alterar()}" style="margin-right: 15px;" styleClass="btn btn-primary"  value="alterar" />
