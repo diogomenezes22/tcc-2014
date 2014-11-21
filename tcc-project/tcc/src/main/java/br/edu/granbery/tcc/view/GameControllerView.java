@@ -7,9 +7,9 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import br.edu.granbery.tcc.model.Jogador;
-import br.edu.granbery.tcc.model.Jogo;
 import br.edu.granbery.tcc.model.Peao;
 import br.edu.granbery.tcc.model.Pergunta;
+import br.edu.granbery.tcc.model.Prenda;
 
 
 @Named
@@ -21,6 +21,7 @@ public class GameControllerView implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Pergunta pergunta;	
+	private Prenda prenda;
 	private String repostaEscolhida;
 	private Jogador jogadorAtual;
 	private String numeroSorteado;
@@ -75,5 +76,13 @@ public class GameControllerView implements Serializable{
 
 	public void setNumeroSorteado(String numeroSorteado) {
 		this.numeroSorteado = numeroSorteado;
+	}
+
+	public Prenda getPrenda() {
+		return prenda;
+	}
+
+	public void setPrenda(Prenda prenda) {
+		this.prenda = prenda;
 	}
 }
