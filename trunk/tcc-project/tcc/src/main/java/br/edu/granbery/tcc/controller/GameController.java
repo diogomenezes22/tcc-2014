@@ -42,7 +42,7 @@ public class GameController implements Serializable {
 	
 
 	private boolean mostraPergunta;
-	private boolean mostraPoPup;
+	private boolean mostrarPrenda;
 	private boolean acertou;
 	private Jogo jogo;
 
@@ -58,7 +58,6 @@ public class GameController implements Serializable {
 			view.setListaPeoes(peaoManager.buscarPeoesEmJogo());
 			view.setJogadorAtual(getJogo().getJogadores().get(0));
 			view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
-			mostraPoPup = false;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -66,6 +65,7 @@ public class GameController implements Serializable {
 	}
 
 	public void buscarPergunta() {
+		mostrarPrenda = false;
 		Pergunta pergunta = new Pergunta();
 		do {
 			pergunta = perguntaManager.buscarPerguntaAleatoria();
@@ -85,7 +85,8 @@ public class GameController implements Serializable {
 				return;
 			}
 			if("PR".equals(getJogo().getTipoCasa(view.getPeaoEmJogo().getJogador()))){
-				prendaManager.buscarPrendaAleatoria();				
+				mostrarPrenda = true;
+				view.setPrenda(prendaManager.buscarPrendaAleatoria());				
 			}
 			
 			view.getPeaoEmJogo().setPodeAndar(true);
@@ -102,7 +103,6 @@ public class GameController implements Serializable {
 			view.setJogadorAtual(proximoJogador);
 			FacesUtil.mostrarMensagemErro("game.resposta.errada");
 		}
-		mostraPoPup = true;
 		mostraPergunta = false;
 	}
 
@@ -139,14 +139,6 @@ public class GameController implements Serializable {
 		this.mostraPergunta = mostraPergunta;
 	}
 
-	public boolean isMostraPoPup() {
-		return mostraPoPup;
-	}
-
-	public void setMostraPoPup(boolean mostraPoPup) {
-		this.mostraPoPup = mostraPoPup;
-	}
-
 	public boolean isAcertou() {
 		return acertou;
 	}
@@ -161,5 +153,13 @@ public class GameController implements Serializable {
 
 	public void setJogo(Jogo jogo) {
 		this.jogo = jogo;
+	}
+
+	public boolean isMostrarPrenda() {
+		return mostrarPrenda;
+	}
+
+	public void setMostrarPrenda(boolean mostrarPrenda) {
+		this.mostrarPrenda = mostrarPrenda;
 	}
 }
