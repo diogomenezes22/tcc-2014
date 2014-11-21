@@ -33,7 +33,7 @@ function moverPeca() {
 		andar(jogadorAtual.id, jogadorAtual.idCasa, passos);
 	} else {
 		$('html, body').animate({
-			scrollTop : $('body').offset().top - 150
+			scrollTop : $('body').offset().top - 250
 		}, 'slow', function() {
 			$("#messages").focus();
 		});

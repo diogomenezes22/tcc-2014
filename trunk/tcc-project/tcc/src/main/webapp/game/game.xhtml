@@ -35,16 +35,10 @@
 
 	 	function girarDado(valor) {
 	 		$("#numeroSorteado").val(valor);
-	 		setTimeout(function(){$("#dice").hide('slow');},2000 );
+	 		$("#numeroSorteadoCabecalho").text(valor);
+	 		setTimeout(function(){$("#dice").hide('slow');},400 );
 
 	 		$("#bntPergunta").show();
-
-	 		$('html, body').animate({ 
-	 	        scrollTop: $('body').offset().top + 100 }, 
-	 	    'slow', function() {
-	 	        $("#bntPergunta").focus();
-	 	    });
-	 		
 	 	}
 	 				
 		</script>
@@ -95,18 +89,19 @@
 												<rich:panel style="border:0px" rendered="#{gameController.mostraPergunta}" styleClass="pergunta">
 													<h:inputHidden value="#{gameController.view.pergunta.id}" />
 													<h1><h:outputLabel styleClass="pergunta" id="pergunta"  value="#{gameController.view.pergunta.descricao}"/></h1>
-													<h:selectOneRadio layout="pageDirection" required="true" styleClass="resposta" value="#{gameController.view.repostaEscolhida}">
+													<h:selectOneRadio layout="pageDirection" required="true" requiredMessage="Responda a pergunta" styleClass="resposta" value="#{gameController.view.repostaEscolhida}">
 														<f:selectItems  value="#{gameController.view.pergunta.respostas}" var="resposta" itemLabel="#{resposta.descricao}" itemValue="#{resposta.id}"/>
 													</h:selectOneRadio>			
 													
-													<a4j:commandLink oncomplete="moverPeca();" execute="@form" styleClass="btn btn-default" value="Responder" action="#{gameController.responder()}" render="painelPergunta camposHidden bntPergunta messages"/>
+													<a4j:commandLink oncomplete="moverPeca();" execute="@form" styleClass="btn btn-default" value="Responder" action="#{gameController.responder()}" render="painelPergunta camposHidden  messages"/>
 												</rich:panel>
 												<rich:panel style="border:0px" rendered="#{gameController.mostrarPrenda}" styleClass="prenda">
 													<h2><h:outputText value="Atenção !  #{gameController.view.peaoEmJogo.jogador.nome}" /></h2>
 													<h3><h:outputText value="#{gameController.view.prenda.descricao}" /></h3>
 												</rich:panel>	 
 											</a4j:outputPanel>
-											<div id="dice" align="center" style="width:80px; height:80px; z-index: 2; margin:auto;"></div>
+											<div id="dice" align="center" style="width:150px; height:150px; z-index: 2; margin:auto;"></div>
+											<a4j:commandLink onbegin="contagemRegressiva();" oncomplete="$('#bntPergunta').hide()" execute="@all" id="bntPergunta"  value="Pergunta" actionListener="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden messages idNome" styleClass="btn btn-primary"/>					
 										</td>
 										<td id="casa15" class="casaInativa td-tabuleiro">15</td>
 									</tr>
@@ -147,12 +142,6 @@
 								</table>
 							</div>
 							<br />
-							<a4j:commandLink onbegin="contagemRegressiva();" oncomplete="$('#bntPergunta').hide()" execute="@all" id="bntPergunta"  value="Pergunta" actionListener="#{gameController.buscarPergunta()}" render="painelPergunta camposHidden messages idNome" styleClass="btn btn-primary"/>					
-							
-						<rich:popupPanel id="statPane" rendered="#{gameController.mostrarPrenda}" autosized="true">
-							<h:graphicImage value="/resources/img/load.gif" alt="load" />
-								Aguarde...
-						</rich:popupPanel>
 						</h:form>
 					</div>
 				</div>
