@@ -96,7 +96,7 @@
 													<a4j:commandLink oncomplete="moverPeca();" execute="@form" styleClass="btn btn-default" value="Responder" action="#{gameController.responder()}" render="painelPergunta camposHidden  messages idNome"/>
 												</rich:panel>
 												<rich:panel style="border:0px" rendered="#{gameController.mostrarPrenda}" styleClass="prenda">
-													<h2><h:outputText value="Atenção !  #{gameController.view.peaoEmJogo.jogador.nome}" /></h2>
+													<h2><h:outputText value="Atenção!  #{gameController.view.peaoEmJogo.jogador.nome}" /></h2>
 													<h3><h:outputText value="#{gameController.view.prenda.descricao}" /></h3>
 												</rich:panel>	 
 											</a4j:outputPanel>
