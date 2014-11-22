@@ -19,7 +19,7 @@
 									<div id="pergunta" class="form-group" >
 										<h:outputText value="Pergunta: " styleClass="col-sm-2 control-label"/>
 										<div class="col-sm-10"> 
-											<h:inputTextarea  label="Nome" required="true" requiredMessage="O campo Pergunta é um campo obrigatório!" maxlength="500" styleClass="form-control" value="#{perguntaRespostaController.pergunta.descricao}" />
+											<h:inputTextarea  label="Nome" required="true" requiredMessage="O campo Pergunta é um campo obrigatório!"  maxlength="1000" styleClass="form-control" value="#{perguntaRespostaController.pergunta.descricao}" />
 										</div>
 									</div>
 									<div class="form-group">
@@ -36,25 +36,25 @@
 										<div class="form-group">
 											<h:outputText value="A:" styleClass="col-sm-2 control-label"/>
 											<div class="col-sm-10"> 
-												<h:inputText required="true" requiredMessage="O campo Alternativa A é um campo obrigatório!" title="A" label="Reposta A" maxlength="400" autocomplete="off" value="#{perguntaRespostaController.pergunta.respostas[0].descricao}" styleClass="form-control"/>
+												<h:inputText required="true" requiredMessage="O campo Alternativa A é um campo obrigatório!" title="A" label="Reposta A" maxlength="490" autocomplete="off" value="#{perguntaRespostaController.pergunta.respostas[0].descricao}" styleClass="form-control"/>
 											</div>
 										</div>
 										<div class="form-group">
 											<h:outputText value="B:" styleClass="col-sm-2 control-label"/>
 											<div class="col-sm-10"> 
-												<h:inputText required="true" requiredMessage="O campo Alternativa B é um campo obrigatório!" title="B" label="Reposta B" maxlength="400" autocomplete="off" value="#{perguntaRespostaController.pergunta.respostas[1].descricao}" styleClass="form-control"/>
+												<h:inputText required="true" requiredMessage="O campo Alternativa B é um campo obrigatório!" title="B" label="Reposta B" maxlength="490" autocomplete="off" value="#{perguntaRespostaController.pergunta.respostas[1].descricao}" styleClass="form-control"/>
 											</div>
 										</div>
 										<div class="form-group">
 											<h:outputText value="C:" styleClass="col-sm-2 control-label"/>
 											<div class="col-sm-10"> 
-												<h:inputText required="true" requiredMessage="O campo Alternativa C é um campo obrigatório!" title="C" label="Reposta C" maxlength="400" autocomplete="off" value="#{perguntaRespostaController.pergunta.respostas[2].descricao}" styleClass="form-control"/>
+												<h:inputText required="true" requiredMessage="O campo Alternativa C é um campo obrigatório!" title="C" label="Reposta C" maxlength="490" autocomplete="off" value="#{perguntaRespostaController.pergunta.respostas[2].descricao}" styleClass="form-control"/>
 											</div>
 										</div>
 										<div class="form-group">
 											<h:outputText value="D:" styleClass="col-sm-2 control-label"/>
 											<div class="col-sm-10"> 
-												<h:inputText required="true" requiredMessage="O campo Alternativa D é um campo obrigatório!" title="D" label="Reposta D" maxlength="400" autocomplete="off" value="#{perguntaRespostaController.pergunta.respostas[3].descricao}" styleClass="form-control"/>
+												<h:inputText required="true" requiredMessage="O campo Alternativa D é um campo obrigatório!" title="D" label="Reposta D" maxlength="490" autocomplete="off" value="#{perguntaRespostaController.pergunta.respostas[3].descricao}" styleClass="form-control"/>
 											</div>
 										</div>
 										<div class="form-group">
@@ -72,22 +72,23 @@
                 						</f:facet>
                 						<rich:column>
                 								<f:facet name="header">ID</f:facet>
-                								<h:outputText value="#{pergunta.id}" styleClass="form-control"/>                								
+                								<h:outputText value="#{pergunta.id}"/>                								
                 						<f:facet name="footer">ID</f:facet>
         								</rich:column>
                 						<rich:column>
                 								<f:facet name="header">Descrição</f:facet>
-                								<h:outputText value="#{pergunta.descricao}" styleClass="form-control"/>                								
+                								<h:outputText value="#{pergunta.descricao}"/>                								
                 						<f:facet name="footer">Descrição</f:facet>
         								</rich:column>
                 						<rich:column>
                 								<f:facet name="header">Resposta Correta</f:facet>
-                								<h:outputText value="#{pergunta.respostaCorreta.descricao}" styleClass="form-control"/>                								
+                								<h:outputText value="#{pergunta.respostaCorreta.descricao}"/>                								
                 						<f:facet name="footer">Resposta Correta</f:facet>
         								</rich:column>
                 						<rich:column>
-                							 <a4j:commandLink styleClass="form-control" render="perguntaRespForm" execute="@this">
-							                    <h:graphicImage value="/resources/img/edit.gif" alt="edit" />							                    
+                							<f:facet name="header">Editar</f:facet>
+                							 <a4j:commandLink render="perguntaRespForm" execute="@this">
+							                    <h:graphicImage value="/resources/img/edit.gif" alt="edit" width="30px;" height="30px;" />							                    
 							                    <f:setPropertyActionListener target="#{perguntaRespostaController.pergunta}" value="#{pergunta}" />
 							                </a4j:commandLink>
         								</rich:column>
