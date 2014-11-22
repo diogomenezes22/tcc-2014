@@ -18,9 +18,11 @@
 		
 			<div class="col-xs-7 col-sm-3 col-md-4">
 				<a4j:outputPanel id="idNome">
-					<p>
+					<p style="margin-left:-200px;">
 					<span class="texto-estatico-header">Jogador:</span>
-					<span class="texto-dinamico-header"> #{gameController.view.peaoEmJogo.jogador.nome}</span> 
+					<span class="texto-dinamico-header"> #{gameController.view.peaoEmJogo.jogador.nome} </span>
+					<span class="texto-estatico-header">Cor</span> 
+					<span class="texto-dinamico-header"> #{gameController.view.peaoEmJogo.cor}</span>
 					<span class="texto-estatico-header" >Numero Sorteado:</span>
 					<span  id="numeroSorteadoCabecalho" class="texto-dinamico-header"></span>
 					</p>
