@@ -3,9 +3,9 @@ package br.edu.granbery.tcc.controller;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import br.edu.granbery.tcc.manager.JogadorManager;
 import br.edu.granbery.tcc.manager.PeaoManager;
@@ -20,8 +20,8 @@ import br.edu.granbery.tcc.model.Tabuleiro;
 import br.edu.granbery.tcc.util.FacesUtil;
 import br.edu.granbery.tcc.view.GameControllerView;
 
-@Named
-@SessionScoped
+@ManagedBean
+@ViewScoped
 public class GameController implements Serializable {
 
 	/**
@@ -79,7 +79,7 @@ public class GameController implements Serializable {
 		if (verificaResposta()) {
 			acertou = true;
 			getJogo().getPerguntas().add(view.getPergunta());
-			// view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
+			view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
 			if(getJogo().mover(view.getPeaoEmJogo().getJogador(), Integer.parseInt(view.getNumeroSorteado()))){
 				//fim do jogo	
 				return;
@@ -97,7 +97,7 @@ public class GameController implements Serializable {
 			FacesUtil.mostrarMensagemSucesso("game.resposta.correta");
 		} else {
 			acertou = false;
-			// view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
+			view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
 			view.getPeaoEmJogo().setPodeAndar(false);
 			Jogador proximoJogador = getJogo().passaVez(view.getJogadorAtual());
 			view.setJogadorAtual(proximoJogador);
