@@ -1,10 +1,13 @@
 package br.edu.granbery.tcc.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import br.edu.granbery.tcc.manager.JogadorManager;
@@ -82,7 +85,14 @@ public class GameController implements Serializable {
 			view.setPeaoEmJogo(colocarPeaoEmJogo(view.getJogadorAtual()));
 			if(getJogo().mover(view.getPeaoEmJogo().getJogador(), Integer.parseInt(view.getNumeroSorteado()))){
 				//fim do jogo	
-				return;
+				try {
+					ExternalContext ex = FacesContext.getCurrentInstance().getExternalContext();
+					ex.getFlash().put("vencedor", view.getJogadorAtual().getNome());
+					ex.redirect("fimJogo.jsf");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if("PR".equals(getJogo().getTipoCasa(view.getPeaoEmJogo().getJogador()))){
 				mostrarPrenda = true;

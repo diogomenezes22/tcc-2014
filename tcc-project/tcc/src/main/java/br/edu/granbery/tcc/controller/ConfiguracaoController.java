@@ -78,7 +78,7 @@ public class ConfiguracaoController implements Serializable {
 			}
 			FacesContext.getCurrentInstance().getExternalContext()
 					.getSessionMap().remove("configuracaoController");
-			return "../game/game.jsf";
+			return "../game/game.jsf?faces-redirect=true";
 		} else {
 			FacesUtil.mostrarMensagemAlerta("erro.escolha.um.Jogador");
 			return null;
