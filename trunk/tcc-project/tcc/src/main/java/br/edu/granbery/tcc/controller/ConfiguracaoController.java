@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import br.edu.granbery.tcc.manager.JogadorManager;
 import br.edu.granbery.tcc.manager.PeaoManager;
@@ -16,8 +16,8 @@ import br.edu.granbery.tcc.model.Jogador;
 import br.edu.granbery.tcc.model.Peao;
 import br.edu.granbery.tcc.util.FacesUtil;
 
-@Named
-@SessionScoped
+@ManagedBean
+@ViewScoped
 public class ConfiguracaoController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
