@@ -44,7 +44,7 @@ function moverPeca() {
 var clock;
 
 function contagemRegressiva(){
-	clock = $('.clock').FlipClock(300, {
+	clock = $('.clock').FlipClock(180, {
         clockFace: 'MinuteCounter',
         countdown: true,
         callbacks: {
