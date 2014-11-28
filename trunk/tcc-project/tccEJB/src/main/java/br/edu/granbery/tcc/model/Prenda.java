@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="PRENDA")
+@Table(name="TB_PRENDA")
 public class Prenda implements Serializable{
 
 	/**

@@ -70,20 +70,30 @@ header p {
 }
 
 .tela .pergunta {
-	font-family: cursive;
-	font-size :15pt;
+	font-family: arial;
+	font-size :14pt;
 	color: black;
 	background: transparent;
 	height: 95% !important;
+	text-align: justify;
 }
 
-.tela .resposta {
+.tela .row .resposta {
 	color: black !important;
-	font-family: cursive;
-	font-size: 13pt;
 	margin-bottom: 4em;
-	text-align: center;
-	margin: auto;
+}
+
+.resposta label{
+	margin-left: 20px;
+	font-size: 11pt;
+	vertical-align: top;
+	word-wrap: break-word;
+}
+
+resposta input{
+	vertical-align: bottom;
+	float: left;
+
 }
 
 .prenda {

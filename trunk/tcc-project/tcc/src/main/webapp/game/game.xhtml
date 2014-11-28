@@ -88,12 +88,14 @@
 											<a4j:outputPanel id="painelPergunta">
 												<rich:panel style="border:0px" rendered="#{gameController.mostraPergunta}" styleClass="pergunta">
 													<h:inputHidden value="#{gameController.view.pergunta.id}" />
-													<h1><h:outputLabel styleClass="pergunta" id="pergunta"  value="#{gameController.view.pergunta.descricao}"/></h1>
+													<h:outputLabel styleClass="pergunta" id="pergunta"  value="#{gameController.view.pergunta.descricao}"/>
+													<hr />
 													<h:selectOneRadio layout="pageDirection" required="true" requiredMessage="Responda a pergunta" styleClass="resposta" value="#{gameController.view.repostaEscolhida}">
 														<f:selectItems  value="#{gameController.view.pergunta.respostas}" var="resposta" itemLabel="#{resposta.descricao}" itemValue="#{resposta.id}"/>
+														<br/>
 													</h:selectOneRadio>			
 													
-													<a4j:commandLink oncomplete="moverPeca();" execute="@form" styleClass="btn btn-default" value="Responder" action="#{gameController.responder()}" render="painelPergunta camposHidden  messages idNome"/>
+													<a4j:commandLink oncomplete="moverPeca();" execute="@form" styleClass="btn btn-default" style="margin-left:50%;" value="Responder" action="#{gameController.responder()}" render="painelPergunta camposHidden  messages idNome"/>
 												</rich:panel>
 												<rich:panel style="border:0px" rendered="#{gameController.mostrarPrenda}" styleClass="prenda">
 													<h2><h:outputText value="Atenção!  #{gameController.view.peaoEmJogo.jogador.nome}" /></h2>
