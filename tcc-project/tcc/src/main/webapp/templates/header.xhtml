@@ -10,13 +10,13 @@
 	<ui:composition>
 		<!-- topo header -->
 	  	<header>
-			<div class="col-sm-5 col-md-4">
+			<div class="col-sm-2">
 				<div class="logo-header">
 					<img src="/tcc/resources/img/quizez-header.png" alt="Quiz EZ" />
 				</div>
 			</div>
 		
-			<div class="col-xs-7 col-sm-3 col-md-4">
+			<div class="col-md-6">
 				<a4j:outputPanel id="idNome">
 					<p style="margin-left:-200px;">
 					<span class="texto-estatico-header">Jogador:</span>
@@ -24,16 +24,13 @@
 					<span class="texto-estatico-header">Cor</span> 
 					<span class="texto-dinamico-header"> #{gameController.view.peaoEmJogo.cor}</span>
 					<span class="texto-estatico-header" >Numero Sorteado:</span>
-					<span  id="numeroSorteadoCabecalho" class="texto-dinamico-header"></span>
+					<span class="texto-dinamico-header"  id="numeroSorteadoCabecalho"></span>
 					</p>
 				</a4j:outputPanel>
 			</div>
 		
-			<div class="col-sm-2">
-				<p>
-				<div class="texto-estatico-header">Tempo restante:</div>
-				<div class="clock" style="margin-left:250px; margin-top:-25px; width:200px; height:30px;"></div>
-				</p>
+			<div class="col-md-3">
+				<div class="clock" style="margin-top:15px; float:right; margin-right:15px; width:200px; height:30px;"></div>
 			</div>
 		
 		</header>
