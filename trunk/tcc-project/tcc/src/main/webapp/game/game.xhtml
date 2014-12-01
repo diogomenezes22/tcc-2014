@@ -16,9 +16,6 @@
 	 		$("#dice, #btn_randRoll").click(function() {
 	 			$("#dice").dice("roll", girarDado);
 	 		});
-	 		$("#btn_roll").click(function() {
-	 			$("#dice").dice("roll", $("#rollValue").val(), alert); // TRETA DE ROUBAR
-	 		});
 
 	 		$("#btn_setSize").click(function() {
 	 			$("#dice").dice("option", {
@@ -36,7 +33,7 @@
 	 	function girarDado(valor) {
 	 		$("#numeroSorteado").val(valor);
 	 		$("#numeroSorteadoCabecalho").text(valor);
-	 		setTimeout(function(){$("#dice").hide('slow');},400 );
+	 		setTimeout(function(){$("#dice").hide('slow');},240 );
 
 	 		$("#bntPergunta").show();
 	 	}
